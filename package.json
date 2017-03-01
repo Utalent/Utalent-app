@@ -4,7 +4,7 @@
   "description": "final project",
   "main": "server.js",
   "scripts": {
-  	  "start": "./node_modules/.bin/nodemon --ignore node_modules server/server.js",
+    "start": "./node_modules/.bin/nodemon --ignore node_modules server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -13,16 +13,17 @@
   },
   "author": "",
   "license": "ISC",
-  "dependencies":{
-    "express":"*",
-    "body-parser":"*",
-    "mongoose":"*"
-  },"devDependencies": {
+  "dependencies": {
+    "body-parser": "*",
+    "express": "*",
+    "jwt-simple": "^0.5.1",
+    "mongoose": "*"
+  },
+  "devDependencies": {
     "morgan": "^1.7.0"
   },
   "bugs": {
     "url": "https://github.com/duaamaloalain/Utalent-app/issues"
   },
-
   "homepage": "https://github.com/duaamaloalain/Utalent-app#readme"
 }
