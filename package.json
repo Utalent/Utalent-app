@@ -1,7 +1,7 @@
 {
   "name": "utalentapp",
   "version": "1.0.0",
-  "description": "",
+  "description": "final project",
   "main": "server.js",
   "scripts": {
   	  "start": "./node_modules/.bin/nodemon --ignore node_modules server/server.js",
@@ -13,8 +13,16 @@
   },
   "author": "",
   "license": "ISC",
+  "dependencies":{
+    "express":"*",
+    "body-parser":"*",
+    "mongoose":"*"
+  },"devDependencies": {
+    "morgan": "^1.7.0"
+  },
   "bugs": {
     "url": "https://github.com/duaamaloalain/Utalent-app/issues"
   },
+
   "homepage": "https://github.com/duaamaloalain/Utalent-app#readme"
 }
