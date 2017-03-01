@@ -28,7 +28,7 @@ exports.modules = {
 	    		}
 	    		else {
 	          // make a new user if not one
-	          return createUser({
+	          return User.create({
 	            username: username,
 	            password: hashedpass,
 	            email   : email
