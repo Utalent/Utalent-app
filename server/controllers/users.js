@@ -1,23 +1,27 @@
-var jwt = require('jwt-simple');
+var jwt  = require('jwt-simple');
+var util = require('./config/utils.js');
 var User = require('./models/user.js');
 
 exports.modules = {
 	signin: function(){
 		//YOUR code here
-	} 
-}
+	}, 
 
 
 
 
 
-exports.modules = {
+
+
 	signup: function(req,res,next){
 		var username = req.body.username;
     	var password = req.body.password;
-    	var email    = req.body.email
+    	var email    = req.body.email;
+    	var hashedpass = util.hashpass(password,function(hash){
+          hashedpass = hash;
+      	})
 
-    	findOne({ username: username })
+    	User.findOne({ username: username })
     		.then(function (err, user) {
 	    		if(user){
 	    			 next(new Error('User already exist!'));
@@ -26,7 +30,7 @@ exports.modules = {
 	          // make a new user if not one
 	          return createUser({
 	            username: username,
-	            password: password,
+	            password: hashedpass,
 	            email   : email
 	          });
 	        	}
