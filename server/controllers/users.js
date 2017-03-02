@@ -3,9 +3,32 @@ var util = require('../config/utils.js');
 var User = require('../models/users.js');
 
 module.exports = {
-	signin: function(){
-		//YOUR code here
-	}, 
+	//  signin : function(req,res) {
+ //  var email      = req.body.email; 
+ //  var password   = req.body.password;
+ //  var hashedpass = util.hashpass(password,function(hash){
+ //      hashedpass = hash;
+ //  });
+ //    new User({ email: email }).fetch().then(function(found) {
+ //    if (found) {
+ //      var userHash = found.get('password');
+ //      util.comparePass(password,userHash,function(exist){
+ //        if(exist){
+       
+ //          var token = jwt.encode(found, 'not your bussines!!');
+ //          res.json({token: token});
+ //                 }else{
+ //          console.log("password is not correct")
+ //            res.status(500).send("password is not correct")
+
+ //        }
+ //      })  
+ //    } else {
+ //    console.log("not found")
+ //      }
+ //  });
+ // },
+
 
 
 signup: function(req, res) {
@@ -38,7 +61,7 @@ signup: function(req, res) {
           });
         }
       });
-  },
+  }
 }
 
 
