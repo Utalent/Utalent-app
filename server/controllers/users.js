@@ -38,7 +38,7 @@ signup: function(req, res) {
           });
         }
       });
-  },
+  }
 }
 
 
