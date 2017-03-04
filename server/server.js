@@ -1,8 +1,15 @@
-var express = require('express')
+var express = require('express');
 var app = express();
 var server = require('http').createServer(app);
+
 var port = process.env.PORT || 3000;
 var mongoose = require('mongoose');
+///////////////////////////////fb///////////////////////////////
+// var passport_fb = require('passport');
+// var passport    = require('./config/passport');
+// app.use(session({ secret: 'keyboard cat', key: 'sid'}));
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 
 require('./config/middleware.js') (app,express);

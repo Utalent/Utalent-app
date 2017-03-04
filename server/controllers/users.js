@@ -34,7 +34,6 @@ signup: function(req, res) {
     util.hashpass(user.password,function(hash){
           user.hashedpass = hash;
     })
-   
     // check to see if user already exists
     User.findOne({username: user.username})
       .exec(function (err, found) {
