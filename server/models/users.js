@@ -1,7 +1,4 @@
 var mongoose = require('mongoose');
-var bcrypt = require('bcrypt-nodejs');
-var SALT_WORK_FACTOR = 10;
-
 
 var UserSchema = new mongoose.Schema({
   username: {
@@ -18,6 +15,13 @@ var UserSchema = new mongoose.Schema({
     type: String,
     required: true
     
+  },
+  score: {
+    type: Number
+  },
+
+  fb_ID: {
+    type: String,
   }
   
 });
