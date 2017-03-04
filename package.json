@@ -18,7 +18,10 @@
     "body-parser": "*",
     "express": "*",
     "jwt-simple": "^0.5.1",
-    "mongoose": "*"
+    "mongoose": "*",
+    "express-session": "1.7.6",
+    "passport": "0.2.1",
+    "passport-facebook": "latest"
   },
   "devDependencies": {
     "morgan": "^1.7.0"
