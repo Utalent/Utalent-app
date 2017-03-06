@@ -1,9 +1,6 @@
-var mongoose = require('mongoose');
-var bcrypt = require('bcrypt-nodejs');
+let mongoose = require('mongoose');
 
-
-
-var PostSchema = new mongoose.Schema({
+let PostSchema = new mongoose.Schema({
   text: {
     type: String,
     required: true

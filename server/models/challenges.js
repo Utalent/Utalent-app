@@ -1,6 +1,6 @@
-var mongoose = require('mongoose');
+let mongoose = require('mongoose');
 
-var ChallengeSchema = new mongoose.Schema({
+let ChallengeSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
@@ -20,4 +20,5 @@ var ChallengeSchema = new mongoose.Schema({
   },
   
 });
+
 module.exports = mongoose.model('challenges', ChallengeSchema);

@@ -1,6 +1,6 @@
-var mongoose = require('mongoose');
+let mongoose = require('mongoose');
 
-var LikeSchema = new mongoose.Schema({
+let LikeSchema = new mongoose.Schema({
   user_id: {
     type: Number,
     required: true
