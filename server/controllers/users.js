@@ -1,17 +1,18 @@
-var jwt  = require('jwt-simple');
-var util = require('../config/utils.js');
-var User = require('../models/users.js');
+let jwt  = require('jwt-simple');
+let util = require('../config/utils.js');
+let User = require('../models/users.js');
 
 module.exports = {
-	 signin : function(req,res) {
-    var user = req.body;
+
+	signin : (req,res) => {
+    let user = req.body;
 
     User.findOne({username: user.username})
-      .exec(function(err, found){
+      .exec( (err, found) => {
         if(found){
-          util.comparePass(user.password, found.password,function(exist){
+          util.comparePass(user.password, found.password, (exist) => {
             if(exist){
-            var token = jwt.encode(found, 'not your bussines!!');
+            let token = jwt.encode(found, 'not your bussines!!');
             res.json({token: token});
             }
             else{
@@ -27,26 +28,25 @@ module.exports = {
  },
 
 
-
-signup: function(req, res) {
-    var user = req.body;
+signup: (req, res) => {
+    let user = req.body;
     
-    util.hashpass(user.password,function(hash){
+    util.hashpass(user.password, (hash) => {
           user.hashedpass = hash;
     })
     // check to see if user already exists
     User.findOne({username: user.username})
-      .exec(function (err, found) {
+      .exec( (err, found) => {
         if (found) {
           res.json('User already exist!');
         } else {
           // make a new user if not one
-          return User.create(user, function (err, newUser) {
+          return User.create(user, (err, newUser) => {
               // create token to send back for auth
               if(err){
                 res.json(err);
               } else {
-                var token = jwt.encode(found, 'secret');
+                let token = jwt.encode(found, 'secret');
                 res.json({token: token}); 
               }     
           });

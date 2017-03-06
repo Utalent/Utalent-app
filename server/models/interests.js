@@ -1,6 +1,6 @@
-var mongoose = require('mongoose');
+let mongoose = require('mongoose');
 
-var InterestsSchema = new mongoose.Schema({
+let InterestsSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true
