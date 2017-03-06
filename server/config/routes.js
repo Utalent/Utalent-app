@@ -5,6 +5,11 @@ var userController = require('../controllers/users.js')
 
 
 module.exports = function(app, express) {
+
+app.get('/', (req, res) => {
+  res.send('api works');
+});
+
 	app.post('/api/users/signup',userController.signup);
 	app.post('/api/users/signin',userController.signin);
 	app.get('/api/users/signup',userController.signup)
