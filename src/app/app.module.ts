@@ -5,7 +5,13 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { SigninComponent } from './signin/signin.component';
+
+import { SignupComponent } from './signup/signup.component';
+import { SignupService } from './signup.service';
+
+
 import { SigninService } from './signin.service';
+
 // Define the routes
 const ROUTES = [
   {
@@ -16,12 +22,17 @@ const ROUTES = [
   {
     path: 'signin',
     component: SigninComponent
+  },
+  {
+    path: 'signup',
+    component: SignupComponent
   }
 ];
 @NgModule({
   declarations: [
     AppComponent,
-    SigninComponent
+    SigninComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +40,7 @@ const ROUTES = [
     HttpModule,
      RouterModule.forRoot(ROUTES) 
   ],
-  providers: [SigninService],
+  providers: [SigninService,SignupService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
