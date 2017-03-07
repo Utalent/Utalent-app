@@ -5,7 +5,11 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { SigninComponent } from './signin/signin.component';
-import { SigninService } from './signin.service';
+
+
+import { AuthService } from './auth.service';
+
+
 // Define the routes
 const ROUTES = [
   {
@@ -27,9 +31,9 @@ const ROUTES = [
     BrowserModule,
     FormsModule,
     HttpModule,
-     RouterModule.forRoot(ROUTES) 
+    RouterModule.forRoot(ROUTES) 
   ],
-  providers: [SigninService],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
