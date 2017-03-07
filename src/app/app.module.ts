@@ -2,21 +2,43 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { RouterModule } from '@angular/router';
+
 
 import { AppComponent } from './app.component';
-import { AuthComponent } from './auth/auth.component';
+import { SigninComponent } from './signin/signin.component';
+
+import { SigninService } from './signin.service';
+
+
+// Define the routes
+const ROUTES = [
+  {
+    path: '',
+    redirectTo: 'signin',
+    pathMatch: 'full'
+  },
+  {
+    path: 'signin',
+    component: SigninComponent
+  }
+];
+
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    AuthComponent
+    SigninComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+     RouterModule.forRoot(ROUTES) 
   ],
-  providers: [],
+  providers: [SigninService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

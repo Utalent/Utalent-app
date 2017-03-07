@@ -4,7 +4,8 @@ const mongoose = require('mongoose');
 const app = express();
 const server = require('http').createServer(app);
 
-const port = process.env.PORT || 2000;
+
+const port = process.env.PORT || 3000;
 ///////////////////////////////fb///////////////////////////////
 // const passport_fb = require('passport');
 // const passport    = require('./config/passport');
@@ -15,6 +16,8 @@ const port = process.env.PORT || 2000;
 
 require('./server/config/middleware.js') (app,express);
 require('./server/config/routes.js') (app,express);
+
+
 
 
 ///////////////////////database////////////////////////
