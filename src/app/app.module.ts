@@ -3,13 +3,14 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
-
-
 import { AppComponent } from './app.component';
 import { SigninComponent } from './signin/signin.component';
+
 import { SignupComponent } from './signup/signup.component';
-import { SigninService } from './signin.service';
 import { SignupService } from './signup.service';
+
+
+import { SigninService } from './signin.service';
 
 // Define the routes
 const ROUTES = [
@@ -27,10 +28,6 @@ const ROUTES = [
     component: SignupComponent
   }
 ];
-
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
