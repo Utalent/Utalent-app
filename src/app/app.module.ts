@@ -3,13 +3,10 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
-
 import { AppComponent } from './app.component';
-import { AuthComponent } from './auth/auth.component';
-import { SignInComponent } from './sign-in/sign-in.component';
-
-import { AuthService } from './auth.service';
-
+import { SigninComponent } from './signin/signin.component';
+import { SigninService } from './signin.service';
+// Define the routes
 const ROUTES = [
   {
     path: '',
@@ -18,27 +15,21 @@ const ROUTES = [
   },
   {
     path: 'signin',
-    component: SignInComponent
-  },
-  {
-    path: 'sss',
-    component: AuthComponent
+    component: SigninComponent
   }
 ];
-
 @NgModule({
   declarations: [
     AppComponent,
-    AuthComponent,
-    SignInComponent
+    SigninComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(ROUTES)
+     RouterModule.forRoot(ROUTES) 
   ],
-  providers: [AuthService],
+  providers: [SigninService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

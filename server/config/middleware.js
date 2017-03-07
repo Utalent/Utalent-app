@@ -1,5 +1,6 @@
-var morgan = require('morgan');
-var bodyParser = require('body-parser');
+let morgan = require('morgan');
+let bodyParser = require('body-parser');
+const path = require('path');
 
 module.exports = function(app, express){
     
@@ -13,10 +14,11 @@ module.exports = function(app, express){
     app.use(morgan('dev'));
 	app.use(bodyParser.urlencoded({extended: true}));
 	app.use(bodyParser.json());
-	app.use(express.static(__dirname + '/../../client'));	
+        app.use(express.static(path.join(__dirname, '/../../dist')));  
+
 	app.use(function(req,res,next){
-        var _send = res.send;
-        var sent = false;
+        let _send = res.send;
+        let sent = false;
         res.send = function(data){
             if(sent) return;
             _send.bind(res)(data);
