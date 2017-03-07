@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { SigninComponent } from './signin/signin.component';
-
+import { SignupComponent } from './signup/signup.component';
 
 import { AuthService } from './auth.service';
 
@@ -20,12 +20,17 @@ const ROUTES = [
   {
     path: 'signin',
     component: SigninComponent
+  },
+  {
+    path: 'signup',
+    component: SignupComponent
   }
 ];
 @NgModule({
   declarations: [
     AppComponent,
-    SigninComponent
+    SigninComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
