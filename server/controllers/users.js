@@ -6,14 +6,13 @@ module.exports = {
 
 	signin : (req,res) => {
     let user = req.body;
-
     User.findOne({username: user.username})
       .exec( (err, found) => {
         if(found){
           util.comparePass(user.password, found.password, (exist) => {
             if(exist){
-            let token = jwt.encode(found, 'not your bussines!!');
-            res.json({token: token});
+              let token = jwt.encode(found, 'secret');
+              res.json({token: token});
             }
             else{
             console.log("password is not correct")
@@ -32,7 +31,7 @@ signup: (req, res) => {
     let user = req.body;
     
     util.hashpass(user.password, (hash) => {
-          user.hashedpass = hash;
+        user.password = hash;
     })
     // check to see if user already exists
     User.findOne({username: user.username})

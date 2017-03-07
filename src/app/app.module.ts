@@ -5,12 +5,10 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { SigninComponent } from './signin/signin.component';
-
 import { SignupComponent } from './signup/signup.component';
-import { SignupService } from './signup.service';
 
+import { AuthService } from './auth.service';
 
-import { SigninService } from './signin.service';
 
 // Define the routes
 const ROUTES = [
@@ -38,9 +36,9 @@ const ROUTES = [
     BrowserModule,
     FormsModule,
     HttpModule,
-     RouterModule.forRoot(ROUTES) 
+    RouterModule.forRoot(ROUTES) 
   ],
-  providers: [SigninService,SignupService],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
