@@ -5,21 +5,20 @@ let PostSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-
   img: {
     type: String
   },
   video: {
     type: String 
   },
-  user_id: [{
+  user_id: {
     type: mongoose.Schema.Types.ObjectId, 
     ref: 'users'
-  }],
-  challenge_id: [{
+  },
+  challenge_id: {
     type: mongoose.Schema.Types.ObjectId, 
     ref: 'challenges'
-  }]
+  }
   
 });
 module.exports = mongoose.model('posts', PostSchema);
