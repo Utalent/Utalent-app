@@ -12,4 +12,11 @@ export class AuthService {
   	return this.http.post('/api/users/signin', user)
   }
 
+  signup(user) {
+
+  	console.log("yyyyy", user)
+  	return this.http.post('/api/users/signup', user)
+  }
+
+
 }
