@@ -29,6 +29,7 @@ module.exports = {
 
 signup: (req, res) => {
     let user = req.body;
+    console.log("ffffffffffffffff",user)
     
     util.hashpass(user.password, (hash) => {
         user.password = hash;
