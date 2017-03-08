@@ -1,15 +1,15 @@
 let mongoose = require('mongoose');
 
 let LikeSchema = new mongoose.Schema({
-  user_id: [{
+  user_id: {
   	type: mongoose.Schema.Types.ObjectId, 
   	ref: 'users'
-  }],
+  },
 
-  post_id: [{
+  post_id: {
   	type: mongoose.Schema.Types.ObjectId, 
   	ref: 'posts'
-  }]
+  }
  
 });
 module.exports = mongoose.model('postLikeUsers', LikeSchema);
