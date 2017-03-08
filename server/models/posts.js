@@ -5,7 +5,6 @@ let PostSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-
   img: {
     type: String
   },
@@ -13,10 +12,12 @@ let PostSchema = new mongoose.Schema({
     type: String 
   },
   user_id: {
-    type: Number
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: 'users'
   },
   challenge_id: {
-    type: Number
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: 'challenges'
   }
   
 });
