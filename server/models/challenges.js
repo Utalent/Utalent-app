@@ -10,14 +10,14 @@ let ChallengeSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  user_id: {
-    type: Number,
-    required: true 
-  },
-  interest_id: {
-    type: Number,
-    required: true  
-  },
+  user_id: [{
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: 'users'
+  }],
+  interest_id: [{
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: 'interests'
+  }]
   
 });
 

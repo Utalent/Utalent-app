@@ -12,12 +12,14 @@ let PostSchema = new mongoose.Schema({
   video: {
     type: String 
   },
-  user_id: {
-    type: Number
-  },
-  challenge_id: {
-    type: Number
-  }
+  user_id: [{
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: 'users'
+  }],
+  challenge_id: [{
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: 'challenges'
+  }]
   
 });
 module.exports = mongoose.model('posts', PostSchema);
