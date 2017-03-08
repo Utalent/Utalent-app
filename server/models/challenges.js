@@ -11,13 +11,13 @@ let ChallengeSchema = new mongoose.Schema({
     required: true
   },
   user_id: {
-    type: Number,
-    required: true 
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: 'users'
   },
   interest_id: {
-    type: Number,
-    required: true  
-  },
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: 'interests'
+  }
   
 });
 
