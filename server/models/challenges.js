@@ -6,7 +6,7 @@ let ChallengeSchema = new mongoose.Schema({
     required: true,
     unique: true
   },
-  desc: {
+  description: {
     type: String,
     required: true
   },
