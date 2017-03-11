@@ -14,7 +14,8 @@ import { SignupComponent } from './signup/signup.component';
 import { InterestComponent } from './interests/interests.component';
 import { AuthService } from './auth.service';
 import { InterestsService } from './interests.service';
-
+import { ChallengeComponent } from './challenge/challenge.component';
+import {challengeService} from './challenge.service'
 
 
 // Define the routes
@@ -46,7 +47,8 @@ const ROUTES = [
     AppComponent,
     SigninComponent,
     SignupComponent,
-    InterestComponent
+    InterestComponent,
+    ChallengeComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +60,7 @@ const ROUTES = [
         }),
     RouterModule.forRoot(ROUTES) 
   ],
-  providers: [AuthService,InterestsService,{ provide: LocationStrategy, useClass: HashLocationStrategy }],
+  providers: [AuthService,InterestsService,challengeService,{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
