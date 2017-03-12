@@ -15,9 +15,19 @@ let PostSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId, 
     ref: 'users'
   },
+  username: {
+    type: String,
+    required: true
+  },
   challenge_id: {
     type: mongoose.Schema.Types.ObjectId, 
     ref: 'challenges'
+  },
+  likes: {
+    type : Number
+  },
+  comments: {
+    type: Array
   }
   
 });

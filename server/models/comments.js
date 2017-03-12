@@ -5,13 +5,13 @@ let CommentSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  user_id: [{
+  user_id: {
     type: mongoose.Schema.Types.ObjectId, 
     ref: 'users'
-  }],
-  post_id : [{
+  },
+  post_id : {
     type: mongoose.Schema.Types.ObjectId, 
     ref: 'posts'
-  }]
+  }
 });
 module.exports = mongoose.model('comments', CommentSchema);
