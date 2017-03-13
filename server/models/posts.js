@@ -27,7 +27,8 @@ let PostSchema = new mongoose.Schema({
     type : Number
   },
   comments: {
-    type: Array
+    type : Array,
+    
   }
   
 });

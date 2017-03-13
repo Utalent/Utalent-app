@@ -19,7 +19,6 @@ import { ChallengeService } from './challenge.service';
 import { AuthService } from './auth.service';
 import { InterestsService } from './interests.service';
 import { ChallengeComponent } from './challenge/challenge.component';
-import { InterestChallengeComponent } from './interest-challenge/interest-challenge.component';
 
 
 // Define the routes
@@ -58,7 +57,6 @@ const ROUTES = [
     SignupComponent,
     InterestComponent,
     ChallengeComponent,
-    InterestChallengeComponent
   ],
   imports: [
     BrowserModule,
