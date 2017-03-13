@@ -12,7 +12,7 @@ module.exports = {
           util.comparePass(user.password, found.password, (exist) => {
             if(exist){
               let token = jwt.encode(found, 'secret');
-              res.json({token: token});
+              res.json({token: token, id :found.id});
             }
             else{
             console.log("password is not correct")
@@ -45,8 +45,8 @@ signup: (req, res) => {
               if(err){
                 res.json(err);
               } else {
-                let token = jwt.encode(found, 'secret');
-                res.json({token: token}); 
+                let token = jwt.encode(newUser, 'secret');
+                res.json({token: token,id :newUser._id}); 
               }     
           });
         }
