@@ -14,6 +14,7 @@ import { SignupComponent } from './signup/signup.component';
 import { InterestComponent } from './interests/interests.component';
 import { AuthService } from './auth.service';
 import { InterestsService } from './interests.service';
+import { ProfileComponent } from './profile/profile.component';
 
 
 
@@ -46,7 +47,8 @@ const ROUTES = [
     AppComponent,
     SigninComponent,
     SignupComponent,
-    InterestComponent
+    InterestComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
