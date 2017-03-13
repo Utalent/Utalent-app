@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-signup',
@@ -13,8 +14,10 @@ export class SignupComponent implements OnInit {
 
 
  user ={};
+ // localStorageService: LocalStorageService;
 
-  constructor (private authService: AuthService) { }
+  constructor (
+    private authService: AuthService) { }
  
 
   ngOnInit() {
@@ -23,10 +26,11 @@ export class SignupComponent implements OnInit {
    
   signup() {
     console.log("ttttttttttt",this.user)
-    this.authService.signup(this.user).subscribe(user => {
-    
-    });
-
-}
-
+    this.authService.signup(this.user).subscribe(data => {
+        if (data){
+          localStorage.setItem('com.utalent',JSON.stringify(data.token))
+          localStorage.setItem('com.userId',JSON.stringify(data.id))
+        }
+    })
+  }
 }
