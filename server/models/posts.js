@@ -17,7 +17,7 @@ let PostSchema = new mongoose.Schema({
   },
   username: {
     type: String,
-    required: true
+    
   },
   challenge_id: {
     type: mongoose.Schema.Types.ObjectId, 
@@ -27,7 +27,8 @@ let PostSchema = new mongoose.Schema({
     type : Number
   },
   comments: {
-    type: Array
+    type : Array,
+    
   }
   
 });
