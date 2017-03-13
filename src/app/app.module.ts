@@ -4,10 +4,17 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { LocalStorageModule } from 'angular-2-local-storage';
+
+
+
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
-
+import { InterestComponent } from './interests/interests.component';
 import { AuthService } from './auth.service';
+import { InterestsService } from './interests.service';
+
 
 
 // Define the routes
@@ -24,21 +31,30 @@ const ROUTES = [
   {
     path: 'signup',
     component: SignupComponent
+  },
+    {
+    path: 'interest',
+    component: InterestComponent
   }
 ];
 @NgModule({
   declarations: [
     AppComponent,
     SigninComponent,
-    SignupComponent
+    SignupComponent,
+    InterestComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+     LocalStorageModule.withConfig({
+            prefix: 'app-root',
+            storageType: 'localStorage',
+        }),
     RouterModule.forRoot(ROUTES) 
   ],
-  providers: [AuthService],
+  providers: [AuthService,InterestsService,{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
