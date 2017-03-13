@@ -53,6 +53,7 @@ module.exports = {
                           callback(null);
                         }
                         else{
+                          console.log("in comment***",comments)
                           post.set('comments', comments)
 
                           if(--postsToGo === 0){
