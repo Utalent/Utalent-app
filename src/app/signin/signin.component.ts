@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
-import { LocalStorageService } from 'angular-2-local-storage';
 
 import 'rxjs/add/operator/map';
 
@@ -14,8 +13,7 @@ export class SigninComponent implements OnInit {
   user = {}; 
 
 
-  constructor(private authService: AuthService,
-    private localStorageService :LocalStorageService ) { }
+  constructor(private authService: AuthService) { }
 
    ngOnInit() {
   }
@@ -26,14 +24,9 @@ export class SigninComponent implements OnInit {
        if (data){
           localStorage.setItem('com.utalent',JSON.stringify(data.token))
           localStorage.setItem('com.userId',JSON.stringify(data.id))
-
         }
   })
-    
   }
-
-
-
 }
 
 

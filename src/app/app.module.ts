@@ -35,7 +35,11 @@ const ROUTES = [
     {
     path: 'interest',
     component: InterestComponent
-  }
+  },
+  //  {
+  //   path: 'users/:username',
+  //   component: profile
+  // }
 ];
 @NgModule({
   declarations: [
