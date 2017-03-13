@@ -1,16 +1,5 @@
-<!doctype html>
-<html>
-<head>
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css"/>
-
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
-<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css"/>
-<div class="container">
-	<div class="col-md-5">
+<div class="container" *ngFor='let post of challenge.posts'>
+  <div class="col-md-5">
         <div class="panel panel-default">
             <div class="panel-body">
                <section class="post-heading">
@@ -34,57 +23,38 @@
                     </div>             
                </section>
                <section class="post-body">
-                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras 
-                   turpis sem, dictum id bibendum eget, malesuada ut massa. Ut scel
-                   erisque nulla sed luctus dapibus. Nulla sit amet mi vitae purus sol
-                   licitudin venenatis. Praesent et sem urna. Integer vitae lectus nis
-                   l. Fusce sapien ante, tristique efficitur lorem et, laoreet ornare lib
-                   ero. Nam fringilla leo orci. Vivamus semper quam nunc, sed ornare magna dignissim sed. Etiam interdum justo quis risus
-                   efficitur dictum. Nunc ut pulvinar quam. N
-                   unc mollis, est a dapibus dignissim, eros elit tempor diam, eu tempus quam felis eu velit.</p>
+                   <p>{{post.text}}</p>
                </section>
                <section class="post-footer">
-                  
+                   <hr>
+                   <div class="post-footer-option container">
+                        <ul class="list-unstyled">
+                            <li><a href="#"><i class="glyphicon glyphicon-thumbs-up"></i> Like</a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-comment"></i> Comment</a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-share-alt"></i> Share</a></li>
+                        </ul>
                    </div>
-
-<!-- comments  ////////////////////////////////////////////-->
-
- <div class="comment">
-                <div class="media">
-                  <div class="media-left">
-                    <a href="#">
-                      <img class="media-object photo-profile" src="http://0.gravatar.com/avatar/38d618563e55e6082adf4c8f8c13f3e4?s=40&d=mm&r=g" width="32" height="32" alt="...">
-                    </a>
-                  </div>
-                  <div class="media-body">
-                    <a href="#" class="anchor-username"><h4 class="media-heading">Media heading</h4></a> 
-                    <a href="#" class="anchor-time">51 mins</a>
-                  </div>
-                </div>
-           </div>
-
-
-          <ul class="list-inline list-unstyled">
-  			<li><span><i class="glyphicon glyphicon-calendar"></i> 2 days, 8 hours </span></li>
-            <li>|</li>
-            <span><i class="glyphicon glyphicon-comment"></i> 2 comments</span>
-            <li>|</li>
-            <li>
-               <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star-empty"></span>
-            </li>
-            <li>|</li>
-            <li>
-            <!-- Use Font Awesome http://fortawesome.github.io/Font-Awesome/ -->
-              <span><i class="fa fa-facebook-square"></i></span>
-              <span><i class="fa fa-twitter-square"></i></span>
-              <span><i class="fa fa-google-plus-square"></i></span>
-            </li>
-			</ul>
-       </div>
-    </div>
+                   <div class="post-footer-comment-wrapper">
+                       <div class="comment-form">
+                           
+                       </div>
+                       <div class="comment" *ngFor="let comment of post.comments">
+                            <div class="media">
+                              <div class="media-left">
+                                <a href="#">
+                                  <img class="media-object photo-profile" src="http://0.gravatar.com/avatar/38d618563e55e6082adf4c8f8c13f3e4?s=40&d=mm&r=g" width="32" height="32" alt="...">
+                                </a>
+                              </div>
+                              <div class="media-body">
+                                <a href="#" class="anchor-username"><h4 class="media-heading">Media heading</h4></a>
+                                <p>{{comment.text}}</p> 
+                                <a href="#" class="anchor-time">51 mins</a>
+                              </div>
+                            </div>
+                       </div>
+                   </div>
+               </section>
+            </div>
+        </div>   
   </div>
 </div>
