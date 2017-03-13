@@ -28,7 +28,7 @@ describe('userController', function () {
 
   after(function(done){
     newUser.remove()
-    User.remove({username: 'test1'}).exec()
+    User.remove({username: 'test'}).exec()
     done()
   })
 
