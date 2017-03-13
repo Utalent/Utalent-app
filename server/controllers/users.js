@@ -51,7 +51,22 @@ signup: (req, res) => {
           });
         }
       });
+  },
+
+
+  getProfile:(req, res) =>{
+    let userName = req.body;
+    User.findOne({username:userName})
+    .exec((err, found)=>{
+      if (found){
+        res.json(found)
+      }else {
+        res.json("user does not exist")
+      }
+    }) 
+
   }
+
 }
 
 
