@@ -19,7 +19,7 @@ module.exports = {
           if(err){
             res.json(err);
           } else {
-            res.json('Post Added!'); 
+            res.json({id: post._id}); 
           }     
         });
         }
@@ -54,7 +54,6 @@ module.exports = {
                         }
                         else{
                           post.set('comments', comments)
-
                           if(--postsToGo === 0){
                             callback(arr);
                           }
