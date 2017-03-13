@@ -4,7 +4,7 @@ let userController = require('../controllers/users.js');
 let postController = require('../controllers/posts.js');
 let likeController = require('../controllers/postLikeUsers.js');
 let challengeController = require('../controllers/challenges.js');
-
+let interestController = require('../controllers/interests.js');
 
 
 
@@ -28,6 +28,11 @@ app.get('/', (req, res) => {
 	app.get('/api/challenges', challengeController.getAll);
 	app.get('/api/challenges/:id', challengeController.getChallenge);
 	app.post('/api/challenges/add', challengeController.addChallenge);
+	
+
+
+	app.get('/api/interests', interestController.getAll);
+	app.post('/api/interests', interestController.addInterest);
 
 	// app.use(helpers.errorLogger);
 	// app.use(helpers.errorHandler);
