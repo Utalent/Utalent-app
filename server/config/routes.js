@@ -18,6 +18,8 @@ app.get('/', (req, res) => {
 	app.post('/api/users/signup', userController.signup);
 	app.post('/api/users/signin', userController.signin);
 	app.get('/api/users/signup', userController.signup)
+	app.get('/api/users/:username', userController.getProfile);
+
 
 	app.post('/api/posts/add', postController.addPost);
 	app.post('/api/posts', postController.getAllChallengePosts);
