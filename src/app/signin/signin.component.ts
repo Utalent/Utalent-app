@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 
+import 'rxjs/add/operator/map';
+
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
@@ -17,10 +19,14 @@ export class SigninComponent implements OnInit {
   }
   signin() {
     console.log(this.user)
-    this.authService.signin(this.user).subscribe(user => {
-    
-    });
-    
+
+    this.authService.signin(this.user).map(data =>{ 
+
+       if (data){
+          localStorage.setItem('com.utalent',JSON.stringify(data.token))
+          localStorage.setItem('com.userId',JSON.stringify(data.id))
+        }
+  })
   }
 }
 

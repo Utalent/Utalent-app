@@ -12,7 +12,7 @@ module.exports = {
           util.comparePass(user.password, found.password, (exist) => {
             if(exist){
               let token = jwt.encode(found, 'secret');
-              res.json({token: token});
+              res.json({token: token, id :found.id});
             }
             else{
             console.log("password is not correct")
@@ -29,7 +29,6 @@ module.exports = {
 
 signup: (req, res) => {
     let user = req.body;
-    console.log("ffffffffffffffff",user)
     
     util.hashpass(user.password, (hash) => {
         user.password = hash;
@@ -46,13 +45,28 @@ signup: (req, res) => {
               if(err){
                 res.json(err);
               } else {
-                let token = jwt.encode(found, 'secret');
-                res.json({token: token}); 
+                let token = jwt.encode(newUser, 'secret');
+                res.json({token: token,id :newUser._id}); 
               }     
           });
         }
       });
+  },
+
+
+  getProfile:(req, res) =>{
+    let userName = req.body;
+    User.findOne({username:userName})
+    .exec((err, found)=>{
+      if (found){
+        res.json(found)
+      }else {
+        res.json("user does not exist")
+      }
+    }) 
+
   }
+
 }
 
 

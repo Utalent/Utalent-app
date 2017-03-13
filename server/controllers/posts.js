@@ -1,4 +1,8 @@
 let Post = require('../models/posts.js');
+let User = require('../models/users.js');
+let Comment = require('../models/comments.js');
+
+let PostLikeUsers = require('../models/postLikeUsers.js');
 
 module.exports = {
   
@@ -22,17 +26,46 @@ module.exports = {
       });
   },
   
-  getAllChallengePosts: function(req, res){
-  	let challengId = req.body.challenge_id;
-  	Post.find({challenge_id: challengId})
-  	  .exec( (err, found) => {
-  	  	if (found) {
-  	  		res.json(found);
-  	  	} else {
-  	  		res.status(500).send('No posts in this challenge');
-  	  	}
-  	  })
+  getAllChallengePosts: function(challengId, callback){
+    Post.find({challenge_id: challengId})
+      .exec( (err, posts) => {
+        if(err){
+          callback(null);
+          } else {
+            let arr = posts;
+            let postsToGo = arr.length;
+            if(!arr.length){
+              callback([])
+            }
+            arr.forEach(function(post){
+      
+              PostLikeUsers.count({post_id: post._id})
+                .exec( (err, count) => {
+                  
+                  if(err){
+                    callback(null);
+                  }
+                  else{
+                    post.set('likes', count)
+                    Comment.find({post_id: post._id})
+                      .exec( (err, comments) => {
+                        if(err){
+                          callback(null);
+                        }
+                        else{
+                          console.log("in comment***",comments)
+                          post.set('comments', comments)
 
+                          if(--postsToGo === 0){
+                            callback(arr);
+                          }
+                        }
+                      })
+                  }
+                }); 
+            })
+          } 
+  	  })
   }
 
 }

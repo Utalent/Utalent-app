@@ -17,6 +17,10 @@ let ChallengeSchema = new mongoose.Schema({
   interest_id: {
     type: mongoose.Schema.Types.ObjectId, 
     ref: 'interests'
+  },
+  posts: { 
+    type : Array,
+    "default" : [] 
   }
   
 });

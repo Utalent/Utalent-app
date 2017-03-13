@@ -3,7 +3,8 @@ let mongoose = require('mongoose');
 let InterestsSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true
+    required: true,
+    unique : true 
   }
   
 });
