@@ -21,7 +21,6 @@ export class SigninComponent implements OnInit {
     console.log(this.user)
 
     this.authService.signin(this.user).map(data =>{ 
-
        if (data){
           localStorage.setItem('com.utalent',JSON.stringify(data.token))
           localStorage.setItem('com.userId',JSON.stringify(data.id))

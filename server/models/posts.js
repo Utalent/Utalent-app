@@ -29,6 +29,10 @@ let PostSchema = new mongoose.Schema({
   comments: {
     type : Array,
     
+  },
+  created_at: {
+    type: Date,
+    default: Date.now
   }
   
 });

@@ -5,6 +5,7 @@ let postController = require('../controllers/posts.js');
 let likeController = require('../controllers/postLikeUsers.js');
 let challengeController = require('../controllers/challenges.js');
 let interestController = require('../controllers/interests.js');
+let commentController = require('../controllers/comments.js');
 
 
 
@@ -31,6 +32,7 @@ app.get('/', (req, res) => {
 	app.get('/api/challenges/:id', challengeController.getChallenge);
 	app.post('/api/challenges/add', challengeController.addChallenge);
 	
+	app.post('/api/comments/add', commentController.addComment);
 
 
 	app.get('/api/interests', interestController.getAll);

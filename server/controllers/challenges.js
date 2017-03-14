@@ -46,12 +46,19 @@ module.exports = {
   		Challenge.findOne({_id: challengId})
 			.exec( (err, challenge) => {
 				if(err){
-            		res.json(err);
+          			res.status(500).send(err)
           		} else {
-          			PostController.getAllChallengePosts(challengId, (posts) => {
-          				challenge.set('posts', posts);
-            			res.json(challenge);
-          			});
+          			if(challenge){
+          				challenge.set('created_at', challenge._id.getTimestamp().toString().substr(0,9))
+	          			PostController.getAllChallengePosts(challengId, (posts) => {
+	          				challenge.set('posts', posts);
+	            			res.json(challenge);
+	          			});
+          			}
+          			else{
+          				res.status(500).send("No such challenge")
+          			}
+
           		} 
 			})
 
