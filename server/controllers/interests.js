@@ -1,10 +1,8 @@
-	
 let mongoose = require('mongoose');
 let Interest = require('../models/interests.js')
 
 module.exports = {
-
-		addInterest: function(req, res){
+	addInterest: function(req, res){
 		let interest = req.body;
           return Interest.create(interest, (err, newInterest) => {
           if(err){
@@ -13,7 +11,7 @@ module.exports = {
             res.json('interest Added!'); 
           }     
         });
-    },
+  },
     
 	getAll: function(req, res){
 		Interest.find({})

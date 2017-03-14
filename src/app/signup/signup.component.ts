@@ -8,24 +8,16 @@ import 'rxjs/add/operator/map';
   styleUrls: ['./signup.component.css']
 })
 
-
-
 export class SignupComponent implements OnInit {
-
-
  user ={};
- // localStorageService: LocalStorageService;
 
   constructor (
     private authService: AuthService) { }
- 
 
   ngOnInit() {
-
    }
    
   signup() {
-    console.log("ttttttttttt",this.user)
     this.authService.signup(this.user).subscribe(data => {
         if (data){
           localStorage.setItem('com.utalent',JSON.stringify(data.token))
