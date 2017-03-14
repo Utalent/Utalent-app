@@ -14,7 +14,21 @@ module.exports = {
 		});
 	},
 
-	
+	findAllPostComments: (postId, callback) => {
+		let post_id = postId;
+
+		Comment.find({post_id: post_id})
+			.exec( (err, found) => {
+				if(err){
+					callback(null)
+				}
+				else{
+					callback(found);
+				}
+			})
+	}
+
+
 
 
 }	
