@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { InterestsService } from '../interests.service';
 
-
-
 @Component({
   selector: 'app-interests',
   templateUrl: './interests.component.html',
@@ -14,28 +12,23 @@ export class InterestComponent implements OnInit {
   interests=[];
 
   constructor(private interestsService:InterestsService ) { }
-      ngOnInit() {
-         this.interestsService.getAllInterest().subscribe(ele=> {
+  ngOnInit() {
+    this.interestsService.getAllInterest().subscribe(ele=> {
       this.interests = ele;
     });
-      };
+  };
 
-
- addInterest(interest) {
-  if (this.selected.indexOf(interest) > -1) {
-    this.selected.splice(this.selected.indexOf(interest), 1);
-  } else {
-    this.selected.push(interest);
+  addInterest(interest) {
+    if (this.selected.indexOf(interest) > -1) {
+      this.selected.splice(this.selected.indexOf(interest), 1);
+    } else {
+      this.selected.push(interest);
+    }
   }
-  console.log(this.selected)
-}
 
-submit(array){
-  array=this.selected; 
-  
-}
+  submit(){
+    this.interestsService.submitInterests({user_id: localStorage.getItem('com.userId'),interests: this.selected}).subscribe( (e) => {
+    }); 
+  }
 
 }
-
-
- 
