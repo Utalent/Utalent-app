@@ -1,8 +1,9 @@
 let Post = require('../models/posts.js');
 let User = require('../models/users.js');
 let Comment = require('../models/comments.js');
-
 let PostLikeUsers = require('../models/postLikeUsers.js');
+
+let CommentController = require('./comments.js');
 
 module.exports = {
   
@@ -19,7 +20,7 @@ module.exports = {
           if(err){
             res.json(err);
           } else {
-            res.json('Post Added!'); 
+            res.json({id: post._id}); 
           }     
         });
         }
@@ -38,30 +39,21 @@ module.exports = {
               callback([])
             }
             arr.forEach(function(post){
-      
               PostLikeUsers.count({post_id: post._id})
                 .exec( (err, count) => {
-                  
                   if(err){
                     callback(null);
                   }
                   else{
                     post.set('likes', count)
-                    Comment.find({post_id: post._id})
-                      .exec( (err, comments) => {
-                        if(err){
-                          callback(null);
-                        }
-                        else{
-                          console.log("in comment***",comments)
+                    CommentController.findAllPostComments(post._id, (comments) => {
                           post.set('comments', comments)
-
                           if(--postsToGo === 0){
                             callback(arr);
                           }
-                        }
-                      })
+                    })
                   }
+                    
                 }); 
             })
           } 

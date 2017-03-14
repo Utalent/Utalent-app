@@ -21,7 +21,11 @@ let ChallengeSchema = new mongoose.Schema({
   posts: { 
     type : Array,
     "default" : [] 
+  },
+  created_at: {
+    type: String
   }
+
   
 });
 
