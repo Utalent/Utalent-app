@@ -49,7 +49,8 @@ module.exports = {
           			res.status(500).send(err)
           		} else {
           			if(challenge){
-          				challenge.set('created_at', challenge._id.getTimestamp().toString().substr(0,9))
+                  console.log(challenge._id.getTimestamp().toString().substr(0,9))
+          				 challenge.set('created_at', challenge._id.getTimestamp().toString().substr(0,9))
 	          			PostController.getAllChallengePosts(challengId, (posts) => {
 	          				challenge.set('posts', posts);
 	            			res.json(challenge);
