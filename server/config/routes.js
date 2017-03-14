@@ -6,6 +6,7 @@ let likeController = require('../controllers/postLikeUsers.js');
 let challengeController = require('../controllers/challenges.js');
 let interestController = require('../controllers/interests.js');
 let userInteresetsController = require('../controllers/usersInterests.js');
+let commentController = require('../controllers/comments.js');
 
 module.exports = function(app, express) {
 
@@ -28,6 +29,8 @@ module.exports = function(app, express) {
 	app.get('/api/challenges/:id', challengeController.getChallenge);
 	app.post('/api/challenges/add', challengeController.addChallenge);
 	
+	app.post('/api/comments/add', commentController.addComment);
+
 	app.get('/api/interests', interestController.getAll);
 	app.post('/api/interests', interestController.addInterest);
   
