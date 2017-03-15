@@ -1,4 +1,3 @@
-	
 let mongoose = require('mongoose');
 let Interest = require('../models/interests.js')
 let Challenge = require('../models/challenges.js');
@@ -6,10 +5,8 @@ let Post = require('../models/posts.js');
 let ChallengeController = require('./challenges.js');
 
 
-
-
-
 module.exports = {
+
 
   addInterest: function(req, res){
     let interest = req.body;
@@ -49,18 +46,6 @@ module.exports = {
             }
             res.json(interest)
           })
-          // Challenge.find({interest_id: interest._id})
-          // .exec( (err, challenges) => {
-          //   if(err){
-          //     res.status(500).send(err);
-          //   }
-          //   else{
-          //     interest.set('challenges', challenges)
-          //     res.json(interest)
-          //   }
-          // })
-
-
         }
         else{
           res.status(500).send("No such an interest");
@@ -69,7 +54,4 @@ module.exports = {
     })
 
   }
-
-   
-
 }

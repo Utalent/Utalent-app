@@ -1,15 +1,6 @@
-<!-- <div class="container">
-<button type="button" (click)="addInterest('art')" class="btn btn-primary">Art</button>
-<button type="button" (click)="addInterest('puzzle')" class="btn btn-primary">Puzzle</button>
-<button type="button" (click)="addInterest('photography')" class="btn btn-primary">Photography</button>
-<button type="button" (click)="addInterest('standup_comedy')" class="btn btn-primary">Standup comedy</button>
-	
-</div> -->
-
-
 <div class="container">
-<div *ngFor='let interest of interests'>
-	
-<button type="button"  class="btn btn-primary" (click)= "addInterest(interest.name)">{{interest.name}}</button>
-</div>
+  <div *ngFor='let interest of interests'>
+    <button type="button"  class="btn btn-primary" (click)= "addInterest(interest.name)">{{interest.name}}</button>
+  </div>
+  <button type="button"  class="btn btn-primary" (click)= "submit()">Submit</button>
 </div>
