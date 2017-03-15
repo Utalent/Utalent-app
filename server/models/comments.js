@@ -14,8 +14,8 @@ let CommentSchema = new mongoose.Schema({
     ref: 'posts'
   },
   created_at: {
-    type: Date,
-    default: Date.now
+    type: Array
+    // default: {date: new Date().toUTCString().substr(0,12), time: new Date().toUTCString().substr(17,22)}
   }
 });
 module.exports = mongoose.model('comments', CommentSchema);

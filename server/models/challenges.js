@@ -23,7 +23,7 @@ let ChallengeSchema = new mongoose.Schema({
     "default" : [] 
   },
   created_at: {
-    type: String
+    type: Object
   }
 
   

@@ -9,6 +9,11 @@ module.exports = {
 			if(err){
 				res.json(err);
 			} else {
+				let GMT = new Date();
+				let local = new Date(GMT.valueOf() +120 * 60000)
+				let date = local.toUTCString().substr(0,12);
+                let time = local.toUTCString().substring(17,22);
+                newComment.set('created_at', [date,time]);
 				res.json('Comment Added!'); 
 			}  
 		});

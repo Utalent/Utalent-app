@@ -14,12 +14,16 @@ module.exports = {
         if (found) {
           res.status(500).send('Post already exist!');
         } else {
-        // make a new user if not one
           return Post.create(post, (err, newPost) => {
-          // create token to send back for auth
           if(err){
             res.json(err);
           } else {
+             // let GMT = new Date();
+             // let local = new Date(GMT.valueOf() +120 * 60000)
+             // let date = local.toUTCString().substr(0,12);
+             // let time = local.toUTCString().substring(17,22);
+             // newPost.set('created_at', [date,time]);
+             // console.log("ppppppppppppp",newPost)
             res.json({id: post._id}); 
           }     
         });
@@ -39,6 +43,9 @@ module.exports = {
               callback([])
             }
             arr.forEach(function(post){
+              //console.log("poost",post._id.getTimestamp().toUTCString())
+              //let date = post._id.getTimestamp().toUTCString().substr(0,12);
+              //let time = post._id.getTimestamp().toUTCString().substring(17,22);
               PostLikeUsers.count({post_id: post._id})
                 .exec( (err, count) => {
                   if(err){

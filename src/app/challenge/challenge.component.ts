@@ -21,6 +21,15 @@ export class ChallengeComponent implements OnInit {
       this.challengeService.getChallenge(id).subscribe(chall => {
         this.challenge = chall;
       })
+
+        let id = params['id'];
+
+       // Retrieve Pet with Id route param
+       this.challengeService.getChallenge(id).subscribe(chall => {
+        console.log("hhhhhhhhhhhhhhhhhhh",chall)
+      this.challenge = chall;
+    })
+
     });
   }
   	
