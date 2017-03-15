@@ -13,4 +13,8 @@ export class InterestsService {
   	submit(array){
   		return this.http.post('/api/interests',array);
   	}
+
+  	getInterest(interestName){
+  		return this.http.get('/api/interests/' + interestName).map(res => res.json())
+  	}
 }

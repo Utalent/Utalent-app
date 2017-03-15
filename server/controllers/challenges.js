@@ -62,5 +62,36 @@ module.exports = {
           		} 
 			})
 
-	}
+	},
+
+  getAllInterestChallenges: (interestId, callback) => {
+    Challenge.find({interest_id: interestId})
+      .exec( (err, challenges) => {
+        if(err){
+          callback(null);
+          } else {
+            let arr = challenges;
+            let challengesToGo = arr.length;
+            if(!arr.length){
+              callback([])
+            }
+            arr.forEach(function(challenge){
+              Post.find({challenge_id: challenge._id})
+                .exec( (err, posts) => {
+                  if(err){
+                    callback(null);
+                  }
+                  else{
+                    challenge.set('posts', posts)
+                    if(--challengesToGo === 0){
+                      callback(arr);
+                    }
+                  }
+                    
+                }); 
+            })
+          } 
+      })
+  }
+
 }

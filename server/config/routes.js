@@ -36,7 +36,9 @@ app.get('/', (req, res) => {
 
 
 	app.get('/api/interests', interestController.getAll);
+	app.get('/api/interests/:name', interestController.getInterest);
 	app.post('/api/interests', interestController.addInterest);
+
 
 	// app.use(helpers.errorLogger);
 	// app.use(helpers.errorHandler);
