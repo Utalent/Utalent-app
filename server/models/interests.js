@@ -5,6 +5,9 @@ let InterestsSchema = new mongoose.Schema({
     type: String,
     required: true,
     unique : true 
+  },
+  challenges: {
+  	type: Array
   }
   
 });

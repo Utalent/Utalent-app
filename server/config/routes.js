@@ -32,10 +32,12 @@ module.exports = function(app, express) {
 	app.post('/api/comments/add', commentController.addComment);
 
 	app.get('/api/interests', interestController.getAll);
+	app.get('/api/interests/:name', interestController.getInterest);
 	app.post('/api/interests', interestController.addInterest);
   
   app.get('/api/usersInterests', userInteresetsController.getUserInterests);
   app.post('/api/usersInterests', userInteresetsController.addInterest);
+
 
 	// app.use(helpers.errorLogger);
 	// app.use(helpers.errorHandler);

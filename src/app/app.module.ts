@@ -12,6 +12,8 @@ import { LocalStorageModule } from 'angular-2-local-storage';
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
 import { InterestComponent } from './interests/interests.component';
+import { InterestDetailsComponent } from './interest-details/interest-details.component';
+
 
 
 import { ChallengeService } from './challenge.service';
@@ -28,7 +30,8 @@ const ROUTES = [
   {
     path: '',
     redirectTo: 'signin',
-    pathMatch: 'full'
+    pathMatch: 'full',
+    // component: AppComponent
   },
   {
     path: 'signin',
@@ -50,7 +53,12 @@ const ROUTES = [
   {
   path: 'challenges/:id',
   component: ChallengeComponent
+  },
+  {
+  path: 'interest/:name',
+  component: InterestDetailsComponent
   }
+
 ];
 @NgModule({
   declarations: [
@@ -58,6 +66,7 @@ const ROUTES = [
     SigninComponent,
     SignupComponent,
     InterestComponent,
+    InterestDetailsComponent,
     ChallengeComponent
 
   ],

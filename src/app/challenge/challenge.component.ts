@@ -16,36 +16,17 @@ export class ChallengeComponent implements OnInit {
   constructor(private challengeService : ChallengeService, private route: ActivatedRoute ) { }
 
   ngOnInit() {
-
     this.sub = this.route.params.subscribe(params => {
-
-        let id = params['id'];
-
-       // Retrieve Pet with Id route param
-       this.challengeService.getChallenge(id).subscribe(chall => {
-        console.log("hhhhhhhhhhhhhhhhhhh")
-      this.challenge = chall;
-    })
+      let id = params['id'];
+      this.challengeService.getChallenge(id).subscribe(chall => {
+        this.challenge = chall;
+      })
     });
-
-  	  
   }
-  
-  	// Subscribe to route params
-     
-  
-
+  	
   ngOnDestroy() {
-    // Clean sub to avoid memory leak
-    this.sub.unsubscribe();
-
-
-
-  	// this.challengeService.getChallenge().subscribe(challenge => {
-  	// 	this.challenge = challenge;
-  	// })
+  // Clean sub to avoid memory leak
+  this.sub.unsubscribe();
   }	
-
-  
 
 }
