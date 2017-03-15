@@ -26,11 +26,25 @@ export class ChallengeComponent implements OnInit {
 
        // Retrieve Pet with Id route param
        this.challengeService.getChallenge(id).subscribe(chall => {
+        console.log("hhhhh",chall)
       this.challenge = chall;
     })
     });
   }
   	
+
+  addLike(){
+    console.log("add like");
+    // this.challengeService.addLike();
+  }
+
+
+  
+  	// Subscribe to route params
+     
+  
+
+>>>>>>> (feat) likes
   ngOnDestroy() {
   // Clean sub to avoid memory leak
   this.sub.unsubscribe();
