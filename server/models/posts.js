@@ -31,7 +31,7 @@ let PostSchema = new mongoose.Schema({
     
   },
   created_at: {
-    type: Array
+    type: Object
   }
   
 });

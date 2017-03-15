@@ -49,9 +49,9 @@ module.exports = {
           			res.status(500).send(err)
           		} else {
           			if(challenge){
-                  let date = challenge._id.getTimestamp().toUTCString().substr(0,12);
-                  let time = challenge._id.getTimestamp().toUTCString().substring(17,22);
-          				 challenge.set('created_at', {date: date,time: time});
+                  // let date = challenge._id.getTimestamp().toUTCString().substr(0,12);
+                  // let time = challenge._id.getTimestamp().toUTCString().substring(17,22);
+          				 // challenge.set('created_at', {date: date,time: time});
 	          			PostController.getAllChallengePosts(challengId, (posts) => {
 	          				challenge.set('posts', posts);
 	            			res.json(challenge);

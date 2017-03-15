@@ -22,7 +22,8 @@ module.exports = {
              // let local = new Date(GMT.valueOf() +120 * 60000)
              // let date = local.toUTCString().substr(0,12);
              // let time = local.toUTCString().substring(17,22);
-             // newPost.set('created_at', [date,time]);
+             // newPost.update({$set:{'created_at':date}})
+             // newPost.set('created_at', date);
              // console.log("ppppppppppppp",newPost)
             res.json({id: post._id}); 
           }     
@@ -43,15 +44,18 @@ module.exports = {
               callback([])
             }
             arr.forEach(function(post){
-              //console.log("poost",post._id.getTimestamp().toUTCString())
-              //let date = post._id.getTimestamp().toUTCString().substr(0,12);
-              //let time = post._id.getTimestamp().toUTCString().substring(17,22);
               PostLikeUsers.count({post_id: post._id})
                 .exec( (err, count) => {
                   if(err){
                     callback(null);
                   }
                   else{
+            // console.log(post._id.getTimestamp().toUTCString()) 
+            let GMT = post._id.getTimestamp();
+             let local = new Date(GMT.valueOf() +120 * 60000)
+             let date = local.toUTCString().substr(0,12);
+             let time = local.toUTCString().substring(17,22);
+             post.set('created_at', {date: date , time: time});
                     post.set('likes', count)
                     CommentController.findAllPostComments(post._id, (comments) => {
                           post.set('comments', comments)
