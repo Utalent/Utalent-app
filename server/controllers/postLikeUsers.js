@@ -20,6 +20,19 @@ module.exports = {
 			}
 		})
 	}, 
+	disLike: (req, res) => {
+		let like = req.body;
+		PostLikeUsers.findOne(like)
+		.exec( (err, found) => {
+			if(found){
+				found.remove();
+				res.json('Like removed')
+			}
+			else{
+				res.status(500).send("No such like")
+			}
+		})
+	},
 	getPostLikes: function(req, res){
 		let post = req.body;
 		PostLikeUsers.count({post_id: post})
