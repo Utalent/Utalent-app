@@ -12,8 +12,14 @@ export class ChallengeService {
     return this.http.get('/api/challenges/' + challengeId).map(res => res.json())
   }
 
-  addLike(IDs){
-  	return this.http.post('/api/posts/addLike',IDs);
+  addLike(data){
+  	console.log("in service")
+  	return this.http.post('/api/posts/addLike',data).map(res => console.log(res.json()));
+  }
+
+  disLike(data){
+  	console.log("service disLike",data);
+  	return this.http.post('/api/posts/disLike',data).map(res => console.log(res.json()));
   }
 
   

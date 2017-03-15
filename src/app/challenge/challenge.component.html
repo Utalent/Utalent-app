@@ -31,17 +31,21 @@
 <p>consectetuer {{post.text}}</p>
 <div class="pad-ver">
 <div class="btn-group"> 
-<a class="tag tag-sm" (click)="addLike(post._id)">
+<!-- like -->
+<a class="tag tag-sm" (click)="like(post._id)">
 <i class= "fa fa-thumbs-up"></i></a> 
-<span class="tag tag-sm"><i class="fa fa-heart text-danger"></i>{{post.likes}}</span>
-<!-- <a class="btn btn-sm btn-default btn-hover-danger" href="#">
+<!-- dislike -->
+<a class="tag tag-sm" (click)="disLike(post._id)">
 <i class="fa fa-thumbs-down"></i>
-</a> -->
+</a>
+
+<span class="tag tag-sm"><i class="fa fa-heart text-danger"></i>{{post.likes}}</span>
+
 </div>
 </div>
 <br>
 <textarea class="form-control" id="pwd" rows="2" placeholder="What are you thinking?" [(ngModel)] = "comment.text" ></textarea  >
-<a class="btn btn-sm btn-default btn-hover-primary" (click)="addComment()">Comment</a>
+<a class="btn btn-sm btn-default btn-hover-primary" (click)="addComment(post._id)">Comment</a>
 </div>
 <hr>
 <br>
