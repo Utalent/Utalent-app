@@ -12,8 +12,8 @@ export class ChallengeService {
     return this.http.get('/api/challenges/' + challengeId).map(res => res.json())
   }
 
-  addLike(){
-  	return this.http.post('/api/like/add');
+  addLike(IDs){
+  	return this.http.post('/api/posts/addLike',IDs);
   }
 
   

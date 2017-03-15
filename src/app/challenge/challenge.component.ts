@@ -13,6 +13,7 @@ import {  ActivatedRoute } from '@angular/router';
 export class ChallengeComponent implements OnInit {
 	challenge = {};
 	private sub;
+  comment = {};
   constructor(private challengeService : ChallengeService, private route: ActivatedRoute ) { }
 
   ngOnInit() {
@@ -33,9 +34,17 @@ export class ChallengeComponent implements OnInit {
   }
   	
 
-  addLike(){
+  addLike(postId){
+
     console.log("add like");
-    // this.challengeService.addLike();
+    console.log({post_id: postId , user_id: JSON.parse(localStorage.getItem('com.userId')) })
+    // this.challengeService.addLike({post_id: postId , user_id: JSON.parse(localStorage.getItem('com.userId')) });
+  }
+
+  addComment(){
+    console.log("add comment");
+    console.log("hhfhf",this.comment)
+    // this.challengeService.addComment(this.comment)
   }
 
 
