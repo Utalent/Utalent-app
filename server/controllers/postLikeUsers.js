@@ -2,6 +2,7 @@ let PostLikeUsers = require('../models/postLikeUsers.js');
 
 module.exports = {
 	addLike: function(req, res){
+		console.log("add like")
 		let like = req.body;
 		PostLikeUsers.findOne(like)
 		.exec( (err, found) => {

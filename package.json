@@ -5,7 +5,7 @@
   "angular-cli": {},
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng build -op dist -w",
     "test": " mocha server/specs/*.js",
     "pree2e": "webdriver-manager update --standalone false --gecko false",
     "e2e": "protractor",
@@ -69,7 +69,7 @@
     "morgan": "^1.7.0"
   },
   "bugs": {
-    "url": "https://github.com/duaamaloalain/Utalent-app/issues"
+    "url": "https://github.com/Utalent/Utalent-app"
   },
-  "homepage": "https://github.com/duaamaloalain/Utalent-app#readme"
+  "homepage": "https://github.com/Utalent/Utalent-app#readme"
 }

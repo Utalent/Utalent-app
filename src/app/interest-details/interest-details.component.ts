@@ -22,7 +22,7 @@ export class InterestDetailsComponent implements OnInit {
 			       		this.interest = res;
 			    	})
 				});
-			}
+			// }
 			// else{
 			// 	this.router.navigate(['/']);
 			// }
