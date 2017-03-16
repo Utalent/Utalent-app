@@ -20,6 +20,9 @@ app.get('/', (req, res) => {
 	app.get('/api/users/signup', userController.signup)
 	app.get('/api/users/:username', userController.getProfile);
 
+	app.post('/api/users/photo/:username', userController.Addphoto);	
+	app.post('/api/users/getphoto', userController.getphoto);
+
 
 	app.post('/api/posts/add', postController.addPost);
 	app.post('/api/posts', postController.getAllChallengePosts);
