@@ -49,7 +49,9 @@ module.exports = {
           			res.status(500).send(err)
           		} else {
           			if(challenge){
-          				challenge.set('created_at', challenge._id.getTimestamp().toString().substr(0,9))
+                  // let date = challenge._id.getTimestamp().toUTCString().substr(0,12);
+                  // let time = challenge._id.getTimestamp().toUTCString().substring(17,22);
+          				 // challenge.set('created_at', {date: date,time: time});
 	          			PostController.getAllChallengePosts(challengId, (posts) => {
 	          				challenge.set('posts', posts);
 	            			res.json(challenge);
@@ -62,5 +64,36 @@ module.exports = {
           		} 
 			})
 
-	}
+	},
+
+  getAllInterestChallenges: (interestId, callback) => {
+    Challenge.find({interest_id: interestId})
+      .exec( (err, challenges) => {
+        if(err){
+          callback(null);
+          } else {
+            let arr = challenges;
+            let challengesToGo = arr.length;
+            if(!arr.length){
+              callback([])
+            }
+            arr.forEach(function(challenge){
+              Post.find({challenge_id: challenge._id})
+                .exec( (err, posts) => {
+                  if(err){
+                    callback(null);
+                  }
+                  else{
+                    challenge.set('posts', posts)
+                    if(--challengesToGo === 0){
+                      callback(arr);
+                    }
+                  }
+                    
+                }); 
+            })
+          } 
+      })
+  }
+
 }

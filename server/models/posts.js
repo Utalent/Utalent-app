@@ -31,8 +31,7 @@ let PostSchema = new mongoose.Schema({
     
   },
   created_at: {
-    type: Date,
-    default: Date.now
+    type: Object
   }
   
 });
