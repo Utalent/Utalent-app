@@ -35,7 +35,7 @@ export class ChallengeComponent implements OnInit {
 
   like(postId){
     this.challengeService.addLike({post_id: postId , user_id: JSON.parse(localStorage.getItem('com.userId'))}).subscribe((x) => {
-    location.reload()
+    // location.reload()
     });
   }
 
