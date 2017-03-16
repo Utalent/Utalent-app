@@ -37,7 +37,9 @@
                                     <!-- Button -->
 
                                     <div class="col-sm-12 controls">
-                                      <a id="btn-login" href="#" class="btn btn-success" (click)="signin()" [routerLink]="['/users/'+ user.username]" > Login  </a>
+                                      <a id="btn-login" href="#" class="btn btn-success" (click)="signin()"> Login  </a>
+
+                                      <!-- [routerLink]="['/users/'+ user.username]"  -->
 
                                       <a id="btn-fblogin" href="#" class="btn btn-primary">Login with Facebook</a>
 
@@ -51,7 +53,6 @@
                                             Don't have an account! 
                                         <a [routerLink]="['/signup']" > Click here to Signup</a>
                                         </div>
-                                          <div><a [routerLink]="['/challenges' + '/58c46e773d44f5293875c245']">hhhhhhhhh</a></div>
                                     </div>
                                 </div>    
                             </form>     

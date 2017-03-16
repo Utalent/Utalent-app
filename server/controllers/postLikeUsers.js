@@ -2,6 +2,7 @@ let PostLikeUsers = require('../models/postLikeUsers.js');
 
 module.exports = {
 	addLike: function(req, res){
+		console.log("add like")
 		let like = req.body;
 		PostLikeUsers.findOne(like)
 		.exec( (err, found) => {
@@ -33,7 +34,7 @@ module.exports = {
 			}
 		})
 	},
-	getPostLikes: function(req, res){
+	getPostLikes: (req, res) => {
 		let post = req.body;
 		PostLikeUsers.count({post_id: post})
 		.exec( (err, count) => {

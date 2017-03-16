@@ -14,7 +14,8 @@
       <div class="image-container"> 
         <img src="http://bootdey.com/img/Content/avatar/avatar1.png" class="avatar img-responsive" alt="avatar" ></div>
         <div class="details">
-          <h4>{{challenge.title}}</h4>
+         <div><h4 [routerLink]="['/challenges/' + challenge._id]">{{challenge.title}}</h4></div>
+          <!-- <h4>{{challenge.title}}</h4> -->
           <hr>
           <!-- <div>{{challenge.description}}</div>
           <div>Attended University of Bootdey.com</div>

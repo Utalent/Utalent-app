@@ -9,17 +9,28 @@ module.exports = {
   
   addPost: function(req, res){
     let post = req.body;
+    let GMT = new Date();
+        let local = new Date(GMT.valueOf() +120 * 60000)
+        let date = local.toUTCString().substr(0,12);
+        let time = local.toUTCString().substring(17,22);
+        post.created_at ={date : date,time: time};
+        
     Post.findOne({text: post.text})
       .exec( (err, found) => {
         if (found) {
           res.status(500).send('Post already exist!');
         } else {
-        // make a new user if not one
           return Post.create(post, (err, newPost) => {
-          // create token to send back for auth
           if(err){
             res.json(err);
           } else {
+             // let GMT = new Date();
+             // let local = new Date(GMT.valueOf() +120 * 60000)
+             // let date = local.toUTCString().substr(0,12);
+             // let time = local.toUTCString().substring(17,22);
+             // newPost.update({$set:{'created_at':date}})
+             // newPost.set('created_at', date);
+             // console.log("ppppppppppppp",newPost)
             res.json({id: post._id}); 
           }     
         });
@@ -45,6 +56,7 @@ module.exports = {
                     callback(null);
                   }
                   else{
+                    
                     post.set('likes', count)
                     CommentController.findAllPostComments(post._id, (comments) => {
                           post.set('comments', comments)

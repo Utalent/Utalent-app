@@ -19,14 +19,15 @@ export class ProfileComponent implements OnInit {
   private sub;
 
   ngOnInit() {
-    this.getPhoto()
+    // this.getPhoto()
   }
   
     getPhoto(){
     this.sub = this.route.params.subscribe(params => {
+      console.log("in get phote??")
          let username= params['username'];
       this.name=username
-        this.profileService.getphoto({username: username}).subscribe(image=>
+        this.profileService.getphoto({username: JSON.parse(username)}).subscribe(image=>
         this.photo=image);
     })
 
@@ -81,13 +82,14 @@ name:any;
        let username= params['username'];
 this.name=username
       console.log(username)
-      this.profileService.Addphoto({image:image, username:username}).subscribe(d=>{
+      this.profileService.Addphoto({image:image, username:JSON.parse(username)}).subscribe(d=>{
       });          
     })
   }
 
  
 /////////////////////////////////////
+
 
 interest:any; 
 GetUserInterests(){
@@ -101,9 +103,15 @@ GetUserInterests(){
 }  
 
   //////////////////////////
-  ngOnDestroy() {
-      this.sub.unsubscribe();
-  }
+  // ngOnDestroy() {
+  //     this.sub.unsubscribe();
+  // }
+
+  
+  // ngOnDestroy() {
+  //     this.sub.unsubscribe();
+  // }
+
 
 
 }

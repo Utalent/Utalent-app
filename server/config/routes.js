@@ -29,7 +29,6 @@ module.exports = function(app, express) {
 	
 	app.post('/api/posts/addLike', likeController.addLike);
 	app.post('/api/posts/disLike', likeController.disLike);
-
 	app.post('/api/posts/likes', likeController.getPostLikes);
 
 	app.get('/api/challenges', challengeController.getAll);
