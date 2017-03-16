@@ -3,15 +3,23 @@
 
 
 <div class="col-md-8 bootstrap snippets">
+<div class="mar-btm" >
+<div>
+<hr>
+<a href="#" class= "btn-link text-semibold media-heading box-inline"></a>
+</div>
+<h2>{{challenge.title}}</h2>
+<p> {{challenge.description}}</p>
+
 <div class="panel">
 <div class="panel-body">
-<textarea class="form-control" rows="2" placeholder="What are you thinking?"></textarea>
+<textarea class="form-control" rows="2" placeholder="add post " [(ngModel)] = "Post.text"></textarea>
 <div class="mar-top clearfix">
-<button class="btn btn-sm btn-primary pull-right" type="submit">
-<i class="fa fa-pencil fa-fw"></i> Share</button>
-<a class="btn btn-trans btn-icon fa fa-video-camera add-tooltip" href="#"></a>
+<button class="btn btn-sm btn-primary pull-right" (click) = "addPost(Post,challenge._id)">
+ post</button>
+<!-- <a class="btn btn-trans btn-icon fa fa-video-camera add-tooltip" href="#"></a>
 <a class="btn btn-trans btn-icon fa fa-camera add-tooltip" href="#"></a>
-<a class="btn btn-trans btn-icon fa fa-file add-tooltip" href="#"></a>
+<a class="btn btn-trans btn-icon fa fa-file add-tooltip" href="#"></a> -->
 </div>
 </div>
 </div>
@@ -28,23 +36,23 @@
 <p class="text-muted text-sm">
 <i class="fa fa-clock-o"></i> {{post.created_at.date}} {{post.created_at.time}}</p>
 </div>
-<p>consectetuer {{post.text}}</p>
+<p>{{post.text}}</p>
 <div class="pad-ver">
-<div class="btn-group"> 
+<div class="btn-group" > 
 <!-- like -->
-<a class="tag tag-sm" (click)="like(post._id)">
+<a class="tag tag-sm" (click)="like(post._id)" (change)="change()">
 <i class= "fa fa-thumbs-up"></i></a> 
 <!-- dislike -->
 <a class="tag tag-sm" (click)="disLike(post._id)">
 <i class="fa fa-thumbs-down"></i>
 </a>
 
-<span class="tag tag-sm"><i class="fa fa-heart text-danger"></i>{{post.likes}}</span>
+<span class="tag tag-sm" ><i class="fa fa-heart text-danger"></i>{{post.likes}}</span>
 
 </div>
 </div>
 <br>
-<textarea class="form-control" id="pwd" rows="2" placeholder="What are you thinking?" [(ngModel)] = "comment.text" ></textarea  >
+<textarea class="form-control" id="pwd" rows="2" placeholder="Add commment" [(ngModel)] = "comment.text" ></textarea  >
 <a class="btn btn-sm btn-default btn-hover-primary" (click)="addComment(post._id)">Comment</a>
 </div>
 <hr>

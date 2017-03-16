@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Injectable,Component, OnInit, ApplicationRef, ChangeDetectorRef,NgZone  } from '@angular/core';
 import { ChallengeService } from '../challenge.service';
 // import {RouteParams} from '@angular/router';
 
@@ -14,17 +14,14 @@ export class ChallengeComponent implements OnInit {
 	challenge = {};
 	private sub;
   comment = {user_id:0 , post_id:0};
-  constructor(private challengeService : ChallengeService, private route: ActivatedRoute ) { }
+  Post = {user_id:0 , challenge_id:0 };
+  constructor(private challengeService : ChallengeService, private route: ActivatedRoute, private ref: ApplicationRef, private ref1:ChangeDetectorRef, private zone: NgZone ) { }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       let id = params['id'];
-      this.challengeService.getChallenge(id).subscribe(chall => {
-        this.challenge = chall;
-      })
-
-        let id = params['id'];
-
+      
+ 
        // Retrieve Pet with Id route param
        this.challengeService.getChallenge(id).subscribe(chall => {
         console.log("hhhhh",chall)
@@ -32,22 +29,19 @@ export class ChallengeComponent implements OnInit {
     })
     });
 
-      this.challengeService.getChallenge(id).subscribe(chall => { 
-      this.challenge = chall;
-      })
-    }); 
+      
   }
   	
 
   like(postId){
     this.challengeService.addLike({post_id: postId , user_id: JSON.parse(localStorage.getItem('com.userId'))}).subscribe((x) => {
-    
+    location.reload()
     });
   }
 
   disLike(postId){
     this.challengeService.disLike({post_id: postId , user_id: JSON.parse(localStorage.getItem('com.userId'))}).subscribe((x) => {
-    
+    location.reload()
     });
   }
 
@@ -59,6 +53,17 @@ export class ChallengeComponent implements OnInit {
     console.log("hhfhf",this.comment)
     // this.challengeService.addComment(this.comment)
   }
+
+  addPost(Post,challengeId){
+    this.Post.challenge_id = challengeId;
+    this.Post.user_id = JSON.parse(localStorage.getItem('com.userId'))
+    
+    console.log(this.Post);
+    this.challengeService.addPost (Post).subscribe((x) => {
+    location.reload()
+    });
+  };
+ 
 
 
   

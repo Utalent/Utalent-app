@@ -22,5 +22,10 @@ export class ChallengeService {
   	return this.http.post('/api/posts/disLike',data).map(res => console.log(res.json()));
   }
 
+  addPost(post){
+    console.log("service ",post)
+    return this.http.post('/api/posts/add',post).map(res => console.log(res.json()));
+  }
+
   
 }

@@ -28,12 +28,7 @@ module.exports = function(app, express) {
 	app.post('/api/posts', postController.getAllChallengePosts);
 	
 	app.post('/api/posts/addLike', likeController.addLike);
-<<<<<<< d5e6472514418d50e3b48ee016e5d44681093669
 	app.post('/api/posts/disLike', likeController.disLike);
-
-=======
-	// app.post('/api/posts/disLike', likeController.dislike);
->>>>>>> (feat) add comment
 	app.post('/api/posts/likes', likeController.getPostLikes);
 
 	app.get('/api/challenges', challengeController.getAll);
