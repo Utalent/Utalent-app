@@ -46,14 +46,52 @@ module.exports = {
   		Challenge.findOne({_id: challengId})
 			.exec( (err, challenge) => {
 				if(err){
-            		res.json(err);
+          			res.status(500).send(err)
           		} else {
-          			PostController.getAllChallengePosts(challengId, (posts) => {
-          				challenge.set('posts', posts);
-            			res.json(challenge);
-          			});
+          			if(challenge){
+          				challenge.set('created_at', challenge._id.getTimestamp().toString().substr(0,9))
+	          			PostController.getAllChallengePosts(challengId, (posts) => {
+	          				challenge.set('posts', posts);
+	            			res.json(challenge);
+	          			});
+          			}
+          			else{
+          				res.status(500).send("No such challenge")
+          			}
+
           		} 
 			})
 
-	}
+	},
+
+  getAllInterestChallenges: (interestId, callback) => {
+    Challenge.find({interest_id: interestId})
+      .exec( (err, challenges) => {
+        if(err){
+          callback(null);
+          } else {
+            let arr = challenges;
+            let challengesToGo = arr.length;
+            if(!arr.length){
+              callback([])
+            }
+            arr.forEach(function(challenge){
+              Post.find({challenge_id: challenge._id})
+                .exec( (err, posts) => {
+                  if(err){
+                    callback(null);
+                  }
+                  else{
+                    challenge.set('posts', posts)
+                    if(--challengesToGo === 0){
+                      callback(arr);
+                    }
+                  }
+                    
+                }); 
+            })
+          } 
+      })
+  }
+
 }

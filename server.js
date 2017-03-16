@@ -1,12 +1,11 @@
 let express = require("express");
 let mongoose = require("mongoose");
-
-
+let bodyParser = require('body-parser');
 let app = express();
 let server = require("http").createServer(app);
 
 
-let port = process.env.PORT || 3000;
+let port = process.env.PORT || 2000;
 ///////////////////////////////fb///////////////////////////////
 // let passport_fb = require('passport');
 // let passport    = require('./config/passport');
@@ -14,6 +13,8 @@ let port = process.env.PORT || 3000;
 // app.use(passport.initialize());
 // app.use(passport.session());
 
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 
 require("./server/config/middleware.js") (app,express);
 require("./server/config/routes.js") (app,express);
