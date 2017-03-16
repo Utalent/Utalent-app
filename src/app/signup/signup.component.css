@@ -1,0 +1,41 @@
+div.header-image{
+ position: relative;
+ width:100%;
+ height: 150px;
+ background-position: center;
+ background-size: cover;
+}
+div.heading-text{
+ position: absolute;
+ bottom: 10px;
+ width: 100%;
+ padding: 10px;
+ margin: 0px !important;
+ opacity: 0.8;
+ color: #373737;
+ background-color: #d8d8d8;
+}
+div.heading-border{
+ position: absolute;
+ bottom: 0px;
+ width: 100%;
+ height: 10px;
+}
+div.content-container{
+ min-height: 200px;
+ margin-bottom: 15px;
+ border: 1px solid #cccccc;
+ padding: 10px;
+}
+div.calendar-image{
+ /*background-image: url(./assets/dramaticaBackground.jpg);*/
+}
+div.calendar-image div.heading-border{
+ background-color: #00147a;
+}
+div.forum-image{
+ background-image: url(./assets/dramaticaBackground.jpg);
+}
+div.forum-image div.heading-border{
+ background-color: #be0f35;
+}
