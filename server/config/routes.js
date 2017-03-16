@@ -42,7 +42,7 @@ module.exports = function(app, express) {
 	app.get('/api/interests/:name', interestController.getInterest);
 	app.post('/api/interests', interestController.addInterest);
   
-  app.get('/api/usersInterests', userInteresetsController.getUserInterests);
+  app.post('/api/users/Interests', userInteresetsController.getUserInterests);
   app.post('/api/usersInterests', userInteresetsController.addInterest);
 
 
