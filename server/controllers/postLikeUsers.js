@@ -34,7 +34,7 @@ module.exports = {
 			}
 		})
 	},
-	getPostLikes: function(req, res){
+	getPostLikes: (req, res) => {
 		let post = req.body;
 		PostLikeUsers.count({post_id: post})
 		.exec( (err, count) => {

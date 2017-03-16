@@ -15,7 +15,7 @@
 <div class="panel-body">
 <textarea class="form-control" rows="2" placeholder="add post " [(ngModel)] = "Post.text"></textarea>
 <div class="mar-top clearfix">
-<button class="btn btn-sm btn-primary pull-right" (click) = "addPost(Post,challenge._id)">
+<button class="btn btn-sm btn-primary pull-right" (click) = "post(Post,challenge._id)">
  post</button>
 <!-- <a class="btn btn-trans btn-icon fa fa-video-camera add-tooltip" href="#"></a>
 <a class="btn btn-trans btn-icon fa fa-camera add-tooltip" href="#"></a>
@@ -43,7 +43,7 @@
 <a class="tag tag-sm" (click)="like(post._id)" (change)="change()">
 <i class= "fa fa-thumbs-up"></i></a> 
 <!-- dislike -->
-<a class="tag tag-sm" (click)="disLike(post._id)">
+<a class="tag tag-sm" (click)="dLike(post._id)">
 <i class="fa fa-thumbs-down"></i>
 </a>
 

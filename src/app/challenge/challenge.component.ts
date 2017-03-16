@@ -39,7 +39,7 @@ export class ChallengeComponent implements OnInit {
     });
   }
 
-  disLike(postId){
+  dLike(postId){
     this.challengeService.disLike({post_id: postId , user_id: JSON.parse(localStorage.getItem('com.userId'))}).subscribe((x) => {
     location.reload()
     });
@@ -50,11 +50,11 @@ export class ChallengeComponent implements OnInit {
     this.comment.user_id = JSON.parse(localStorage.getItem('com.userId'))
 
     console.log("add comment");
-    console.log("hhfhf",this.comment)
-    // this.challengeService.addComment(this.comment)
+    console.log(this.comment)
+    this.challengeService.addComment(this.comment)
   }
 
-  addPost(Post,challengeId){
+  post(Post,challengeId){
     this.Post.challenge_id = challengeId;
     this.Post.user_id = JSON.parse(localStorage.getItem('com.userId'))
     

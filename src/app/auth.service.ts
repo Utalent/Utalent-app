@@ -8,7 +8,14 @@ export class AuthService {
 
   signin(user) {
   	return this.http.post('/api/users/signin', user).map(resp => {
-     return resp.json();
+      console.log("oooooooo", resp)
+     if(resp.status === 500){
+        return false;
+      }
+      else{
+        localStorage.setItem('com.utalent',JSON.stringify(resp.json().token))
+        return resp.json();
+      }
     });
   }
 
