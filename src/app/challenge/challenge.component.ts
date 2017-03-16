@@ -39,7 +39,7 @@ export class ChallengeComponent implements OnInit {
     });
   }
 
-  disLike(postId){
+  dLike(postId){
     this.challengeService.disLike({post_id: postId , user_id: JSON.parse(localStorage.getItem('com.userId'))}).subscribe((x) => {
     location.reload()
     });
@@ -54,7 +54,7 @@ export class ChallengeComponent implements OnInit {
     // this.challengeService.addComment(this.comment)
   }
 
-  addPost(Post,challengeId){
+  post(Post,challengeId){
     this.Post.challenge_id = challengeId;
     this.Post.user_id = JSON.parse(localStorage.getItem('com.userId'))
     

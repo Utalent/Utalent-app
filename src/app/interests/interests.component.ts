@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { InterestsService } from '../interests.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-interests',
@@ -11,7 +12,7 @@ export class InterestComponent implements OnInit {
   selected = [];
   interests=[];
 
-  constructor(private interestsService:InterestsService ) { }
+  constructor(private interestsService:InterestsService, private router: Router ) { }
   ngOnInit() {
     this.interestsService.getAllInterest().subscribe(ele=> {
       this.interests = ele;
@@ -28,6 +29,8 @@ export class InterestComponent implements OnInit {
 
   submit(){
     this.interestsService.submitInterests({user_id: localStorage.getItem('com.userId'),interests: this.selected}).subscribe( (e) => {
+      this.router.navigate(['/users/' + localStorage.getItem('com.username')]);
+
     }); 
   }
 

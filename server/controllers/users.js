@@ -4,7 +4,8 @@ let User = require('../models/users.js');
 
 module.exports = {
 
-	signin : (req,res) => {
+  signin : (req,res) => {
+    console.log("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh ")
     let user = req.body;
     User.findOne({username: user.username})
       .exec( (err, found) => {
@@ -12,7 +13,7 @@ module.exports = {
           util.comparePass(user.password, found.password, (exist) => {
             if(exist){
               let token = jwt.encode(found, 'secret');
-              res.json({token: token, id :found.id});
+              res.json({token: token, id :found.id, username: found.username});
             }
             else{
             console.log("password is not correct")
@@ -46,7 +47,7 @@ signup: (req, res) => {
                 res.json(err);
               } else {
                 let token = jwt.encode(newUser, 'secret');
-                res.json({token: token,id :newUser._id}); 
+                res.json({token: token,id :newUser._id, username: newUser.username}); 
               }     
           });
         }
@@ -92,13 +93,17 @@ signup: (req, res) => {
 
    getphoto:function(req,res){
     var username=req.body.username;
-    console.log("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh ")
     User.findOne({username: username})
     .exec((err, user)=>{
       if(err){
         res.json(err);
       }else{
-        res.json(user.image);
+        if(user){
+          res.json(user.image);
+        }
+        else{
+          res.status(500).send("no such user")
+        }
       }
     })
   }
