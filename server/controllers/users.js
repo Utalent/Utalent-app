@@ -65,8 +65,44 @@ signup: (req, res) => {
       }
     }) 
 
-  }
+  },
 
+  Addphoto:function(req,res){
+   let data = req.body;
+   console.log(data);
+   console.log(data.username)
+   User.findOne({username:data.username})
+  .exec((err,user)=> {
+   // console.log(data)
+      if(err){
+        res.json(err);
+      }
+      else{
+        if (user ){
+        user.update({image: data.image}, (updated) => {
+          res.json("add succsees !!");
+        })
+          
+        }else {
+          res.json("no user ")
+        }
+      }
+    })
+  },
+
+   getphoto:function(req,res){
+    var username=req.body.username;
+    console.log("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh ")
+    User.findOne({username: username})
+    .exec((err, user)=>{
+      if(err){
+        res.json(err);
+      }else{
+        res.json(user.image);
+      }
+    })
+  }
 }
 
 
+ 
