@@ -73,7 +73,7 @@ const ROUTES = [
     InterestComponent,
 
     ChallengeComponent,
-    ProfileComponent
+    ProfileComponent,
 
     InterestDetailsComponent,
     ChallengeComponent
