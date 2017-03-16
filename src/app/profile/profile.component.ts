@@ -87,9 +87,20 @@ this.name=username
   }
 
  
-  
+/////////////////////////////////////
 
-  
+interest:any; 
+GetUserInterests(){
+
+  this.sub = this.route.params.subscribe(params => {
+         let userId= params['user_id'];
+      // this.name=username
+        this.profileService.getUserInterests({user_id: userId}).subscribe(interest=>
+        this.interest=interest);
+    })
+}  
+
+  //////////////////////////
   ngOnDestroy() {
       this.sub.unsubscribe();
   }
