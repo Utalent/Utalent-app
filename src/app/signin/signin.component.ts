@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 import 'rxjs/add/operator/map';
 
@@ -13,17 +14,20 @@ export class SigninComponent implements OnInit {
   user = {}; 
 
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
    ngOnInit() {
   }
   signin() {
     console.log(this.user)
     this.authService.signin(this.user).map(data =>{ 
-       if (data){
-          localStorage.setItem('com.utalent',JSON.stringify(data.token))
-          localStorage.setItem('com.userId',JSON.stringify(data.id))
-        }
+      console.log("kkkk", data)
+      if (data){
+        localStorage.setItem('com.userId',JSON.stringify(data.id))
+      }
+      else{
+        this.router.navigate(['/']);
+      }
   })
   }
 }
