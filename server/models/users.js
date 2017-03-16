@@ -6,6 +6,7 @@ let UserSchema = new mongoose.Schema({
     required: true,
     unique: true
   },
+  
 
   password: {
     type: String,
@@ -19,9 +20,11 @@ let UserSchema = new mongoose.Schema({
   score: {
     type: Number
   },
-
+  image:{
+    type :String
+  },
   fb_ID: {
-    type: String,
+    type: String
   }
   
 });
