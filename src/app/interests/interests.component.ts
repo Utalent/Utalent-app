@@ -10,11 +10,12 @@ import { Router } from '@angular/router';
  
 export class InterestComponent implements OnInit {
   selected = [];
-  interests=[];
+  interests =  [];
 
   constructor(private interestsService:InterestsService, private router: Router ) { }
   ngOnInit() {
     this.interestsService.getAllInterest().subscribe(ele=> {
+      ele.button_class = 'btn btn-primary';
       this.interests = ele;
     });
   };
@@ -22,8 +23,10 @@ export class InterestComponent implements OnInit {
   addInterest(interest) {
     if (this.selected.indexOf(interest) > -1) {
       this.selected.splice(this.selected.indexOf(interest), 1);
+      //this.interests.button_class = 'btn btn-primary';
     } else {
       this.selected.push(interest);
+      //this.interests.button_class = 'btn btn-default';
     }
   }
 

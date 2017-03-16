@@ -5,9 +5,6 @@ let interest = require('../models/interests.js');
 module.exports = {
 	addInterest: function(req, res){
 		let data = req.body;
-		// let interests = JSON.parse(data);
-		// res.send(data.interests)
-
 		let interestsToGo = data.interests.length;
 		data.interests.forEach( elem => {
 			interest.findOne({name: elem})
