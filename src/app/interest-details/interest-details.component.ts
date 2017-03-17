@@ -19,6 +19,7 @@ export class InterestDetailsComponent implements OnInit {
 				this.sub = this.route.params.subscribe(params => {
 					let name = params['name'];
 			    	this.interestsService.getInterest(name).subscribe(res => {
+			    		console.log(res)
 			       		this.interest = res;
 			    	})
 				});

@@ -3,8 +3,11 @@ import { Http } from '@angular/http';
 
 @Injectable()
 export class AuthService {
+  private loggedIn = false;
 
-  constructor(private http: Http) { }
+  constructor(private http: Http) {
+    this.loggedIn = !!localStorage.getItem('com.utalent'); 
+  }
 
   signin(user) {
   	return this.http.post('/api/users/signin', user).map(resp => {
@@ -19,10 +22,23 @@ export class AuthService {
     });
   }
 
+
+
+
   signup(user) {
   	return this.http.post('/api/users/signup', user).map(resp => {
      return resp.json();
     });
   }
+
+  isLoggedIn() {
+    return this.loggedIn;
+  }
+
+  logout() {
+    localStorage.removeItem('com.utalent');
+    this.loggedIn = false;
+  }
+
   
 }
