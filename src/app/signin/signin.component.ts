@@ -19,6 +19,10 @@ export class SigninComponent implements OnInit {
    ngOnInit() {
   }
   signin() {
+
+    console.log(this.user)
+
+
     this.authService.signin(this.user).subscribe(data =>{ 
       console.log("kkkkkkkkk", data)
       if (!data){

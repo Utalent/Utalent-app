@@ -27,5 +27,8 @@ export class ChallengeService {
     return this.http.post('/api/posts/add',post).map(res => console.log(res.json()));
   }
 
+  addComment(comment){
+    return this.http.post('/api/comments/add',comment).map(res => console.log(res.json()));
+  }
   
 }
