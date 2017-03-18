@@ -29,6 +29,7 @@ import { ProfileService } from './profile.service';
 
 import { ChallengeComponent } from './challenge/challenge.component';
 import { CheckLoggedIn } from './check-logged-in';
+import { InterestUserComponent } from './interest-user/interest-user.component';
 
 
 // Define the routes
@@ -78,7 +79,8 @@ const ROUTES = [
     ProfileComponent,
 
     InterestDetailsComponent,
-    ChallengeComponent
+    ChallengeComponent,
+    InterestUserComponent
 
 
   ],
