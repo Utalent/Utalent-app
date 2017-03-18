@@ -50,8 +50,8 @@ export class ChallengeComponent implements OnInit {
     this.comment.user_id = JSON.parse(localStorage.getItem('com.userId'))
 
     console.log("add comment");
-    console.log("hhfhf",this.comment)
-    // this.challengeService.addComment(this.comment)
+    console.log(this.comment)
+    this.challengeService.addComment(this.comment)
   }
 
   post(Post,challengeId){
