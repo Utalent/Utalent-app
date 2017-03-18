@@ -19,7 +19,7 @@ export class ProfileComponent implements OnInit {
   private sub;
 
   ngOnInit() {
-    // this.getPhoto()
+    this.getPhoto()
   }
   
     getPhoto(){
@@ -103,14 +103,7 @@ GetUserInterests(){
 }  
 
   //////////////////////////
-  // ngOnDestroy() {
-  //     this.sub.unsubscribe();
-  // }
 
-  
-  // ngOnDestroy() {
-  //     this.sub.unsubscribe();
-  // }
 
 
 
