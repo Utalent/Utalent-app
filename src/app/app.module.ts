@@ -28,7 +28,7 @@ import { ProfileService } from './profile.service';
 
 
 import { ChallengeComponent } from './challenge/challenge.component';
-
+import { CheckLoggedIn } from './check-logged-in';
 
 
 // Define the routes
@@ -61,7 +61,9 @@ const ROUTES = [
   },
   {
   path: 'interest/:name',
-  component: InterestDetailsComponent
+  component: InterestDetailsComponent,
+  canActivate: [CheckLoggedIn]
+
   }
 
 ];
@@ -90,7 +92,7 @@ const ROUTES = [
         }),
     RouterModule.forRoot(ROUTES) 
   ],
-  providers: [AuthService,InterestsService,ProfileService,ChallengeService,{ provide: LocationStrategy, useClass: HashLocationStrategy }],
+  providers: [AuthService,InterestsService,ProfileService,ChallengeService,CheckLoggedIn,{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
