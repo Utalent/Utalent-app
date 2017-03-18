@@ -16,13 +16,10 @@ export class InterestUserComponent implements OnInit {
     private sub;
 
   ngOnInit() {
-      
       let userId= localStorage.getItem('com.userId')
-      console.log(userId)
+      // console.log(userId)
       this.interestUserService.getUserInterests( {user_id:userId}).subscribe(interest=>{
-        this.interests=interest
-      console.log(interest)
-        
+        this.interests=interest        
       })
     
   }
