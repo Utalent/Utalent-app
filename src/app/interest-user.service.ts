@@ -10,7 +10,6 @@ export class InterestUserService {
   constructor(private http: Http) { }
 
 	getUserInterests(user){
-	    // console.log(image); 
 		return this.http.get('/api/getUserselected/'+ JSON.parse(user.user_id)).map(res=>{
 	    	console.log(res.json(),"user Interests");
 	        return res.json();;        
