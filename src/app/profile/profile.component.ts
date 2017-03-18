@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ProfileService } from '../profile.service';
 import {  ActivatedRoute } from '@angular/router';
+import { InterestUserComponent } from '../interest-user/interest-user.component';
 
 
 @Component({
