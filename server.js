@@ -6,7 +6,11 @@ let app = express();
 let server = require("http").createServer(app);
 
 
+
+
 let port = process.env.PORT || 4000;
+
+
 ///////////////////////////////fb///////////////////////////////
 // let passport_fb = require('passport');
 // let passport    = require('./config/passport');

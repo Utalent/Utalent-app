@@ -30,17 +30,17 @@ module.exports = {
 			})
 	},
 
-	getAllInterestChallenges: function(req, res){
-		var interest = req.body;
-		Challenge.find({interest_id: interest})
-			.exec( (err, challenges) => {
-				if(err){
-            		res.json(err);
-          		} else {
-            		res.json(challenges); 
-          		} 
-			})
-	},
+	// getAllInterestChallenges: function(req, res){
+	// 	var interest = req.body;
+	// 	Challenge.find({interest_id: interest})
+	// 		.exec( (err, challenges) => {
+	// 			if(err){
+ //            		res.json(err);
+ //          		} else {
+ //            		res.json(challenges); 
+ //          		} 
+	// 		})
+	// },
 	getChallenge(req, res){
   		let challengId = ObjectID(req.params.id);
   		Challenge.findOne({_id: challengId})

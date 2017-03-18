@@ -33,16 +33,65 @@ module.exports = {
 		
 	}, 
 
-	getUserInterests: function(req, res){
-		let user_id = req.body;
-		userInterest.count({user_id: user_id})
-		.exec( (err, count) => {
-			if(err){
-				res.json(err);
-			}
-			else{
-				res.json(count);
-			}
-		});	
-	}
+	// getUserInterests: function(req, res){
+	// 	let user_id = req.body.user_id;
+	// 	userInterest.count({user_id: user_id})
+	// 	.exec( (err, count) => {
+	// 		if(err){
+	// 			res.json(err);
+	// 		}
+	// 		else{
+	// 			res.json(count);
+	// 		}
+	// 	});	
+	// },
+
+	// getUserselected: function(req, res){
+	// 	let user_id = req.body.user_id;
+	// 	userInterest.find({user_id: user_id})
+	// 	.exec( (err, interests) => {
+	// 		if(err){
+	// 			res.json(err);
+	// 		}
+	// 		else{
+	// 			res.json(interests);
+	// 		}
+	// 	});	
+	// }
+	getUserselected: (req, res) => {
+    let user_id = req.params.id;
+   userInterest.find({user_id: user_id})
+      .exec( (err, interests) => {
+        if(err){
+          res.status(500).send(err);
+          } else {
+            let arr = interests;
+
+            let interestsToGo = arr.length;
+            if(!arr.length){
+          console.log("nooooooooooooooooooooooo")
+            res.status(500).send(err);
+            }
+            let results =[];
+            arr.forEach(function(inter){
+            	console.log(inter)
+              interest.findOne({_id: inter.interest_id})
+                .exec( (err, result) => {
+                	console.log(result)
+                  if(err){
+                   res.status(500).send(err);
+                  }
+                  else{
+                    results.push(result.name)
+                    if(--interestsToGo === 0){
+                      res.json(results)
+                    }
+                  }
+                    
+                }); 
+            })
+          } 
+      })
+  }
+
 }
