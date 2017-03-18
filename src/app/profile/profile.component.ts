@@ -26,7 +26,7 @@ export class ProfileComponent implements OnInit {
   // upload image start
   fileChange(input){
     this.readFiles(input.files);
-    console.log(this.image ,"iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii")
+    // console.log(this.image ,"iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii")
   }
 
   readFile(file, reader, callback){
