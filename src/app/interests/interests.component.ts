@@ -15,18 +15,22 @@ export class InterestComponent implements OnInit {
   constructor(private interestsService:InterestsService, private router: Router ) { }
   ngOnInit() {
     this.interestsService.getAllInterest().subscribe(ele=> {
-      ele.button_class = 'btn btn-primary';
+      for (let obj of ele){
+        obj.click_class ='fadeInUp animated single-creative-member'
+      }
       this.interests = ele;
+      console.log(this.interests)
     });
   };
 
-  addInterest(interest) {
+  addInterest(interest, event) {
+    event.stopPropagation();
     if (this.selected.indexOf(interest) > -1) {
       this.selected.splice(this.selected.indexOf(interest), 1);
-      //this.interests.button_class = 'btn btn-primary';
+      interest.click_class = 'fadeInUp animated clickme';
     } else {
       this.selected.push(interest);
-      //this.interests.button_class = 'btn btn-default';
+      interest.click_class = 'fadeInUp animated single-creative-member';
     }
   }
 
