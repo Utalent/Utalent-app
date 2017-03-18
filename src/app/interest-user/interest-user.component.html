@@ -1,43 +1,25 @@
 <div >
-
- <div class="panel panel-white border-top-pink">
- <div class="panel-heading"><h3 class="panel-title">My Talent</h3>
- <div class="controls pull-right">
-  <span class="pull-right clickable"> 
-  <i class="fa fa-chevron-up"></i> </span></div></div>
-  <div class="panel-body">
- <div class="body-section">
- <br>
-  <br>
-<div *ngFor='let interest of interests'> 
-  <button type="button" class="btn btn-danger btn-lg btn-block " >
-  {{interest}} </button>  
-  <br>
-  <br>
+  <div class="panel panel-white border-top-pink">
+    <div class="panel-heading"><h3 class="panel-title">My Talent</h3>
+      <div class="controls pull-right">
+        <span class="pull-right clickable"> 
+        <i class="fa fa-chevron-up"></i> 
+        </span>
+      </div>
+    </div>
+    <div class="panel-body">
+      <div class="body-section">
+        <br>
+        <div *ngFor='let interest of interests'> 
+          <button type="button" class="btn btn-danger btn-lg btn-block " >
+          {{interest}} </button>  
+          <br>
+          <br>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-</div>
-</div></div></div>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
- 
-<!-- <button type="button" class="btn btn-success btn-lg btn-block "> Puzzles</button>
-  <br>
-  <br>
-  <button type="button" class="btn btn-warning btn-lg btn-block ">Photography</button>
-  <br>
-  <br>
-  <button type="button" class="btn btn-info btn-lg btn-block ">Stand up Comedy</button>
-<br>
-  <br> -->
