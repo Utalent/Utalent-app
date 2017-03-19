@@ -37,7 +37,8 @@ import { PostComponent } from './post/post.component';
 
 import { InterestUserComponent } from './interest-user/interest-user.component';
 import { InterestUserService } from './interest-user.service';
-
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { SidebarService } from './sidebar.service';
 
 
 
@@ -87,7 +88,8 @@ const ROUTES = [
   },
   {
     path: 'profile',
-    component:InterestUserComponent 
+    component:InterestUserComponent,
+    canActivate: [CheckLoggedIn]
   }
 
 ];
@@ -103,14 +105,10 @@ const ROUTES = [
 
     InterestDetailsComponent,
     ChallengeComponent,
-
-    InterestUserComponent,
     PostComponent,
-    
     CreateChallengeComponent ,
-    InterestUserComponent
-
-
+    InterestUserComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
@@ -125,7 +123,6 @@ const ROUTES = [
   ],
   providers: [AuthService,InterestsService,ProfileService,ChallengeService,CheckLoggedIn,InterestUserService,{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]
-  // bootstrap;
-
 })
+
 export class AppModule { }

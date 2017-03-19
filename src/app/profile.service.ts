@@ -9,14 +9,11 @@ export class ProfileService {
   constructor(private http: Http) { }
 
 	Addphoto(image){
-  	// console.log(image); 
     return this.http.post('/api/users/photo/'+image.username , image);        
   }
  
   getphoto(username){
-    console.log(username)   
-		return this.http.post('/api/users/getphoto', username).map(res=>{
-      // console.log(res.json());
+		return this.http.get('/api/users/getphoto', username).map(res=>{
 			return res.json();
 		})
 	}

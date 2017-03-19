@@ -19,7 +19,6 @@ export class InterestComponent implements OnInit {
         obj.click_class ='fadeInUp animated single-creative-member'
       }
       this.interests = ele;
-      console.log(this.interests)
     });
   };
 
@@ -27,18 +26,21 @@ export class InterestComponent implements OnInit {
     event.stopPropagation();
     if (this.selected.indexOf(interest) > -1) {
       this.selected.splice(this.selected.indexOf(interest), 1);
-      interest.click_class = 'fadeInUp animated clickme';
+      interest.click_class = 'fadeInUp animated single-creative-member';
     } else {
       this.selected.push(interest);
-      interest.click_class = 'fadeInUp animated single-creative-member';
+      interest.click_class = 'fadeInUp animated clickme';
     }
   }
 
   submit(){
-    this.interestsService.submitInterests({user_id: localStorage.getItem('com.userId'),interests: this.selected}).subscribe( (e) => {
-      this.router.navigate(['/users/' + localStorage.getItem('com.username')]);
-
-    }); 
+    this.interestsService
+    .submitInterests({user_id: JSON.parse(localStorage.getItem('com.userId')), interests: this.selected})
+    .subscribe((res) => console.log(res), (err) => {console.log(err)},
+      () => {
+      this.router.navigate(['/users/' + localStorage.getItem('com.username')]) 
+      }
+    )
   }
 
 }
