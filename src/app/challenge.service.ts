@@ -29,13 +29,11 @@ export class ChallengeService {
   }
 
   createChallenge(challenge){
-    return this.http.post('/api/challenges/add',challenge).map(res => console.log(res.json()));
+    return this.http.post('/api/challenges/add',challenge).map(res => res.json());
   }
 
   Addphoto(image){
-    return this.http.post('/api/posts/add', image).map(res =>
-      console.log(res.json()))
-           
+    return this.http.post('/api/posts/add', image).map(res => res.json())
   }
   
 }
