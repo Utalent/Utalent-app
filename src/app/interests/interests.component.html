@@ -1,6 +1,32 @@
-<div class="container">
-  <div *ngFor='let interest of interests'>
-    <button type="button"  class="btn btn-primary" (click)= "addInterest(interest.name)">{{interest.name}}</button>
+<div class="container">    
+  <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
+    <div class="panel panel-info" >
+      <div class="panel-heading">
+        <div class="panel-title">Choose your interests</div>
+      </div>
+
+      <div style="padding-top:30px; padding-left: 30px;" class="panel-body" >
+
+          <div  *ngFor='let interest of interests'>
+            <div  [ngClass]="interest.click_class">
+              <div class="member-photo" (click)= "addInterest(interest, $event)"> 
+                <img [src]="interest.icon">
+                <div class="member-info">
+                  <span class="member-name">{{interest.name}}</span>
+                </div>
+              </div>
+            </div>
+            <br>
+          </div>
+
+
+        <div style="margin-top:10px" class="form-group">
+          <div class="col-sm-12 controls">
+            <button type="button"  class="btn btn-success" (click)= "submit()">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <button type="button"  class="btn btn-primary" (click)= "submit()">Submit</button>
 </div>
+

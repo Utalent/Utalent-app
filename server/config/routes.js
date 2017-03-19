@@ -41,9 +41,12 @@ module.exports = function(app, express) {
 	app.get('/api/interests/:name', interestController.getInterest);
 	app.post('/api/interests', interestController.addInterest);
   
-  app.post('/api/users/Interests', userInteresetsController.getUserInterests);
+  // app.post('/api/users/Interests', userInteresetsController.getUserInterests);
   app.post('/api/usersInterests', userInteresetsController.addInterest);
 
+
+
+  app.get('/api/getUserselected/:id', userInteresetsController.getUserselected);
 
 	// app.use(helpers.errorLogger);
 	// app.use(helpers.errorHandler);

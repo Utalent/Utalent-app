@@ -10,20 +10,27 @@ import { Router } from '@angular/router';
  
 export class InterestComponent implements OnInit {
   selected = [];
-  interests=[];
+  interests =  [];
 
   constructor(private interestsService:InterestsService, private router: Router ) { }
   ngOnInit() {
     this.interestsService.getAllInterest().subscribe(ele=> {
+      for (let obj of ele){
+        obj.click_class ='fadeInUp animated single-creative-member'
+      }
       this.interests = ele;
+      console.log(this.interests)
     });
   };
 
-  addInterest(interest) {
+  addInterest(interest, event) {
+    event.stopPropagation();
     if (this.selected.indexOf(interest) > -1) {
       this.selected.splice(this.selected.indexOf(interest), 1);
+      interest.click_class = 'fadeInUp animated clickme';
     } else {
       this.selected.push(interest);
+      interest.click_class = 'fadeInUp animated single-creative-member';
     }
   }
 
