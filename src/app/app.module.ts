@@ -32,6 +32,7 @@ import { ProfileService } from './profile.service';
 
 import { ChallengeComponent } from './challenge/challenge.component';
 import { CheckLoggedIn } from './check-logged-in';
+import { PostComponent } from './post/post.component';
 
 
 import { InterestUserComponent } from './interest-user/interest-user.component';
@@ -102,8 +103,13 @@ const ROUTES = [
 
     InterestDetailsComponent,
     ChallengeComponent,
-    CreateChallengeComponent
+
+    InterestUserComponent,
+    PostComponent,
+    
+    CreateChallengeComponent ,
     InterestUserComponent
+
 
   ],
   imports: [
@@ -119,5 +125,7 @@ const ROUTES = [
   ],
   providers: [AuthService,InterestsService,ProfileService,ChallengeService,CheckLoggedIn,InterestUserService,{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]
+  // bootstrap;
+
 })
 export class AppModule { }
