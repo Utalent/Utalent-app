@@ -1,16 +1,16 @@
-/* tslint:disable:no-unused-variable */
+// /* tslint:disable:no-unused-variable */
 
-import { TestBed, async, inject } from '@angular/core/testing';
-import { ChallengeService } from './challenge.service';
+// import { TestBed, async, inject } from '@angular/core/testing';
+// import { ChallengeService } from './challenge.service';
 
-describe('ChallengeService', () => {
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [ChallengeService]
-    });
-  });
+// describe('ChallengeService', () => {
+//   beforeEach(() => {
+//     TestBed.configureTestingModule({
+//       providers: [ChallengeService]
+//     });
+//   });
 
-  it('should ...', inject([ChallengeService], (service: ChallengeService) => {
-    expect(service).toBeTruthy();
-  }));
-});
+//   it('should ...', inject([ChallengeService], (service: ChallengeService) => {
+//     expect(service).toBeTruthy();
+//   }));
+// });
