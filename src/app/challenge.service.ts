@@ -14,12 +14,12 @@ export class ChallengeService {
 
   addLike(data){
   	console.log("in service")
-  	return this.http.post('/api/posts/addLike',data).map(res => console.log(res.json()));
+  	return this.http.post('/api/posts/addLike', data).map(res => console.log(res.json()));
   }
 
   disLike(data){
   	console.log("service disLike",data);
-  	return this.http.post('/api/posts/disLike',data).map(res => console.log(res.json()));
+  	return this.http.post('/api/posts/disLike', data).map(res => console.log(res.json()));
   }
 
   addPost(post){
@@ -29,6 +29,10 @@ export class ChallengeService {
 
   addComment(comment){
     return this.http.post('/api/comments/add',comment).map(res => console.log(res.json()));
+  }
+
+  createChallenge(challenge){
+    return this.http.post('/api/challenges/add',challenge).map(res => console.log(res.json()));
   }
   
 }
