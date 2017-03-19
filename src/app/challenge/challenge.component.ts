@@ -22,16 +22,10 @@ export class ChallengeComponent implements OnInit {
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       let id = params['id'];
-      
- 
-       // Retrieve Pet with Id route param
-       this.challengeService.getChallenge(id).subscribe(chall => {
-        console.log("hhhhh",chall)
-      this.challenge = chall;
-    })
-    });
-
-      
+      this.challengeService.getChallenge(id).subscribe(chall => {
+        this.challenge = chall;
+      })
+    });      
   }
   	 //add post 
    post(Post,challengeId){
@@ -54,15 +48,9 @@ export class ChallengeComponent implements OnInit {
 
   
 
-
-  
-  	// Subscribe to route params
-     
-  
-
   ngOnDestroy() {
-  // Clean sub to avoid memory leak
-  this.sub.unsubscribe();
+    // Clean sub to avoid memory leak
+    this.sub.unsubscribe();
   }	
 
 }
