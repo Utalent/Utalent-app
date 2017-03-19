@@ -8,6 +8,11 @@ let InterestsSchema = new mongoose.Schema({
   },
   challenges: {
   	type: Array
+  },
+  icon: {
+    type: String,
+    required: true,
+    unique : true
   }
   
 });
