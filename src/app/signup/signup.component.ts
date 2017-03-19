@@ -9,13 +9,13 @@ import 'rxjs/add/operator/map';
 })
 
 export class SignupComponent implements OnInit {
- user ={};
+  
+  user ={};
 
-  constructor (
-    private authService: AuthService) { }
+  constructor (private authService: AuthService) { }
 
   ngOnInit() {
-   }
+  }
    
   signup() {
     this.authService.signup(this.user).subscribe(data => {
