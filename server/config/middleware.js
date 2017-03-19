@@ -15,8 +15,9 @@ module.exports = function(app, express){
 	app.use(bodyParser.urlencoded({extended: true}));
 	app.use(bodyParser.json());
     ////////////////to upload any image at any size/////////////
-app.use(bodyParser.urlencoded({ extended: true,limit: '50mb' }));
-    app.use(bodyParser.json({limit: '50mb'}));
+    // console.log('Limit file size: '+limit);
+app.use(bodyParser.urlencoded({limit: '50mb'}));
+app.use(bodyParser.json({limit: '50mb'}));
 
     ////////////////
         app.use(express.static(path.join(__dirname, '/../../dist')));  
