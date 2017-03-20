@@ -19,9 +19,7 @@ export class InterestsService {
 	}
 
   submitInterests(data){
-  	return this.http.post('/api/usersInterests', data).map( res => {
-      // return res.json();
-    });
+  	return this.http.post('/api/usersInterests', data)
   }
 }
 

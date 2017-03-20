@@ -26,7 +26,6 @@ export class ProfileComponent implements OnInit {
   // upload image start
   fileChange(input){
     this.readFiles(input.files);
-    // console.log(this.image ,"iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii")
   }
 
   readFile(file, reader, callback){
@@ -52,7 +51,6 @@ export class ProfileComponent implements OnInit {
         // Create an img element and add the image file data to it
         this.image=result; 
         this.Addphoto(result)
-        // console.log(result);
       });
     }else{
       // When all files are done This forces a change detection
@@ -65,7 +63,6 @@ export class ProfileComponent implements OnInit {
     this.sub = this.route.params.subscribe(params => {
       let username= params['username'];
       this.name=JSON.parse(username)
-      console.log(username)
       this.profileService.Addphoto({image:image, username:JSON.parse(username)}).subscribe(d=>{
       });          
     })
@@ -73,7 +70,6 @@ export class ProfileComponent implements OnInit {
 
   getPhoto(){
     this.sub = this.route.params.subscribe(params => {
-      console.log("in get phote??")
       let username= params['username'];
       this.name=JSON.parse(username)
       this.profileService.getphoto({username: JSON.parse(username)}).subscribe(image=>
