@@ -32,6 +32,9 @@ let PostSchema = new mongoose.Schema({
   },
   created_at: {
     type: Object
+  },
+  owner:{
+    type:Object
   }
   
 });
