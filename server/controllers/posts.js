@@ -49,11 +49,24 @@ module.exports = {
                   }
                   else{
                     post.set('likes', count)
+
                     CommentController.findAllPostComments(post._id, (comments) => {
                           post.set('comments', comments)
-                          if(--postsToGo === 0){
-                            callback(arr);
-                          }
+                          let user_id = post.user_id
+                          console.log("uuuuuuuuuuuuuuusssssssssser",user_id)
+                          User.findOne({_id:user_id}).exec(
+                            (err,user) =>{
+                              if (err){
+                                callback(null);
+                              }
+                              else{
+                                post.set('owner',user)
+                                if(--postsToGo === 0){
+                                  console.log("oooooooooooooooooooo",post)
+                                  callback(arr);
+                                }
+                              }
+                            })
                     })
                   }
                     
