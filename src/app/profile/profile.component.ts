@@ -19,7 +19,7 @@ export class ProfileComponent implements OnInit {
   private sub;
 
   ngOnInit() {
-    // this.getPhoto()
+    this.getPhoto()
   }
   
     getPhoto(){
