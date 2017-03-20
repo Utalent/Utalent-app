@@ -5,11 +5,13 @@ import { InterestsService } from './interests.service';
 import { Http } from '@angular/http';
 
 
-describe('InterestsService', () => {
+describe('Service: InterestsService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [InterestsService]
-    });
+      providers: [ InterestsService,
+      {provide: Http, useValue: InterestsService }
+      ]
+    })
   });
 
   it('should ...', inject([InterestsService], (service: InterestsService) => {
