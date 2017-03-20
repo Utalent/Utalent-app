@@ -6,8 +6,6 @@ let ChallengeController = require('./challenges.js');
 
 
 module.exports = {
-
-
   addInterest: function(req, res){
     let interest = req.body;
     return Interest.create(interest, (err, newInterest) => {
@@ -32,7 +30,6 @@ module.exports = {
 
   getInterest: (req, res) => {
     let interest = req.params.name;
-    console.log(interest)
     Interest.findOne({name: interest})
     .exec( (err, interest) => {
       if(err){
@@ -52,6 +49,5 @@ module.exports = {
         }
       }
     })
-
   }
 }

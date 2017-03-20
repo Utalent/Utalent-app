@@ -13,7 +13,6 @@ module.exports = {
 			if(err){
 				res.json(err);
 			} else {
-				
 				res.json('Comment Added!'); 
 			}  
 		});
@@ -21,7 +20,6 @@ module.exports = {
 
 	findAllPostComments: (postId, callback) => {
 		let post_id = postId;
-
 		Comment.find({post_id: post_id})
 			.exec( (err, comment) => {
 				if(err){
@@ -32,8 +30,4 @@ module.exports = {
 				}
 			})
 	}
-
-
-
-
 }	

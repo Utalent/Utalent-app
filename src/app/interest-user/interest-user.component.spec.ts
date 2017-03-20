@@ -3,21 +3,21 @@
 // import { By } from '@angular/platform-browser';
 // import { DebugElement } from '@angular/core';
 
-// import { SigninComponent } from './signin.component';
+// import { InterestUserComponent } from './interest-user.component';
 
-// describe('SigninComponent', () => {
-//   let component: SigninComponent;
-//   let fixture: ComponentFixture<SigninComponent>;
+// describe('InterestUserComponent', () => {
+//   let component: InterestUserComponent;
+//   let fixture: ComponentFixture<InterestUserComponent>;
 
 //   beforeEach(async(() => {
 //     TestBed.configureTestingModule({
-//       declarations: [ SigninComponent ]
+//       declarations: [ InterestUserComponent ]
 //     })
 //     .compileComponents();
 //   }));
 
 //   beforeEach(() => {
-//     fixture = TestBed.createComponent(SigninComponent);
+//     fixture = TestBed.createComponent(InterestUserComponent);
 //     component = fixture.componentInstance;
 //     fixture.detectChanges();
 //   });

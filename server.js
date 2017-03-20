@@ -1,7 +1,6 @@
 let express = require("express");
 let mongoose = require("mongoose");
 
-
 let app = express();
 let server = require("http").createServer(app);
 

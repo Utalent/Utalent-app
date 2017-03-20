@@ -5,7 +5,6 @@ let User = require('../models/users.js');
 module.exports = {
 
   signin : (req,res) => {
-    console.log("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh ")
     let user = req.body;
     User.findOne({username: user.username})
       .exec( (err, found) => {
@@ -16,7 +15,6 @@ module.exports = {
               res.json({token: token, id :found.id, username: found.username});
             }
             else{
-            console.log("password is not correct")
             res.status(500).send("Password is not correct")
             }
           })  
@@ -25,12 +23,11 @@ module.exports = {
           res.status(500).send("User not found!")
         }
       })
- },
+  },
 
 
-signup: (req, res) => {
+  signup: (req, res) => {
     let user = req.body;
-    
     util.hashpass(user.password, (hash) => {
         user.password = hash;
     })
@@ -54,7 +51,6 @@ signup: (req, res) => {
       });
   },
 
-
   getProfile:(req, res) =>{
     let userName = req.body;
     User.findOne({username:userName})
@@ -65,16 +61,12 @@ signup: (req, res) => {
         res.json("user does not exist")
       }
     }) 
-
   },
 
   Addphoto:function(req,res){
    let data = req.body;
-   console.log(data);
-   console.log(data.username)
    User.findOne({username:data.username})
-  .exec((err,user)=> {
-   // console.log(data)
+    .exec((err,user)=> {
       if(err){
         res.json(err);
       }
@@ -91,7 +83,7 @@ signup: (req, res) => {
     })
   },
 
-   getphoto:function(req,res){
+  getphoto:function(req,res){
     var username=req.body.username;
     User.findOne({username: username})
     .exec((err, user)=>{

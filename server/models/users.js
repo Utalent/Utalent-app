@@ -6,8 +6,6 @@ let UserSchema = new mongoose.Schema({
     required: true,
     unique: true
   },
-  
-
   password: {
     type: String,
     required: true
@@ -26,6 +24,6 @@ let UserSchema = new mongoose.Schema({
   fb_ID: {
     type: String
   }
-  
 });
+
 module.exports = mongoose.model('users', UserSchema);

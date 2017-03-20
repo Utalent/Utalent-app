@@ -10,14 +10,14 @@ let PostController = require('./posts.js');
 module.exports = {
 	addChallenge: function(req, res){
 		let challenge = req.body;
-          return Challenge.create(challenge, (err, newChallenge) => {
-          if(err){
-            res.json(err);
-          } else {
-            res.json('Challenge Added!'); 
-          }     
-        });
-    },
+    return Challenge.create(challenge, (err, newChallenge) => {
+      if(err){
+        res.json(err);
+      } else {
+        res.json('Challenge Added!'); 
+      }     
+    });
+  },
     
 	getAll: function(req, res){
 		Challenge.find({})
@@ -30,17 +30,6 @@ module.exports = {
 			})
 	},
 
-	getAllInterestChallenges: function(req, res){
-		var interest = req.body;
-		Challenge.find({interest_id: interest})
-			.exec( (err, challenges) => {
-				if(err){
-            		res.json(err);
-          		} else {
-            		res.json(challenges); 
-          		} 
-			})
-	},
 	getChallenge(req, res){
   		let challengId = ObjectID(req.params.id);
   		Challenge.findOne({_id: challengId})
@@ -49,9 +38,6 @@ module.exports = {
           			res.status(500).send(err)
           		} else {
           			if(challenge){
-                  // let date = challenge._id.getTimestamp().toUTCString().substr(0,12);
-                  // let time = challenge._id.getTimestamp().toUTCString().substring(17,22);
-          				 // challenge.set('created_at', {date: date,time: time});
 	          			PostController.getAllChallengePosts(challengId, (posts) => {
 	          				challenge.set('posts', posts);
 	            			res.json(challenge);

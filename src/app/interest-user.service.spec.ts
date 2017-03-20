@@ -1,16 +1,16 @@
 // /* tslint:disable:no-unused-variable */
 
 // import { TestBed, async, inject } from '@angular/core/testing';
-// import { ProfileService } from './profile.service';
+// import { InterestUserService } from './interest-user.service';
 
-// describe('ProfileService', () => {
+// describe('InterestUserService', () => {
 //   beforeEach(() => {
 //     TestBed.configureTestingModule({
-//       providers: [ProfileService]
+//       providers: [InterestUserService]
 //     });
 //   });
 
-//   it('should ...', inject([ProfileService], (service: ProfileService) => {
+//   it('should ...', inject([InterestUserService], (service: InterestUserService) => {
 //     expect(service).toBeTruthy();
 //   }));
 // });

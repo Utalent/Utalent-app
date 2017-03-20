@@ -30,6 +30,14 @@ import { ProfileService } from './profile.service';
 import { ChallengeComponent } from './challenge/challenge.component';
 import { CheckLoggedIn } from './check-logged-in';
 import { MainComponent } from './main/main.component';
+import { PostComponent } from './post/post.component';
+
+
+import { InterestUserComponent } from './interest-user/interest-user.component';
+import { InterestUserService } from './interest-user.service';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { SidebarService } from './sidebar.service';
+
 
 
 // Define the routes
@@ -65,6 +73,24 @@ const ROUTES = [
     path: 'interest/:name',
     component: InterestDetailsComponent,
     // canActivate: [CheckLoggedIn]
+<<<<<<< HEAD
+=======
+  },
+  {
+    path: 'create',
+    component: CreateChallengeComponent,
+    // canActivate: [CheckLoggedIn]
+  },
+  {
+    path: 'interest/:name',
+    component: InterestDetailsComponent,
+    canActivate: [CheckLoggedIn]
+  },
+  {
+    path: 'profile',
+    component:InterestUserComponent,
+    canActivate: [CheckLoggedIn]
+>>>>>>> ff98a73fdecc6190a6ed1efee58391eecb476123
   }
 
 ];
@@ -81,7 +107,11 @@ const ROUTES = [
     InterestDetailsComponent,
     ChallengeComponent,
     CreateChallengeComponent,
-    MainComponent
+    MainComponent,
+    PostComponent,
+    CreateChallengeComponent ,
+    InterestUserComponent,
+    SidebarComponent
 
   ],
   imports: [
@@ -95,7 +125,8 @@ const ROUTES = [
     ModalModule.forRoot(),
     RouterModule.forRoot(ROUTES) 
   ],
-  providers: [AuthService,InterestsService,ProfileService,ChallengeService,CheckLoggedIn,{ provide: LocationStrategy, useClass: HashLocationStrategy }],
+  providers: [AuthService,InterestsService,ProfileService,ChallengeService,CheckLoggedIn,InterestUserService,{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

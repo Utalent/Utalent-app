@@ -28,7 +28,7 @@ div.content-container{
  padding: 10px;
 }
 div.calendar-image{
- /*background-image: url(./assets/dramaticaBackground.jpg);*/
+ background-image: url(../../assets/dramaticaBackground.jpg);
 }
 div.calendar-image div.heading-border{
  background-color: #00147a;
