@@ -8,8 +8,6 @@ import { FormsModule } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Http } from '@angular/http';
 
-
-
 describe('SignupComponent', () => {
   let component: SignupComponent;
   let fixture: ComponentFixture<SignupComponent>;
