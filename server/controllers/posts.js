@@ -53,7 +53,6 @@ module.exports = {
                     CommentController.findAllPostComments(post._id, (comments) => {
                           post.set('comments', comments)
                           let user_id = post.user_id
-                          console.log("uuuuuuuuuuuuuuusssssssssser",user_id)
                           User.findOne({_id:user_id}).exec(
                             (err,user) =>{
                               if (err){
@@ -62,7 +61,6 @@ module.exports = {
                               else{
                                 post.set('owner',user)
                                 if(--postsToGo === 0){
-                                  console.log("oooooooooooooooooooo",post)
                                   callback(arr);
                                 }
                               }

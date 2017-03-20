@@ -23,6 +23,7 @@ export class ChallengeComponent implements OnInit {
     this.sub = this.route.params.subscribe(params => {
       let id = params['id'];
       this.challengeService.getChallenge(id).subscribe(chall => {
+        console.log(chall)
         this.challenge = chall;
       })
     });      
