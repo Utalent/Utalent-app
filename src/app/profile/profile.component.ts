@@ -16,8 +16,8 @@ export class ProfileComponent implements OnInit {
   name:any;
   constructor(private profileService: ProfileService,private changeDetectorRef: ChangeDetectorRef, private route: ActivatedRoute ) {
    }
-  
   private sub;
+  
 
   ngOnInit() {
    this.getPhoto()
