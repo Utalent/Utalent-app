@@ -1,28 +1,41 @@
-// /* tslint:disable:no-unused-variable */
-// import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-// import { By } from '@angular/platform-browser';
-// import { DebugElement } from '@angular/core';
+/* tslint:disable:no-unused-variable */
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { DebugElement } from '@angular/core';
 
-// import { InterestsComponent } from './interests.component';
+import { InterestsComponent } from './interests.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { FormsModule } from '@angular/forms';
+import { InterestsService } from '../interests.service';
 
-// describe('InterestsComponent', () => {
-//   let component: InterestsComponent;
-//   let fixture: ComponentFixture<InterestsComponent>;
+import { Http } from '@angular/http';
 
-//   beforeEach(async(() => {
-//     TestBed.configureTestingModule({
-//       declarations: [ InterestsComponent ]
-//     })
-//     .compileComponents();
-//   }));
+describe('InterestsComponent', () => {
+  let component: InterestsComponent;
+  let fixture: ComponentFixture<InterestsComponent>;
 
-//   beforeEach(() => {
-//     fixture = TestBed.createComponent(InterestsComponent);
-//     component = fixture.componentInstance;
-//     fixture.detectChanges();
-//   });
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [ InterestsComponent ],
+       providers: [ InterestsService,
+            {provide: RouterTestingModule,  useClass: InterestsComponent },
+                   {provide: Http, useValue:InterestsService  }
 
-//   it('should create', () => {
-//     expect(component).toBeTruthy();
-//   });
-// });
+    	],
+        imports: [ RouterTestingModule,FormsModule  ]
+    })
+    .compileComponents();
+  }));
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(InterestsComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
+
+
