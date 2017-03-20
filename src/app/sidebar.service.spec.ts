@@ -1,11 +1,14 @@
 import { TestBed, inject } from '@angular/core/testing';
-
 import { SidebarService } from './sidebar.service';
+import { Http } from '@angular/http';
 
-describe('SidebarService', () => {
+
+describe('Service : SidebarService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [SidebarService]
+      providers: [SidebarService,
+       {provide: Http, useValue: SidebarService }
+       ]
     });
   });
 
