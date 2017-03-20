@@ -1,0 +1,33 @@
+<div *ngFor='let post of pchallenge.posts'>
+<div>
+<hr>
+<a href="#" class= "btn-link text-semibold media-heading box-inline">{{post.username}}</a>
+<p class="text-muted text-sm">
+<i class="fa fa-clock-o"></i> {{post.created_at.date}} {{post.created_at.time}}</p>
+</div>
+<p>{{post.text}}</p>
+<div class="pad-ver">
+<div class="btn-group" > 
+<!-- like -->
+<a class="tag tag-sm" (click)="like(post,post._id)">
+<i class= "fa fa-thumbs-up"></i></a> 
+<!-- dislike -->
+<a class="tag tag-sm" (click)="dLike(post,post._id)">
+<i class="fa fa-thumbs-down"></i>
+</a>
+
+<span class="tag tag-sm" ><i class="fa fa-heart text-danger"></i> {{post.likes}}</span>
+
+</div>
+</div>
+<br>
+<p class = comments>comments:</p>
+<div *ngFor='let comment of post.comments'>
+	<p class = 'comment'>{{comment.text}}</p>
+</div>  
+<!-- comment -->
+<textarea name = "name-{{post._id}}" class="form-control" id="{{post._id}}" rows="2" placeholder="Add commment" [(ngModel)] = "post.txt" ></textarea  >
+<a class="btn btn-sm btn-default btn-hover-primary" (click)="Comment(post.txt,post._id)">Comment</a>
+	
+</div>
+<hr>

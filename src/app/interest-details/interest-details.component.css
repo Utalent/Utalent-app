@@ -166,3 +166,18 @@
 .mini-profile-widget .details {
   text-align: center;
 }
+
+div.header-image{
+ position: relative;
+ width:100%;
+ height: 150px;
+ background-position: center;
+ background-size: cover;
+}
+
+/*div.forum-image{
+ background-image: url(./assets/puzzleBackground.png);
+}
+div.forum-image div.heading-border{
+ background-color: #be0f35;
+}*/

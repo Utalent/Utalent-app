@@ -12,12 +12,13 @@ module.exports = function(app, express){
     });
 
     app.use(morgan('dev'));
-	app.use(bodyParser.urlencoded({extended: true}));
-	app.use(bodyParser.json());
-    ////////////////to upload any image at any size/////////////
-    // console.log('Limit file size: '+limit);
 app.use(bodyParser.urlencoded({ extended: true,limit: '50mb' }));
+    // app.use(bodyParser.json());
     app.use(bodyParser.json({limit: '50mb'}));
+    ////////////////to upload any image at any size/////////////
+  
+    // app.use(bodyParser.urlencoded({extended: true}));
+
 
     ////////////////
         app.use(express.static(path.join(__dirname, '/../../dist')));  

@@ -1,7 +1,5 @@
 
 
-
-
 <div class="col-md-8 bootstrap snippets">
 <div class="mar-btm" >
 <div>
@@ -29,31 +27,15 @@
 <a class="media-left" href="#">
 <img class="img-circle img-sm" alt="Profile Picture" src="http://bootdey.com/img/Content/avatar/avatar1.png"></a>
 <div class="media-body">
-<div class="mar-btm" *ngFor='let post of challenge.posts'>
-<div>
-<hr>
-<a href="#" class= "btn-link text-semibold media-heading box-inline">{{post.username}}</a>
-<p class="text-muted text-sm">
-<i class="fa fa-clock-o"></i> {{post.created_at.date}} {{post.created_at.time}}</p>
-</div>
-<p>{{post.text}}</p>
-<div class="pad-ver">
-<div class="btn-group" > 
-<!-- like -->
-<a class="tag tag-sm" (click)="like(post._id)" (change)="change()">
-<i class= "fa fa-thumbs-up"></i></a> 
-<!-- dislike -->
-<a class="tag tag-sm" (click)="dLike(post._id)">
-<i class="fa fa-thumbs-down"></i>
-</a>
+<!-- <div class="mar-btm" *ngFor='let post of challenge.posts'> -->
 
-<span class="tag tag-sm" ><i class="fa fa-heart text-danger"></i>{{post.likes}}</span>
-
+ <app-post [pchallenge]='challenge'></app-post>
+<!-- </div> -->
 </div>
 </div>
-<br>
-<textarea class="form-control" id="pwd" rows="2" placeholder="Add commment" [(ngModel)] = "comment.text" ></textarea  >
-<a class="btn btn-sm btn-default btn-hover-primary" (click)="addComment(post._id)">Comment</a>
+</div>
+</div>
+</div>
 </div>
 <hr>
 <br>
