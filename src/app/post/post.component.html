@@ -1,5 +1,7 @@
 <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" -->
 <!-- <div class="container"> -->
+
+<div class="content">
     <div class="row activity">
         <div class="col-md-12">
             <div class="panel panel-default">
@@ -21,227 +23,64 @@
                 </div>
             </div>
             
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <img src="http://bootdey.com/img/Content/avatar/avatar1.png" class="img-rounded">
-                    <div class="pull-right text-right">
-                        <i class="fa fa-calendar"></i><br> 3 hours ago
-                    </div>
-                    <div><strong>John Doe</strong></div>
-                    <div class="small"><i class="fa fa-map-marker"></i> Medellin, Colombia</div>
-                </div>
-                <div class="panel-body">
-                    <blockquote>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</blockquote>
-                </div>
-                <div class="panel-footer">
-                    <input type="email" class="form-control" placeholder="Write a comment...">
-                </div>
-            </div>
+            <div *ngFor='let post of pchallenge.posts'>
             
-            <div class="panel panel-default">
+            <div class="panel panel-default" >
                 <div class="panel-heading">
-                    <img src="http://bootdey.com/img/Content/avatar/avatar1.png" class="img-rounded">
-                    <div class="pull-right text-right">
-                        <i class="fa fa-calendar"></i><br> 3 hours ago
+                    <img src="{{post.owner.image}}" class="img-rounded">
+                    <div class="pull-right text-right" >
+                        <i class="fa fa-clock-o"></i>  {{post.created_at.date}} {{post.created_at.time}}
                     </div>
-                    <div><strong>John Doe</strong></div>
-                    <div class="small"><i class="fa fa-map-marker"></i> Medellin, Colombia</div>
+                    <div><strong>{{post.owner.username}}</strong></div>
+                 
                 </div>
                 <div class="panel-body">
-                    <img src="http://lorempixel.com/500/333/nature/2" class="img-responsive">
+                    <!-- <img src="http://lorempixel.com/500/333/nature/2" class="img-responsive"> -->
+                    <p>{{post.text}}</p>
                     <div class="actions">
                         <div class="btn-group">
-                            <button type="button" class="btn btn-link"><i class="fa fa-thumbs-o-up"></i> Like</button>
-                            <button type="button" class="btn btn-link"><i class="fa fa-share"></i> Share</button>
+                            <a class="tag tag-sm" (click)="like(post,post._id)">
+                            <i class= "fa fa-thumbs-up"></i></a> 
+                            <!-- dislike -->
+                            <a class="tag tag-sm" (click)="dLike(post,post._id)">
+                            <i class="fa fa-thumbs-down"></i>
+                            </a>
+
+                            <span class="tag tag-sm" ><i class="fa fa-heart text-danger"></i> {{post.likes}}</span>
                         </div>
-                        <div class="pull-right"><strong>1.789</strong> People liked this</div>      
+                             
                     </div>  
                     
-                    <div class="media">
-                        <a class="pull-left" href="#">
-                            <img class="media-object img-rounded" src="http://bootdey.com/img/Content/avatar/avatar1.png">
+                    <div class="media"  *ngFor='let comment of post.comments'>
+                        <a class="pull-left" *ngIf="comment.owner.image">
+                            <img class="media-object img-rounded" src="{{comment.owner.image}}">
                         </a>
+
+                        <a class="pull-left" *ngIf=" ! comment.owner.image">
+                            <img class="media-object img-rounded" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg">
+                        </a>
+
+
                         <div class="media-body">
-                            <div class="pull-right small">3 hours ago</div>
-                            <h4 class="media-heading">Media heading</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+                            <div class="pull-right small">{{comment.created_at.date}} {{comment.created_at.time}}</div>
+                            <h4 class="media-heading">{{comment.owner.username}}</h4>
+                            <p>{{comment.text}}</p>
                         </div>
                     </div>
                     
-                    <div class="media">
-                        <a class="pull-left" href="#">
-                            <img class="media-object img-rounded" src="http://bootdey.com/img/Content/avatar/avatar1.png">
-                        </a>
-                        <div class="media-body">
-                            <div class="pull-right small">3 hours ago</div>
-                            <h4 class="media-heading">Media heading</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="media">
-                        <a class="pull-left" href="#">
-                            <img class="media-object img-rounded" src="http://bootdey.com/img/Content/avatar/avatar1.png">
-                        </a>
-                        <div class="media-body">
-                            <div class="pull-right small">3 hours ago</div>
-                            <h4 class="media-heading">Media heading</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                        </div>
-                    </div>
                     
                 </div>
                 <div class="panel-footer">
-                    <input type="email" class="form-control" placeholder="Write a comment...">
+                    <input  class="form-control" placeholder="Write a comment..." [(ngModel)] = "post.txt" (keyup.enter)="Comment(post.txt,post._id)" >
                 </div>
             </div>
-            
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <img src="http://bootdey.com/img/Content/avatar/avatar1.png" class="img-rounded">
-                    <div class="pull-right text-right">
-                        <i class="fa fa-calendar"></i><br> 3 hours ago
-                    </div>
-                    <div><strong>John Doe</strong></div>
-                    <div class="small"><i class="fa fa-map-marker"></i> Medellin, Colombia</div>
-                </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <img class="img-responsive" src="http://lorempixel.com/130/100/nature/2">
-                        </div><!--/.col-->
-                        <div class="col-md-4">
-                            <img class="img-responsive" src="http://lorempixel.com/130/100/nature/3">
-                        </div><!--/.col-->
-                        <div class="col-md-4">
-                            <img class="img-responsive" src="http://lorempixel.com/130/100/nature/4">
-                        </div><!--/.col-->
-                    </div><!--/.row-->  
-                </div>
-                <div class="panel-footer">
-                    <input type="email" class="form-control" placeholder="Write a comment...">
-                </div>
             </div>
+
+
+      
+       
+        
         </div><!--/.col-->
-        <div class="col-md-6">
-            
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <img src="http://bootdey.com/img/Content/avatar/avatar1.png" class="img-rounded">
-                    <div class="pull-right text-right">
-                        <i class="fa fa-calendar"></i><br> 3 hours ago
-                    </div>
-                    <div><strong>John Doe</strong></div>
-                    <div class="small"><i class="fa fa-map-marker"></i> Medellin, Colombia</div>
-                </div>
-                <div class="panel-body">
-                    <img src="http://lorempixel.com/400/400/nature/2" class="img-responsive">
-                    <div class="actions">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-link"><i class="fa fa-thumbs-o-up"></i> Like</button>
-                            <button type="button" class="btn btn-link"><i class="fa fa-share"></i> Share</button>
-                        </div>
-                        <div class="pull-right"><strong>1.789</strong> People liked this</div>      
-                    </div>  
-                    
-                    <div class="media">
-                        <a class="pull-left" href="#">
-                            <img class="media-object img-rounded" src="http://bootdey.com/img/Content/avatar/avatar1.png">
-                        </a>
-                        <div class="media-body">
-                            <div class="pull-right small">3 hours ago</div>
-                            <h4 class="media-heading">Media heading</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="media">
-                        <a class="pull-left" href="#">
-                            <img class="media-object img-rounded" src="http://bootdey.com/img/Content/avatar/avatar1.png">
-                        </a>
-                        <div class="media-body">
-                            <div class="pull-right small">3 hours ago</div>
-                            <h4 class="media-heading">Media heading</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="media">
-                        <a class="pull-left" href="#">
-                            <img class="media-object img-rounded" src="http://bootdey.com/img/Content/avatar/avatar1.png">
-                        </a>
-                        <div class="media-body">
-                            <div class="pull-right small">3 hours ago</div>
-                            <h4 class="media-heading">Media heading</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel-footer">
-                    <input type="email" class="form-control" placeholder="Write a comment...">
-                </div>
-            </div>
-            
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <img src="http://bootdey.com/img/Content/avatar/avatar1.png" class="img-rounded">
-                    <div class="pull-right text-right">
-                        <i class="fa fa-calendar"></i><br> 3 hours ago
-                    </div>
-                    <div><strong>John Doe</strong></div>
-                    <div class="small"><i class="fa fa-map-marker"></i> Medellin, Colombia</div>
-                </div>
-                <div class="panel-body">
-                    <div class="video-container">
-                        <iframe src="//player.vimeo.com/video/87526548" width="500" height="281" frameborder="0"></iframe>
-                    </div>
-                    
-                    <div class="actions">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-link"><i class="fa fa-thumbs-o-up"></i> Like</button>
-                            <button type="button" class="btn btn-link"><i class="fa fa-share"></i> Share</button>
-                        </div>
-                        <div class="pull-right"><strong>1.789</strong> People liked this</div>      
-                    </div>  
-                    
-                    <div class="media">
-                        <a class="pull-left" href="#">
-                            <img class="media-object img-rounded" src="http://bootdey.com/img/Content/avatar/avatar1.png">
-                        </a>
-                        <div class="media-body">
-                            <div class="pull-right small">3 hours ago</div>
-                            <h4 class="media-heading">Media heading</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="media">
-                        <a class="pull-left" href="#">
-                            <img class="media-object img-rounded" src="http://bootdey.com/img/Content/avatar/avatar1.png">
-                        </a>
-                        <div class="media-body">
-                            <div class="pull-right small">3 hours ago</div>
-                            <h4 class="media-heading">Media heading</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="media">
-                        <a class="pull-left" href="#">
-                            <img class="media-object img-rounded" src="http://bootdey.com/img/Content/avatar/avatar1.png">
-                        </a>
-                        <div class="media-body">
-                            <div class="pull-right small">3 hours ago</div>
-                            <h4 class="media-heading">Media heading</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                        </div>
-                    </div>
-                    
-                </div>
-                <div class="panel-footer">
-                    <input type="email" class="form-control" placeholder="Write a comment...">
-                </div>
-            </div>
-        </div><!--/.col-->
+    </div>
     </div>
 <!-- </div> -->

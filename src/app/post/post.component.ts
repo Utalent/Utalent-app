@@ -47,7 +47,7 @@ export class PostComponent implements OnInit {
 
     this.challengeService.addComment(this.comment)
     .subscribe(recent =>{
-      
+      location.reload()
     })
   }
 }
