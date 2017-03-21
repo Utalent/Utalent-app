@@ -17,16 +17,19 @@ export class PostComponent implements OnInit {
     photo:any;
     id:any;
 
+
   constructor( private challengeService : ChallengeService, private changeDetectorRef: ChangeDetectorRef, private route: ActivatedRoute ) { }
   private sub;
+  private user_id;
+
   ngOnInit() {
 
   }
 
 
-  fileChange(input){
-    console.log("*************",input.files)
-    this.readFiles(input.files);
+  fileChange(input,p){
+    console.log("*************",p.text)
+    this.readFiles(input.files,p.text);
   }
 
   readFile(file, reader, callback){
@@ -42,7 +45,7 @@ export class PostComponent implements OnInit {
 
 
 
-  readFiles(files){
+  readFiles(files,text){
     // Create the file reader
     let reader = new FileReader();
     // If there is a file
@@ -52,7 +55,7 @@ export class PostComponent implements OnInit {
         // Create an img element and add the image file data to it
         this.image=result; 
         console.log(this.image)
-        this.postphoto(result)
+        this.postphoto(result,text)
       });
     }else{
       // When all files are done This forces a change detection
@@ -61,12 +64,13 @@ export class PostComponent implements OnInit {
   }
   // upload image end 
 
-  postphoto(image){
+  postphoto(image,text){
+    console.log("8885858",text)
       this.sub = this.route.params.subscribe(params => {
       this.id = params['id'];
-      // console.log(chalenge_id)
-      // this.id=JSON.parse(chalenge_id)
-      this.challengeService.Addphoto({img:image , challenge_id: this.id }).subscribe(d=>{
+      this.user_id = JSON.parse(localStorage.getItem('com.userId'))
+      this.challengeService.Addphoto({img:image , challenge_id: this.id , user_id: this.user_id ,text:text}).subscribe(d=>{
+        location.reload()
       });          
     })         
     }
