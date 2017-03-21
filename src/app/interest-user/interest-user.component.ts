@@ -17,11 +17,9 @@ export class InterestUserComponent implements OnInit {
 
   ngOnInit() {
       let userId= localStorage.getItem('com.userId')
-      // console.log(userId)
-      this.interestUserService.getUserInterests( {user_id:userId}).subscribe(interest=>{
+      this.interestUserService.getUserInterests({user_id:userId}).subscribe(interest=>{
         this.interests=interest        
       })
-    
   }
 
 }

@@ -17,6 +17,7 @@ import { CreateChallengeComponent } from './create-challenge/create-challenge.co
 
 
 
+import { MainService } from './main.service';
 import { ChallengeService } from './challenge.service';
 import { AuthService } from './auth.service';
 import { InterestsService } from './interests.service';
@@ -70,13 +71,6 @@ const ROUTES = [
     component: ChallengeComponent
   },
   {
-    path: 'interest/:name',
-    component: InterestDetailsComponent,
-    // canActivate: [CheckLoggedIn]
-<<<<<<< HEAD
-=======
-  },
-  {
     path: 'create',
     component: CreateChallengeComponent,
     // canActivate: [CheckLoggedIn]
@@ -90,7 +84,6 @@ const ROUTES = [
     path: 'profile',
     component:InterestUserComponent,
     canActivate: [CheckLoggedIn]
->>>>>>> ff98a73fdecc6190a6ed1efee58391eecb476123
   }
 
 ];
@@ -125,7 +118,7 @@ const ROUTES = [
     ModalModule.forRoot(),
     RouterModule.forRoot(ROUTES) 
   ],
-  providers: [AuthService,InterestsService,ProfileService,ChallengeService,CheckLoggedIn,InterestUserService,{ provide: LocationStrategy, useClass: HashLocationStrategy }],
+  providers: [AuthService,InterestsService,ProfileService,ChallengeService,CheckLoggedIn,InterestUserService, MainService, { provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]
 })
 

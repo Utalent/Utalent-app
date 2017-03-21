@@ -1,9 +1,3 @@
-
-body{
-    margin-top:20px;
-    background:#eee;
-}
-
 .img-responsive, .thumbnail > img, .thumbnail a > img, .carousel-inner > .item > img, .carousel-inner > .item > a > img {
     display: block;
     max-width: 100%;

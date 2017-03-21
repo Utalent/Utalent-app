@@ -72,6 +72,51 @@ module.exports = {
             })
           } 
   	  })
+  },
+
+  getAllPosts: function(req, res){
+    Post.find({})
+      .exec( (err, posts) => {
+        if(err){
+          res.status(500).send("No posts")
+          } else {
+            let arr = posts;
+            let postsToGo = arr.length;
+            if(!arr.length){
+              res.status(500).send("No posts")
+            }
+            arr.forEach(function(post){
+              PostLikeUsers.count({post_id: post._id})
+                .exec( (err, count) => {
+                  if(err){
+                    res.status(500).send("No likes") 
+                  }
+                  else{
+                    post.set('likes', count)
+
+                    CommentController.findAllPostComments(post._id, (comments) => {
+                          post.set('comments', comments)
+                          let user_id = post.user_id
+                          User.findOne({_id:user_id}).exec(
+                            (err,user) =>{
+                              if (err){
+                                res.status(500).send("No owner")   
+                              }
+                              else{
+                                post.set('owner',user)
+                                if(--postsToGo === 0){
+                                  res.json(arr)
+                                }
+                              }
+                            })
+                    })
+                  }
+                    
+                }); 
+            })
+          } 
+      })
   }
+
 
 }
