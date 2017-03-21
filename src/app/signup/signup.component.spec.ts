@@ -1,28 +1,37 @@
-// /* tslint:disable:no-unused-variable */
-// import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-// import { By } from '@angular/platform-browser';
-// import { DebugElement } from '@angular/core';
+/* tslint:disable:no-unused-variable */
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { DebugElement } from '@angular/core';
+import { SignupComponent } from './signup.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { FormsModule } from '@angular/forms';
+import { AuthService } from '../auth.service';
+import { Http } from '@angular/http';
 
-// import { SignupComponent } from './signup.component';
+describe('SignupComponent', () => {
+  let component: SignupComponent;
+  let fixture: ComponentFixture<SignupComponent>;
 
-// describe('SignupComponent', () => {
-//   let component: SignupComponent;
-//   let fixture: ComponentFixture<SignupComponent>;
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [ SignupComponent ],
+      providers: [ AuthService,
+            {provide: RouterTestingModule,  useClass: SignupComponent},
+                   {provide: Http, useValue:AuthService  }
 
-//   beforeEach(async(() => {
-//     TestBed.configureTestingModule({
-//       declarations: [ SignupComponent ]
-//     })
-//     .compileComponents();
-//   }));
+    	],
+        imports: [ RouterTestingModule,FormsModule  ]
+    })
+    .compileComponents();
+  }));
 
-//   beforeEach(() => {
-//     fixture = TestBed.createComponent(SignupComponent);
-//     component = fixture.componentInstance;
-//     fixture.detectChanges();
-//   });
+  beforeEach(() => {
+    fixture = TestBed.createComponent(SignupComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
 
-//   it('should create', () => {
-//     expect(component).toBeTruthy();
-//   });
-// });
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

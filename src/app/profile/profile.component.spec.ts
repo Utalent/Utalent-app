@@ -4,6 +4,12 @@
 // import { DebugElement } from '@angular/core';
 
 // import { ProfileComponent } from './profile.component';
+// import { RouterTestingModule } from '@angular/router/testing';
+// import { FormsModule } from '@angular/forms';
+// import { ProfileService } from '../profile.service';
+// import { Http } from '@angular/http';
+// import { InterestUserComponent } from '../interest-user/interest-user.component';
+
 
 // describe('ProfileComponent', () => {
 //   let component: ProfileComponent;
@@ -11,7 +17,13 @@
 
 //   beforeEach(async(() => {
 //     TestBed.configureTestingModule({
-//       declarations: [ ProfileComponent ]
+//       declarations: [ ProfileComponent , InterestUserComponent ],
+//        providers: [ ProfileService,
+//             {provide: RouterTestingModule,  useClass: ProfileComponent },
+//                    {provide: Http, useValue:ProfileService  }
+
+//     	],
+//         imports: [ RouterTestingModule,FormsModule  ]
 //     })
 //     .compileComponents();
 //   }));
@@ -22,7 +34,7 @@
 //     fixture.detectChanges();
 //   });
 
-//   it('should create', () => {
-//     expect(component).toBeTruthy();
-//   });
+//   // xit('should create', () => {
+//   //   expect(component).toBeTruthy();
+//   // });
 // });

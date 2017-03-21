@@ -10,24 +10,22 @@ import { ProfileService } from '../profile.service';
 })
 export class ProfileComponent implements OnInit {
  
+
   private sub;
   image : any;
   photo : any;
   user : Object = {};
+
 
   constructor(private profileService: ProfileService,
               private changeDetectorRef: ChangeDetectorRef,
               private route: ActivatedRoute ) { }
   
   ngOnInit() {
-    this.sub = this.route.params.subscribe(params => {
-      let username= params['username'];
-      this.profileService.getProfile({username: JSON.parse(username)}).subscribe(info=>{
-        this.user = info}
-        );
-    })
+
   }
-  
+
+
   // upload image start
   fileChange(input){
     this.readFiles(input.files);
@@ -64,9 +62,22 @@ export class ProfileComponent implements OnInit {
   Addphoto(image){
     this.sub = this.route.params.subscribe(params => {
       let username= params['username'];
+      
+      this.name=JSON.parse(username)
+
       this.profileService.Addphoto({image:image, username:JSON.parse(username)}).subscribe(d=>{
       });          
     })
   }
+  photo:any;
 
+  getPhoto(){
+    this.sub = this.route.params.subscribe(params => {
+      let username= params['username'];
+      console.log(username)
+      this.name=JSON.parse(username)
+      this.profileService.getphoto({username: username}).subscribe(image=>
+        this.photo=image);
+    })
+  }
 }

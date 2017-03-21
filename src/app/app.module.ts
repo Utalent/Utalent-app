@@ -39,14 +39,17 @@ import { InterestUserService } from './interest-user.service';
 import { SidebarComponent } from './sidebar/sidebar.component';
 
 
+import { HomeComponent } from './home/home.component';
+
+
+
 
 // Define the routes
 const ROUTES = [
   {
     path: '',
-    redirectTo: 'signin',
     pathMatch: 'full',
-    // component: MainComponent
+    component: HomeComponent
   },
   {
     path: 'main',
@@ -76,6 +79,7 @@ const ROUTES = [
     component: ChallengeComponent,
     canActivate: [CheckLoggedIn]
   },
+  
   {
     path: 'interest/:name',
     component: InterestDetailsComponent,
@@ -100,7 +104,9 @@ const ROUTES = [
     PostComponent,
     CreateChallengeComponent ,
     InterestUserComponent,
-    SidebarComponent
+
+    SidebarComponent,
+    HomeComponent
 
   ],
   imports: [

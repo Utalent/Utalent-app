@@ -4,6 +4,11 @@
 // import { DebugElement } from '@angular/core';
 
 // import { ChallengeComponent } from './challenge.component';
+// import { RouterTestingModule } from '@angular/router/testing';
+// import { FormsModule } from '@angular/forms';
+// import { ChallengeService } from '../challenge.service';
+
+// import { Http } from '@angular/http';
 
 // describe('ChallengeComponent', () => {
 //   let component: ChallengeComponent;
@@ -11,7 +16,13 @@
 
 //   beforeEach(async(() => {
 //     TestBed.configureTestingModule({
-//       declarations: [ ChallengeComponent ]
+//       declarations: [ ChallengeComponent ],
+//       providers: [ ChallengeService,
+//             {provide: RouterTestingModule,  useClass:  ChallengeComponent},
+//                    {provide: Http, useValue:ChallengeService  }
+
+//     	],
+//         imports: [ RouterTestingModule,FormsModule  ]
 //     })
 //     .compileComponents();
 //   }));

@@ -2,8 +2,13 @@
 // import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 // import { By } from '@angular/platform-browser';
 // import { DebugElement } from '@angular/core';
-
 // import { InterestsComponent } from './interests.component';
+// import { RouterTestingModule } from '@angular/router/testing';
+// import { FormsModule } from '@angular/forms';
+// import { InterestsService } from '../interests.service';
+// import { Http } from '@angular/http';
+// // import { Something } from './some-module';
+
 
 // describe('InterestsComponent', () => {
 //   let component: InterestsComponent;
@@ -11,7 +16,13 @@
 
 //   beforeEach(async(() => {
 //     TestBed.configureTestingModule({
-//       declarations: [ InterestsComponent ]
+//       declarations: [ InterestsComponent],
+//        providers: [ InterestsService,
+//             {provide: RouterTestingModule,  useClass: InterestsComponent },
+//                    {provide: Http, useValue:InterestsService  }
+
+//     	],
+//         imports: [ RouterTestingModule,FormsModule  ]
 //     })
 //     .compileComponents();
 //   }));
@@ -26,3 +37,5 @@
 //     expect(component).toBeTruthy();
 //   });
 // });
+
+
