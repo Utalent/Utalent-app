@@ -1,27 +1,19 @@
-<div class="container">
-  <div class="row">
-    <nav class="col-sm-3">
-      <ul class="nav nav-pills nav-stacked" data-spy="affix" data-offset-top="205">
-        <li class="active"><a href="#section1">Section 1</a></li>
-        <li><a href="#section2">Section 2</a></li>
-        <li><a href="#section3">Section 3</a></li>
-      </ul>
-    </nav>
-    <div class="col-sm-9">   
-      <h1>Some text to enable scrolling</h1>
-      <h1>Some text to enable scrolling</h1>
-      <h1>Some text to enable scrolling</h1>
-      <h1>Some text to enable scrolling</h1>
-      <h1>Some text to enable scrolling</h1>
-      <h1>Some text to enable scrolling</h1>
-      <h1>Some text to enable scrolling</h1>
-      <h1>Some text to enable scrolling</h1>
-      <h1>Some text to enable scrolling</h1>
-      <h1>Some text to enable scrolling</h1>
-      <h1>Some text to enable scrolling</h1>
-      <h1>Some text to enable scrolling</h1>
-      <h1>Some text to enable scrolling</h1>
-      <h1>Some text to enable scrolling</h1>
-    </div>
-  </div>
+<button [@bar]="barState" (click)="toggleMenu()" class="hamburger">
+  <span>toggle menu</span>
+</button>
+
+<div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
+  <ul class="nav navbar-nav" [@slideInOut]="menuState">
+    <li class="active"><a [routerLink]="['/home']">Home<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>
+    <li class="active"><a [routerLink]="['/users/' + userName]">Profile<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>
+    <li ><a [routerLink]="['/create']">Create Challenge<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-tags"></span></a></li>
+    
+    <ul class="nav navbar-nav" *ngFor='let obj of interests'>
+      <li class="active"><a [routerLink]="['/interest/' + obj]">{{obj}}<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>
+    </ul>
+
+    <li class="active"><a (click)="logOut()" [routerLink]="['']">SignOut<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>
+  </ul>
 </div>
+
+<router-outlet></router-outlet>
