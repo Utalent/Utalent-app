@@ -2,7 +2,7 @@
     top: 20px;
 }*/
 :host {
-  background: white;
+  background: #f5f6f8;
   color: #fff;
   position: fixed;
   left: auto;
