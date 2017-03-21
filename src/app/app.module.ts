@@ -2,12 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { AppComponent } from './app.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { LocalStorageModule } from 'angular-2-local-storage';
-// import { ModalModule } from "ng2-modal";
-// import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
 import { ModalModule } from 'ng2-bootstrap/modal';
 
 
@@ -19,8 +17,8 @@ import { CreateChallengeComponent } from './create-challenge/create-challenge.co
 
 
 
+import { MainService } from './main.service';
 import { ChallengeService } from './challenge.service';
-
 import { AuthService } from './auth.service';
 import { InterestsService } from './interests.service';
 
@@ -31,7 +29,8 @@ import { ProfileService } from './profile.service';
 
 
 import { ChallengeComponent } from './challenge/challenge.component';
-import { CheckLoggedIn } from './check-logged-in';
+import { MainComponent } from './main/main.component';
+import { CheckLoggedIn } from './auth.guard';
 import { PostComponent } from './post/post.component';
 
 
@@ -50,6 +49,11 @@ const ROUTES = [
     redirectTo: 'home',
     pathMatch: 'full',
     // component: HomeComponent
+
+    // redirectTo: 'signin',
+    pathMatch: 'full',
+    component: MainComponent
+
   },
   {
     path: 'signin',
@@ -61,26 +65,24 @@ const ROUTES = [
   },
   {
     path: 'interest',
-    component: InterestComponent
+    component: InterestComponent,
+    canActivate: [CheckLoggedIn] 
+
   },
   {
     path: 'users/:username',
-    component: ProfileComponent
-    // canActivate: [CheckLoggedIn] 
+    component: ProfileComponent,
+    canActivate: [CheckLoggedIn] 
   },
   {
     path: 'challenges/:id',
-    component: ChallengeComponent
-  },
-  {
-    path: 'interest/:name',
-    component: InterestDetailsComponent,
-    // canActivate: [CheckLoggedIn]
+    component: ChallengeComponent,
+     canActivate: [CheckLoggedIn]
   },
   {
     path: 'create',
     component: CreateChallengeComponent,
-    // canActivate: [CheckLoggedIn]
+    canActivate: [CheckLoggedIn]
   },
   {
     path: 'home',
@@ -111,11 +113,16 @@ const ROUTES = [
 
     InterestDetailsComponent,
     ChallengeComponent,
+    CreateChallengeComponent,
+    MainComponent,
     PostComponent,
     CreateChallengeComponent ,
     InterestUserComponent,
+
     SidebarComponent,
-    HomeComponent
+    HomeComponent;
+
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
@@ -126,9 +133,9 @@ const ROUTES = [
           storageType: 'localStorage',
     }),
     ModalModule.forRoot(),
-    RouterModule.forRoot(ROUTES) 
+    RouterModule.forRoot(ROUTES, { useHash: true }) 
   ],
-  providers: [AuthService,InterestsService,ProfileService,ChallengeService,CheckLoggedIn,InterestUserService,{ provide: LocationStrategy, useClass: HashLocationStrategy }],
+  providers: [AuthService,InterestsService,ProfileService,ChallengeService,CheckLoggedIn,InterestUserService, MainService, { provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]
 })
 

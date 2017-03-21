@@ -1,8 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { ProfileService } from '../profile.service';
-import {  ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { InterestUserComponent } from '../interest-user/interest-user.component';
-
+import { ProfileService } from '../profile.service';
 
 @Component({
   selector: 'app-profile',
@@ -11,17 +10,22 @@ import { InterestUserComponent } from '../interest-user/interest-user.component'
 })
 export class ProfileComponent implements OnInit {
  
-  image:any;
-  name:any;
-  constructor(private profileService: ProfileService,private changeDetectorRef: ChangeDetectorRef, private route: ActivatedRoute ) {
-   }
-  private sub;
-  
 
+  private sub;
+  image : any;
+  photo : any;
+  user : Object = {};
+
+
+  constructor(private profileService: ProfileService,
+              private changeDetectorRef: ChangeDetectorRef,
+              private route: ActivatedRoute ) { }
+  
   ngOnInit() {
+
   }
 
-   // this.getPhoto()
+
   // upload image start
   fileChange(input){
     this.readFiles(input.files);
@@ -37,8 +41,6 @@ export class ProfileComponent implements OnInit {
   // Read the file
     reader.readAsDataURL(file);
   }
-
-
 
   readFiles(files){
     // Create the file reader
@@ -56,13 +58,13 @@ export class ProfileComponent implements OnInit {
       this.changeDetectorRef.detectChanges();
     }
   }
-  // upload image end 
 
   Addphoto(image){
     this.sub = this.route.params.subscribe(params => {
       let username= params['username'];
       
       this.name=JSON.parse(username)
+
       this.profileService.Addphoto({image:image, username:JSON.parse(username)}).subscribe(d=>{
       });          
     })

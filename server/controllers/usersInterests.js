@@ -52,7 +52,9 @@ module.exports = {
                    res.status(500).send(err);
                   }
                   else{
-                    results.push(result.name)
+                    if(result){
+                      results.push(result.name)
+                    }
                     if(--interestsToGo === 0){
                       res.json(results)
                     }

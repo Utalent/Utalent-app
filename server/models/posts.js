@@ -2,8 +2,8 @@ let mongoose = require('mongoose');
 
 let PostSchema = new mongoose.Schema({
   text: {
-    type: String,
-    required: true
+    type: String
+    // required: true
   },
   img: {
     type: String

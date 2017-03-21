@@ -1,4 +1,5 @@
 let Comment = require('../models/comments');
+let User = require('../models/users.js');
 
 
 module.exports = {
@@ -21,12 +22,31 @@ module.exports = {
 	findAllPostComments: (postId, callback) => {
 		let post_id = postId;
 		Comment.find({post_id: post_id})
-			.exec( (err, comment) => {
+			.exec( (err, comments) => {
 				if(err){
 					callback(null)
 				}
 				else{
-					callback(comment);
+					let array = comments;
+					let commentToGo = array.length;
+					if(!array.length){
+			              callback([])
+			            }
+					array.forEach(function(comment){
+					let user_id = comment.user_id
+					 User.findOne({_id:user_id}).exec((err,user) =>{
+					 	if(err){
+					 		callback(array);
+					 	}
+					 	else{
+					 		comment.set('owner',user);
+					 		if(--commentToGo === 0){
+							    callback(array);
+					 		}
+					 	}
+					 })
+					 	
+					})
 				}
 			})
 	}

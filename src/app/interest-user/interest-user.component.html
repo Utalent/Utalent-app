@@ -1,5 +1,5 @@
 <div >
-  <div class="panel panel-white border-top-pink">
+  <div class="panel panel-white border-top-purple">
     <div class="panel-heading"><h3 class="panel-title">My Talent</h3>
       <div class="controls pull-right">
         <span class="pull-right clickable"> 
@@ -11,8 +11,8 @@
       <div class="body-section">
         <br>
         <div *ngFor='let interest of interests'> 
-          <button type="button" class="btn btn-danger btn-lg btn-block " [routerLink]="['/interest/' + interest]" >
-          {{interest}} </button>  
+          <button type="button" class="btn btn-success btn-lg btn-block " [routerLink]="['/interest/' + interest]" >
+          {{interest}}</button>  
           <br>
           <br>
         </div>

@@ -13,7 +13,6 @@ module.exports = function(app, express) {
 	});
 
 	app.post('/api/users/signup', userController.signup);
-
 	app.post('/api/users/signin', userController.signin);
 	app.get('/api/users/:username', userController.getProfile);
 
@@ -21,6 +20,7 @@ module.exports = function(app, express) {
 	app.get('/api/users/getphoto', userController.getphoto);
 
 	app.post('/api/posts/add', postController.addPost);
+	app.get('/api/posts', postController.getAllPosts);
 
 	app.post('/api/posts/addLike', likeController.addLike);
 	app.post('/api/posts/disLike', likeController.disLike);

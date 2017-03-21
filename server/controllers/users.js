@@ -35,7 +35,8 @@ module.exports = {
     User.findOne({username: user.username})
       .exec( (err, found) => {
         if (found) {
-          res.json('User already exist!');
+
+          res.status(500).send('User already exist!');
         } else {
           // make a new user if not one
           return User.create(user, (err, newUser) => {
@@ -52,13 +53,14 @@ module.exports = {
   },
 
   getProfile:(req, res) =>{
-    let userName = req.body;
+    let userName = req.params.username;
     User.findOne({username:userName})
     .exec((err, found)=>{
       if (found){
+        console.log("fffffffffffffffffffffff")
         res.json(found)
       }else {
-        res.json("user does not exist")
+        res.status(500).send("user does not exist")
       }
     }) 
   },
