@@ -46,13 +46,8 @@ import { HomeComponent } from './home/home.component';
 const ROUTES = [
   {
     path: '',
-    redirectTo: 'home',
     pathMatch: 'full',
-    // component: HomeComponent
-
-    // redirectTo: 'signin',
-    pathMatch: 'full',
-    component: MainComponent
+    component: HomeComponent
 
   },
   {
@@ -120,9 +115,8 @@ const ROUTES = [
     InterestUserComponent,
 
     SidebarComponent,
-    HomeComponent;
+    HomeComponent
 
-    SidebarComponent
   ],
   imports: [
     BrowserModule,
