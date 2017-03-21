@@ -17,6 +17,16 @@ export class ProfileService {
 			return res.json();
 		})
 	}
+
+
+	getProfile(user){
+		console.log("getting profile info", user)
+		return this.http.get('/api/users/' + user.username).map(res=>{
+			console.log("user done", res.json())
+			return res.json();
+		})
+
+	}
 }
 
 

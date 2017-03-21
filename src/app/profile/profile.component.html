@@ -1,67 +1,82 @@
-<app-sidebar></app-sidebar>
 
+<app-sidebar></app-sidebar>
 <div class="container">
   <div class="row">
-  
-
     <div class="col-sm-8 col-sm-offset-2">
       <div class="panel panel-white profile-widget">
         <div class="row"> 
           <div class="col-sm-12">
             <div class="image-container bg2"> 
-              <img src="{{photo}}" class="avatar" alt="avatar"></div></div>
-              <div class="col-sm-12">
-                <div class="details"><h4>{{name}} <i class="fa fa-sheild"></i></h4>
-                  <div> Works at Bootdey.com </div>
-                  <div>Attended University of Bootdey.com </div>
-                  <div>Bootdey Land</div>
-                  <div class="mg-top-10"> 
-                   <button (click)="getPhoto()" type="submit" class="btn btn-green">Add</button>
-                   <label class="btn btn-primary"> Browse&hellip; <input type="file" style="display: none;" (change)="fileChange(input)"  #input  required accept="image/*" >
-                   </label>
-                 </div>
-
-
-
-
-
-               </div>
-             </div></div></div>
-             <div class="row">
-              <div class="col-sm-6">
-                <div class="panel panel-white border-top-purple">
-                  <div class="panel-heading"><h3 class="panel-title">My Story</h3>
-                    <div class="controls pull-right">
-                     <span class="pull-right clickable"> 
-                       <i class="fa fa-chevron-up"></i> </span></div></div>
-                       <div class="panel-body">
-                         <div class="body-section"><h5 class="section-heading">About</h5>
-                           <p class="section-content">A brief description of you</p></div>
-                           <div class="body-section"><h5 class="section-heading">Introduction</h5>
-                             <p class="section-content">Put a little about yourself here so people know they've found the correct Kevin.</p></div>
-                             <div class="body-section"><h5 class="section-heading">Acheivements</h5>
-                               <p class="section-content">Examples: survived high school, have 3 kids, etc.</p></div>
-                               <div class="body-section">
-                                 <a href="#" class="btn btn-purple btn-sm">Edit</a></div></div></div>
-
-
-                                 <app-interest-user> </app-interest-user>
-
-
-                               </div>
-                               <div class="col-sm-6">
-
-                                <div class="panel panel-white border-top-orange">
-                                  <div class="panel-heading"><h3 class="panel-title">Social Statistics</h3>
-                                    <div class="controls pull-right"> 
-                                      <span class="pull-right clickable"> 
-                                        <i class="fa fa-chevron-up"></i> </span></div></div>
-                                        <div class="panel-body">
-                                          <div class="body-section"><h5 class="section-heading">Friends</h5>
-                                            <p class="section-content">242</p></div>
-                                            <div class="body-section"><h5 class="section-heading">Posts</h5>
-                                              <p class="section-content">2240</p></div>
-                                              <div class="body-section"><h5 class="section-heading">Score</h5>
-                                                <p class="section-content">18</p></div></div></div>
-
-                                              </div></div></div></div></div> 
+              <img src="{{user.image}}" class="avatar" alt="avatar">
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <div class="details"><h4>{{user.username}} <i class="fa fa-sheild"></i></h4>
+              <div>{{user.email}} </div>
+              <div>Attended University of Utalent</div>
+              <div class="mg-top-10"> 
+                <button (click)="getPhoto()" type="submit" class="btn btn-green">Add</button>
+                  <label class="btn btn-primary"> Browse&hellip; <input type="file" style="display: none;" (change)="fileChange(input)"  #input  required accept="image/*" >
+                  </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="panel panel-white border-top-purple">
+            <div class="panel-heading"><h3 class="panel-title">My Story</h3>
+              <div class="controls pull-right">
+                <span class="pull-right clickable"><i class="fa fa-chevron-up"></i> </span>
+              </div>
+            </div>
+            <div class="panel-body">
+              <div class="body-section">
+                <h5 class="section-heading">About</h5>
+                <p class="section-content">A brief description of you</p>
+              </div>
+              <div class="body-section">
+                <h5 class="section-heading">Introduction</h5>
+                <p class="section-content">Put a little about yourself here so people know they've found the correct Kevin.</p>
+              </div>
+              <div class="body-section">
+                <h5 class="section-heading">Acheivements</h5>
+                <p class="section-content">Examples: survived high school, have 3 kids, etc.</p>
+              </div>
+              <div class="body-section">
+                <a class="btn btn-purple btn-sm">Edit</a>
+              </div>
+            </div>
+          </div>
+          <app-interest-user></app-interest-user>
+        </div>
+        <div class="col-sm-6">
+          <div class="panel panel-white border-top-purple">
+            <div class="panel-heading">
+              <h3 class="panel-title">Social Statistics</h3>
+              <div class="controls pull-right"> 
+                <span class="pull-right clickable"> 
+                <i class="fa fa-chevron-up"></i></span>
+              </div>
+            </div>
+            <div class="panel-body">
+              <div class="body-section">
+                <h5 class="section-heading">Friends</h5>
+                <p class="section-content">Soon</p>
+              </div>
+              <div class="body-section">
+                <h5 class="section-heading">Posts</h5>
+                <p class="section-content">2240</p>
+              </div>
+              <div class="body-section">
+                <h5 class="section-heading">Score</h5>
+                <p class="section-content">18</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 

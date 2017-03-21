@@ -6,8 +6,6 @@ import { RouterModule, Router } from '@angular/router';
 import { AppComponent } from './app.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { LocalStorageModule } from 'angular-2-local-storage';
-// import { ModalModule } from "ng2-modal";
-// import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
 import { ModalModule } from 'ng2-bootstrap/modal';
 
 
@@ -19,8 +17,8 @@ import { CreateChallengeComponent } from './create-challenge/create-challenge.co
 
 
 
+import { MainService } from './main.service';
 import { ChallengeService } from './challenge.service';
-
 import { AuthService } from './auth.service';
 import { InterestsService } from './interests.service';
 
@@ -31,6 +29,7 @@ import { ProfileService } from './profile.service';
 
 
 import { ChallengeComponent } from './challenge/challenge.component';
+import { MainComponent } from './main/main.component';
 import { CheckLoggedIn } from './auth.guard';
 import { PostComponent } from './post/post.component';
 
@@ -46,9 +45,9 @@ import { SidebarService } from './sidebar.service';
 const ROUTES = [
   {
     path: '',
-    redirectTo: 'signin',
-    pathMatch: 'full'
-    // component: AppComponent
+    // redirectTo: 'signin',
+    pathMatch: 'full',
+    component: MainComponent
   },
   {
     path: 'signin',
@@ -73,11 +72,6 @@ const ROUTES = [
     path: 'challenges/:id',
     component: ChallengeComponent,
      canActivate: [CheckLoggedIn]
-  },
-  {
-    path: 'interest/:name',
-    component: InterestDetailsComponent,
-    canActivate: [CheckLoggedIn]
   },
   {
     path: 'create',
@@ -108,10 +102,13 @@ const ROUTES = [
 
     InterestDetailsComponent,
     ChallengeComponent,
+    CreateChallengeComponent,
+    MainComponent,
     PostComponent,
     CreateChallengeComponent ,
     InterestUserComponent,
     SidebarComponent
+
   ],
   imports: [
     BrowserModule,
@@ -124,7 +121,7 @@ const ROUTES = [
     ModalModule.forRoot(),
     RouterModule.forRoot(ROUTES, { useHash: true }) 
   ],
-  providers: [AuthService,InterestsService,ProfileService,ChallengeService,CheckLoggedIn,InterestUserService,{ provide: LocationStrategy, useClass: HashLocationStrategy }],
+  providers: [AuthService,InterestsService,ProfileService,ChallengeService,CheckLoggedIn,InterestUserService, MainService, { provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]
 })
 
