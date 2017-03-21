@@ -1,0 +1,56 @@
+.pic {
+	background: #253340 url('../../assets/12.jpg') no-repeat 50% top;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	padding-top: 700px;
+}
+
+
+.d{
+    padding: 25px;
+    margin: 25px;
+	height: 150px;
+    width: 40%;
+   	position: absolute;
+    left: 330px;
+    top: 330px;
+    background-color: rgba(255,255,255,0.7);
+    border-radius: 10px;
+}
+
+
+
+.button {
+    background-color: #784263;
+    border: none;
+    color: white;
+    padding: 5px 100px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 0px 115px;
+    cursor: pointer;
+border-radius: 6px;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+
+
+
+.text1{
+	 color: white;
+	   top: 0px;
+padding: 25px;
+    margin: 25px;
+	height: 150px;
+    width: 50%;
+   	position: absolute;
+    left: 260px;
+    top: 80px;
+    font-size: 50px;
+    text-align: center;
+     font-family: "Comic Sans MS", cursive, sans-serif;
+}
