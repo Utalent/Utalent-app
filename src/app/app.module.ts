@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { AppComponent } from './app.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { LocalStorageModule } from 'angular-2-local-storage';
@@ -29,8 +29,8 @@ import { ProfileService } from './profile.service';
 
 
 import { ChallengeComponent } from './challenge/challenge.component';
-import { CheckLoggedIn } from './check-logged-in';
 import { MainComponent } from './main/main.component';
+import { CheckLoggedIn } from './auth.guard';
 import { PostComponent } from './post/post.component';
 
 
@@ -59,21 +59,24 @@ const ROUTES = [
   },
   {
     path: 'interest',
-    component: InterestComponent
+    component: InterestComponent,
+    canActivate: [CheckLoggedIn] 
+
   },
   {
     path: 'users/:username',
-    component: ProfileComponent
-    // canActivate: [CheckLoggedIn] 
+    component: ProfileComponent,
+    canActivate: [CheckLoggedIn] 
   },
   {
     path: 'challenges/:id',
-    component: ChallengeComponent
+    component: ChallengeComponent,
+     canActivate: [CheckLoggedIn]
   },
   {
     path: 'create',
     component: CreateChallengeComponent,
-    // canActivate: [CheckLoggedIn]
+    canActivate: [CheckLoggedIn]
   },
   {
     path: 'interest/:name',
@@ -116,7 +119,7 @@ const ROUTES = [
           storageType: 'localStorage',
     }),
     ModalModule.forRoot(),
-    RouterModule.forRoot(ROUTES) 
+    RouterModule.forRoot(ROUTES, { useHash: true }) 
   ],
   providers: [AuthService,InterestsService,ProfileService,ChallengeService,CheckLoggedIn,InterestUserService, MainService, { provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]

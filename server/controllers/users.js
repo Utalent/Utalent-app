@@ -35,7 +35,8 @@ module.exports = {
     User.findOne({username: user.username})
       .exec( (err, found) => {
         if (found) {
-          res.json('User already exist!');
+
+          res.status(500).send('User already exist!');
         } else {
           // make a new user if not one
           return User.create(user, (err, newUser) => {

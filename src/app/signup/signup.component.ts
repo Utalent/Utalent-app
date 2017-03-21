@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import 'rxjs/add/operator/map';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -12,7 +13,7 @@ export class SignupComponent implements OnInit {
   
   user ={};
 
-  constructor (private authService: AuthService) { }
+  constructor (private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -20,8 +21,9 @@ export class SignupComponent implements OnInit {
   signup() {
     this.authService.signup(this.user).subscribe(data => {
         if (data){
-          localStorage.setItem('com.username',JSON.stringify(data.username))
+           this.router.navigate(['interest'])
           localStorage.setItem('com.utalent',JSON.stringify(data.token))
+          localStorage.setItem('com.username',JSON.stringify(data.username))
           localStorage.setItem('com.userId',JSON.stringify(data.id))
         }
     })
