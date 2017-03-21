@@ -7,6 +7,7 @@ let CommentController = require('./comments.js');
 module.exports = {
   
   addPost: function(req, res){
+    console.log("addddd post",req.body)
     let post = req.body;
     let GMT = new Date();
     let local = new Date(GMT.valueOf() + 120 * 60000);

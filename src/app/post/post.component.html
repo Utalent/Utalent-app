@@ -6,13 +6,13 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <input type="email" class="form-control" placeholder="Write a post..." [(ngModel)] = "Post.text" (keyup.enter) = "post(Post,pchallenge._id)">
+                    <input  class="form-control" placeholder="Write a post..." [(ngModel)] = "Post.text" (keyup.enter) = "post(Post,pchallenge._id)">
                 </div>
                 <div class="panel-footer">
                     <div class="btn-group">
                         <button type="button" class="btn btn-link"><i class="fa fa-map-marker"></i></button>
                         <button type="button" class="btn btn-link"><i class="fa fa-users"></i></button>
-                        <button type="button" class="btn btn-link"><i class="fa fa-camera"></i></button>
+                        <label   class="btn btn-link"><input type="file" name="photo" style="display: none;" (change)="fileChange(input)"  #input  required accept="image/*" ><i class="fa fa-camera" ></i></label>
                         <button type="button" class="btn btn-link"><i class="fa fa-video-camera"></i></button>
                         <button type="button" class="btn btn-link"><i class="fa fa-calendar-o"></i></button>
                     </div>

@@ -10,7 +10,7 @@ export class CheckLoggedIn implements CanActivate {
   	if(localStorage.getItem('com.utalent')){
   		return true
   	}
-  	this.router.navigate(['signin'])
+  	this.router.navigate([''])
   	return false
   }
 }  
