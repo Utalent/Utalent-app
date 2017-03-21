@@ -85,18 +85,16 @@ const ROUTES = [
     component: InterestDetailsComponent,
     canActivate: [CheckLoggedIn]
   }
-
 ];
+
 @NgModule({
   declarations: [
     AppComponent,
     SigninComponent,
     SignupComponent,
     InterestComponent,
-
     ChallengeComponent,
     ProfileComponent,
-
     InterestDetailsComponent,
     ChallengeComponent,
     CreateChallengeComponent,
@@ -104,10 +102,8 @@ const ROUTES = [
     PostComponent,
     CreateChallengeComponent ,
     InterestUserComponent,
-
     SidebarComponent,
     HomeComponent
-
   ],
   imports: [
     BrowserModule,
