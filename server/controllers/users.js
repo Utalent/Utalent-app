@@ -42,7 +42,7 @@ module.exports = {
           return User.create(user, (err, newUser) => {
               // create token to send back for auth
               if(err){
-                res.json(err);
+                res.status(500);
               } else {
                 let token = jwt.encode(newUser, 'secret');
                 res.json({token: token,id :newUser._id, username: newUser.username}); 

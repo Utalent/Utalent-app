@@ -20,11 +20,12 @@ export class SignupComponent implements OnInit {
    
   signup() {
     this.authService.signup(this.user).subscribe(data => {
-       
-           this.router.navigate(['interest'])
+         if(data){
           localStorage.setItem('com.utalent',JSON.stringify(data.token))
           localStorage.setItem('com.username',JSON.stringify(data.username))
           localStorage.setItem('com.userId',JSON.stringify(data.id))
+           this.router.navigate(['interest'])
+         }
     })
   }
 }
