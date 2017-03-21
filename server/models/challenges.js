@@ -10,6 +10,9 @@ let ChallengeSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  image: {
+    type: String
+  },
   user_id: {
     type: mongoose.Schema.Types.ObjectId, 
     ref: 'users'

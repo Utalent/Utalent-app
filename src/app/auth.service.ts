@@ -25,7 +25,13 @@ export class AuthService {
 
   signup(user) {
   	return this.http.post('/api/users/signup', user).map(resp => {
-     return resp.json();
+      if(resp.status === 500){
+        return false;
+      }
+      else{
+        localStorage.setItem('com.utalent',JSON.stringify(resp.json().token))
+        return resp.json();
+      }
     });
   }
 

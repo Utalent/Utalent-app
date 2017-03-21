@@ -37,8 +37,10 @@ import { PostComponent } from './post/post.component';
 import { InterestUserComponent } from './interest-user/interest-user.component';
 import { InterestUserService } from './interest-user.service';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { SidebarService } from './sidebar.service';
+
+
 import { HomeComponent } from './home/home.component';
+
 
 
 
@@ -48,7 +50,11 @@ const ROUTES = [
     path: '',
     pathMatch: 'full',
     component: HomeComponent
-
+  },
+  {
+    path: 'main',
+    component: MainComponent,
+    canActivate: [CheckLoggedIn]
   },
   {
     path: 'signin',
@@ -61,8 +67,7 @@ const ROUTES = [
   {
     path: 'interest',
     component: InterestComponent,
-    canActivate: [CheckLoggedIn] 
-
+    canActivate: [CheckLoggedIn]
   },
   {
     path: 'users/:username',
@@ -72,26 +77,12 @@ const ROUTES = [
   {
     path: 'challenges/:id',
     component: ChallengeComponent,
-     canActivate: [CheckLoggedIn]
-  },
-  {
-    path: 'create',
-    component: CreateChallengeComponent,
     canActivate: [CheckLoggedIn]
   },
-  {
-    path: 'home',
-    component: HomeComponent,
-    // canActivate: [CheckLoggedIn]
-  },
+  
   {
     path: 'interest/:name',
     component: InterestDetailsComponent,
-    canActivate: [CheckLoggedIn]
-  },
-  {
-    path: 'profile',
-    component:InterestUserComponent,
     canActivate: [CheckLoggedIn]
   }
 

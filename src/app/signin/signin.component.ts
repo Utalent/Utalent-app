@@ -18,10 +18,12 @@ export class SigninComponent implements OnInit {
   ngOnInit() { }
   
   signin() {
-    this.authService.signin(this.user).subscribe(data =>{ 
+    this.authService.signin(this.user).subscribe(data => {
+      if(data){
         localStorage.setItem('com.userId',JSON.stringify(data.id))
         localStorage.setItem('com.username',JSON.stringify(data.username))
         this.router.navigate(['/users/'+ JSON.stringify(data.username)])
+      }
     })
   }
 }
