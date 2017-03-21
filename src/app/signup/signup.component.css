@@ -1,41 +1,41 @@
-div.header-image{
- position: relative;
- width:100%;
- height: 150px;
- background-position: center;
- background-size: cover;
+
+.pic {
+	background: #253340 url('../../assets/12.jpg') no-repeat 50% top;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	padding-top: 700px;
 }
-div.heading-text{
- position: absolute;
- bottom: 10px;
- width: 100%;
- padding: 10px;
- margin: 0px !important;
- opacity: 0.8;
- color: #373737;
- background-color: #d8d8d8;
+
+.d{
+    padding: 25px;
+    margin: 25px;
+	height: 480px;
+    width: 40%;
+   	position: absolute;
+    left: 350px;
+    top: 90px;
+    background-color: rgba(255,255,255,0.7);
+    border-radius: 10px;
 }
-div.heading-border{
- position: absolute;
- bottom: 0px;
- width: 100%;
- height: 10px;
+
+
+.button {
+    background-color: #784263;
+    border: none;
+    color: white;
+    padding: 5px 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 25px 10px;
+    cursor: pointer;
+border-radius: 6px;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    /*left: 130px;*/
 }
-div.content-container{
- min-height: 200px;
- margin-bottom: 15px;
- border: 1px solid #cccccc;
- padding: 10px;
-}
-div.calendar-image{
- background-image: url(../../assets/dramaticaBackground.jpg);
-}
-div.calendar-image div.heading-border{
- background-color: #00147a;
-}
-div.forum-image{
- background-image: url(../../assets/dramaticaBackground.jpg);
-}
-div.forum-image div.heading-border{
- background-color: #be0f35;
-}
+
+
+
