@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { AppComponent } from './app.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { LocalStorageModule } from 'angular-2-local-storage';
@@ -119,7 +119,7 @@ const ROUTES = [
           storageType: 'localStorage',
     }),
     ModalModule.forRoot(),
-    RouterModule.forRoot(ROUTES) 
+    RouterModule.forRoot(ROUTES, { useHash: true }) 
   ],
   providers: [AuthService,InterestsService,ProfileService,ChallengeService,CheckLoggedIn,InterestUserService,{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]
