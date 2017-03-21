@@ -34,26 +34,20 @@ module.exports = {
 			            }
 					array.forEach(function(comment){
 					let user_id = comment.user_id
-					console.log("commmmmm",user_id)
 					 User.findOne({_id:user_id}).exec((err,user) =>{
 					 	if(err){
-					 		console.log("errrrrrrrrrrrrrrrrrrrrrrrrrrrrror")
 					 		callback(array);
 					 	}
 					 	else{
 					 		comment.set('owner',user);
 					 		if(--commentToGo === 0){
-					 			console.log("callllllllback",array)
 							    callback(array);
-					 			
 					 		}
 					 	}
 					 })
-                            
 					 	
 					})
 				}
-
-			 })
+			})
 	}
 }	

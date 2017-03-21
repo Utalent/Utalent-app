@@ -1,17 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
+
 
 @Injectable()
 export class AuthService {
-  private loggedIn = false;
 
-  constructor(private http: Http) {
-    this.loggedIn = !!localStorage.getItem('com.utalent'); 
-  }
+  constructor(private http: Http) { }
 
   signin(user) {
   	return this.http.post('/api/users/signin', user).map(resp => {
-      console.log("oooooooo", resp)
      if(resp.status === 500){
         return false;
       }
@@ -31,13 +29,9 @@ export class AuthService {
     });
   }
 
-  isLoggedIn() {
-    return this.loggedIn;
-  }
 
   logout() {
     localStorage.removeItem('com.utalent');
-    this.loggedIn = false;
   }
 
   

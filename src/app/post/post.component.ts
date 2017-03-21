@@ -11,11 +11,23 @@ import { ChallengeComponent } from '.././challenge/challenge.component';
 export class PostComponent implements OnInit {
 	comment = { user_id:0 , post_id:0, text:'' };
   	@Input() pchallenge:Object;
+    Post = {user_id:0 , challenge_id:0 };
 
   constructor( private challengeService : ChallengeService) { }
 
   ngOnInit() {
 
+  }
+
+
+    post(Post,challengeId){
+      console.log("7777",challengeId)
+    this.Post.challenge_id = challengeId;
+    this.Post.user_id = JSON.parse(localStorage.getItem('com.userId'))
+    console.log(this.Post);
+    this.challengeService.addPost (Post).subscribe((x) => {
+    location.reload()
+    });
   }
 
    //add like

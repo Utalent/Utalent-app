@@ -31,7 +31,7 @@ import { ProfileService } from './profile.service';
 
 
 import { ChallengeComponent } from './challenge/challenge.component';
-import { CheckLoggedIn } from './check-logged-in';
+import { CheckLoggedIn } from './auth.guard';
 import { PostComponent } from './post/post.component';
 
 

@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <input type="email" class="form-control" placeholder="What are you doing now?">
+                    <input type="email" class="form-control" placeholder="Write a post..." [(ngModel)] = "Post.text" (keyup.enter) = "post(Post,pchallenge._id)">
                 </div>
                 <div class="panel-footer">
                     <div class="btn-group">
@@ -18,7 +18,7 @@
                     </div>
                     
                     <div class="pull-right">
-                        <button type="button" class="btn btn-success">submit</button>
+                        <button type="button" class="btn btn-success" (click) = "post(Post,pchallenge._id)" >post</button>
                     </div>  
                 </div>
             </div>
@@ -27,7 +27,14 @@
             
             <div class="panel panel-default" >
                 <div class="panel-heading">
+                  <a class="pull-left" *ngIf="post.owner.image">  
                     <img src="{{post.owner.image}}" class="img-rounded">
+                    </a>
+
+                    <a class="pull-left" *ngIf="! post.owner.image">  
+                    <img src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" class="img-rounded">
+                    </a>
+
                     <div class="pull-right text-right" >
                         <i class="fa fa-clock-o"></i>  {{post.created_at.date}} {{post.created_at.time}}
                     </div>
@@ -50,7 +57,7 @@
                         </div>
                              
                     </div>  
-                    
+                    comments:
                     <div class="media"  *ngFor='let comment of post.comments'>
                         <a class="pull-left" *ngIf="comment.owner.image">
                             <img class="media-object img-rounded" src="{{comment.owner.image}}">
