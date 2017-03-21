@@ -15,6 +15,9 @@ let CommentSchema = new mongoose.Schema({
   },
   created_at: {
     type: Object
+  },
+  owner:{
+    type:Object
   }
 });
 module.exports = mongoose.model('comments', CommentSchema);

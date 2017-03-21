@@ -31,7 +31,7 @@ import { ProfileService } from './profile.service';
 
 
 import { ChallengeComponent } from './challenge/challenge.component';
-import { CheckLoggedIn } from './check-logged-in';
+import { CheckLoggedIn } from './auth.guard';
 import { PostComponent } from './post/post.component';
 
 
@@ -47,7 +47,7 @@ const ROUTES = [
   {
     path: '',
     redirectTo: 'signin',
-    pathMatch: 'full',
+    pathMatch: 'full'
     // component: AppComponent
   },
   {
@@ -60,26 +60,29 @@ const ROUTES = [
   },
   {
     path: 'interest',
-    component: InterestComponent
+    component: InterestComponent,
+    canActivate: [CheckLoggedIn] 
+
   },
   {
     path: 'users/:username',
-    component: ProfileComponent
-    // canActivate: [CheckLoggedIn] 
+    component: ProfileComponent,
+    canActivate: [CheckLoggedIn] 
   },
   {
     path: 'challenges/:id',
-    component: ChallengeComponent
+    component: ChallengeComponent,
+     canActivate: [CheckLoggedIn]
   },
   {
     path: 'interest/:name',
     component: InterestDetailsComponent,
-    // canActivate: [CheckLoggedIn]
+    canActivate: [CheckLoggedIn]
   },
   {
     path: 'create',
     component: CreateChallengeComponent,
-    // canActivate: [CheckLoggedIn]
+    canActivate: [CheckLoggedIn]
   },
   {
     path: 'interest/:name',
