@@ -5,17 +5,17 @@
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
-	padding-top: 700px;
+	padding-top: 820px;
 }
 
 .d{
     padding: 25px;
     margin: 25px;
-	height: 480px;
+	height: 700px;
     width: 40%;
    	position: absolute;
     left: 350px;
-    top: 90px;
+    top: 40px;
     background-color: rgba(255,255,255,0.7);
     border-radius: 10px;
 }

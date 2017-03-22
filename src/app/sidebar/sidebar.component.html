@@ -5,7 +5,9 @@
 <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
   <ul class="nav navbar-nav" [@slideInOut]="menuState">
     <li class="active"><a [routerLink]="['/main']">Home<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>
-    <li class="active"><a [routerLink]="['/users/' + userName]">Profile<span style="font-size:16px;" class="glyphicon glyphicon-user"></span></a></li>
+    <br>
+    <br>
+    <li class="active" style="padding-left: 3px;" ><a [routerLink]="['/users/' + userName]">Profile<span style="font-size:16px;" class="glyphicon glyphicon-user"></span></a></li>
     <ul class="nav navbar-nav" *ngFor='let obj of interests'>
       <li class="active"><a [routerLink]="['/interest/' + obj]">{{obj}}<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-th-list"></span></a></li>
     </ul>

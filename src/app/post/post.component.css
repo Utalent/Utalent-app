@@ -2,6 +2,14 @@ html{
     align-content: right;
 
 }
+
+.txt {
+    color: #784263;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    /*left: 130px;*/
+}
+
+
 body{margin-top:20px;
 background:#eee;
 }
@@ -22,6 +30,35 @@ background:#eee;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
+}
+
+
+/*.btn-purple {
+  background-color: #784263;
+  border-color: #784263;
+  color: white;
+}
+.btn-purple:hover,
+.btn-purple:visited {
+  background-color: #8e44ad;
+  color: white;
+}*/
+
+
+
+.button {
+    background-color: #784263;
+  
+    color: white;
+    padding: 1px 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    /*margin: 0px 5px;*/
+    cursor: pointer;
+border-radius: 6px;
+    font-family: "Comic Sans MS", cursive, sans-serif;
 }
 
 /*#first{
@@ -148,3 +185,4 @@ btn-group
     -webkit-transition: all .15s;
     transition: all .15s;
 }
+
