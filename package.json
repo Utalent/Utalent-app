@@ -7,7 +7,8 @@
     "npm": "3.10.8"
   },
   "scripts": {
-    "start": "node server.js"
+    "postinstall": "npm install -g nodemon",
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
