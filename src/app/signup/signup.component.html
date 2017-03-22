@@ -15,6 +15,18 @@
         <label for="password" class="control-label" style=" color: #784263; font-family: 'Comic Sans MS', cursive, sans-serif;font-weight: bold">Password</label>           
         <input id="login-password" type="password" class="form-control" name="password" placeholder="password" [(ngModel)]="user.password">  
 
+        <br>
+        <label  class="control-label" style=" color: #784263; font-family: 'Comic Sans MS', cursive, sans-serif;font-weight: bold">information</label>           
+        <input type="text" class="form-control" name="about_you" placeholder="information" [(ngModel)]="user.about_you">  
+
+        <br>
+        <label  class="control-label" style=" color: #784263; font-family: 'Comic Sans MS', cursive, sans-serif;font-weight: bold">Acheivements</label>           
+        <input type="text" class="form-control" name="Acheivements" placeholder="Acheivements" [(ngModel)]="user.Acheivements">  
+
+         <br>
+        <label  class="control-label" style=" color: #784263; font-family: 'Comic Sans MS', cursive, sans-serif;font-weight: bold">status</label>           
+        <input type="text" class="form-control" name="status" placeholder="status" [(ngModel)]="user.status">  
+
         <div>
             <a class="button"   (click)="signup()" [routerLink]="['/interest']"> Sign up  </a>
         </div>

@@ -23,7 +23,10 @@ export class ProfileComponent implements OnInit {
     this.sub = this.route.params.subscribe(params => {
       let username= params['username'];
       this.profileService.getProfile({username: JSON.parse(username)}).subscribe(info=>{
-        this.user = info}
+        this.user = info
+        console.log(this.user, "hhhhhhhhhhhhhhhhhhhhhhh")
+
+      }
         );
     })
   }

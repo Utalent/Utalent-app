@@ -3,6 +3,10 @@
     max-width: 100%;
     height: auto;
 }
+.txt {
+    color: #784263;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
 
 /*panel heading*/
 .panel-heading {

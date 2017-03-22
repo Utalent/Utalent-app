@@ -1,4 +1,9 @@
 /* Component: Panel */
+.txt {
+    color: #784263;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    /*left: 130px;*/
+}
 .panel {
   border-radius: 0;
   margin-bottom: 30px;
