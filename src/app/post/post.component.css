@@ -1,6 +1,16 @@
+html{
+    align-content: right;
 
+}
 body{margin-top:20px;
 background:#eee;
+}
+
+.panel-body{
+    align-content: right;
+    padding-left: 100px;
+    margin-right: 100px; 
+    /*margin-left: 50px; */
 }
 
 .form-control {
@@ -14,12 +24,12 @@ background:#eee;
     box-shadow: none;
 }
 
-.activity{
+/*#first{
     margin-left: 200px; 
     background:white;
-    /*padding-right:300px;*/
-    /*padding-left: :300px;*/
-}
+    padding-right:300px;
+    padding-left: :300px;
+}*/
 
 .col-md-12{
   /*  padding-right:100px;
