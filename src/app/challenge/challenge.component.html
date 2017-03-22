@@ -1,16 +1,15 @@
 
 <div class="col-md-2"></div>
 <div class="col-md-8 bootstrap snippets">
-<div class="mar-btm" >
-<div>
-<hr>
-<a href="#" class= "btn-link text-semibold media-heading box-inline"></a>
-</div>
-<h2>{{challenge.title}}</h2>
-<p> {{challenge.description}}</p>
-
-<div class="panel">
-<div class="panel-body">
+	<div class="mar-btm" >
+		<div>
+			<hr>
+			<a href="#" class= "btn-link text-semibold media-heading box-inline"></a>
+		</div>
+		<h2>{{challenge.title}}</h2>
+		<p> {{challenge.description}}</p>
+		<div class="panel">
+			<div class="panel-body">
 <!-- <textarea class="form-control" rows="2" placeholder="add post " [(ngModel)] = "Post.text"></textarea> -->
 <!-- <div class="mar-top clearfix"> -->
 <!-- <button class="btn btn-sm btn-primary pull-right" (click) = "post(Post,challenge._id)">
@@ -19,21 +18,20 @@
 <a class="btn btn-trans btn-icon fa fa-camera add-tooltip" href="#"></a>
 <a class="btn btn-trans btn-icon fa fa-file add-tooltip" href="#"></a> -->
 <!-- </div> -->
-</div>
-</div>
-<div class="panel">
-<div class="panel-body">
-<div class="media-block"> 
-<a class="media-left" href="#">
-<img ></a>
-<div class="media-body">
-
- <app-post [pchallenge]='challenge'></app-post>
-</div>
-</div>
-</div>
-</div>
-</div>
+			</div>
+		</div>
+		<div class="panel">
+			<div class="panel-body">
+				<div class="media-block"> 
+					<a class="media-left" href="#">
+					<img ></a>
+					<div class="media-body">
+						<app-post [pchallenge]='challenge' (notify)='onNotify($event)'></app-post>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 <hr>
 <br>
