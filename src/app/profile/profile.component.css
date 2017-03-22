@@ -8,15 +8,15 @@ background:#eee;
 .profile-widget .image-container {
   background-size: cover;
   background-position: center;
-  padding: 190px 0 10px;
+  padding: 250px 0 10px;
 }
 .profile-widget .image-container .profile-background {
   width: 100%;
   height: auto;
 }
 .profile-widget .image-container .avatar {
-  width: 120px;
-  height: 120px;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
   margin: 0 auto -60px;
   display: block;
@@ -28,8 +28,8 @@ background:#eee;
 
 /* Component: Mini Profile Widget */
 .mini-profile-widget .image-container .avatar {
-  width: 180px;
-  height: 180px;
+  width: 230px;
+  height: 230px;
   display: block;
   margin: 0 auto;
   border-radius: 50%;
@@ -115,7 +115,7 @@ background:#eee;
 }
 
 .bg2 {
-  background-image: url('http://www.bootdey.com/img/Content/flores-amarillas-wallpaper.jpeg');
+  background-image: url('../../assets/12.jpg');
 }
 
 
@@ -145,3 +145,11 @@ background:#eee;
 .progress.progress-xs {
     height: 12px;
 } 
+
+
+.txt {
+    color: #784263;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    /*left: 130px;*/
+}
+

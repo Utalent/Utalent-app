@@ -21,7 +21,13 @@ let UserSchema = new mongoose.Schema({
   image:{
     type :String
   },
-  fb_ID: {
+  Acheivements: {
+    type: String
+  },
+  about_you: {
+    type: String
+  },
+  status: {
     type: String
   }
 });

@@ -13,7 +13,7 @@
                     </div>
                     
                     <div class="pull-right">
-                        <button type="button" class="btn btn-success" (click) = "post(Post,pchallenge._id)" >post</button>
+                        <button type="button" class="button"  (click) = "post(Post,pchallenge._id)" >post</button>
                     </div>  
                 </div>
             </div>
@@ -33,7 +33,7 @@
                     <div class="pull-right text-right" >
                         <i class="fa fa-clock-o"></i>  {{post.created_at.date}} {{post.created_at.time}}
                     </div>
-                    <div><strong>{{post.owner.username}}</strong></div>
+                    <div><strong class="txt" style="font-size: 20px ;font-weight: bold " >{{post.owner.username}}</strong></div>
                  
                 </div>
                 <div class="panel-body">
@@ -44,7 +44,7 @@
                     <img src= "{{post.img}}" class="img-responsive">
                       </div>  
                     
-                    <p>{{post.text}}</p>
+                    <p  class="txt" style="font-size: 20px ;font-weight: bold" >{{post.text}}</p>
                     <div class="actions">
                         <div class="btn-group">
                             <a class="tag tag-sm" (click)="like(post,post._id)">
@@ -72,7 +72,7 @@
                         <div class="media-body">
                             <div class="pull-right small">{{comment.created_at.date}} {{comment.created_at.time}}</div>
                             <h4 class="media-heading">{{comment.owner.username}}</h4>
-                            <p>{{comment.text}}</p>
+                            <p class="txt" style="font-size: 20px ;font-weight: bold" >{{comment.text}}</p>
                         </div>
                     </div>
                     
