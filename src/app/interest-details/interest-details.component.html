@@ -7,7 +7,7 @@
         <img class="img-circle" src="{{interest.icon}}" alt="Avatar">
       </div>
       <h3 class="widget-user-username"> {{title}} </h3>
-      <app-create-challenge [interest_id]="interest._id" style="position: absolute;"></app-create-challenge>
+      <app-create-challenge (notify)='onNotify($event)' [interest_id]="interest._id" style="position: absolute;"></app-create-challenge>
     </div>
   </div>
 

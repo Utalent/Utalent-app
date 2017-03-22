@@ -11,27 +11,36 @@ import { PostComponent } from '.././post/post.component';
   selector: 'app-challenge',
   templateUrl: './challenge.component.html',
   styleUrls: ['./challenge.component.css']
-  // directives: [PostComponent]
 })
 export class ChallengeComponent implements OnInit {
 	challenge:Object = {};
 	private sub;
+  id = "";
   
-  constructor(private challengeService : ChallengeService, private route: ActivatedRoute, private ref: ApplicationRef, private ref1:ChangeDetectorRef, private zone: NgZone ) { }
+  constructor(private challengeService : ChallengeService,
+              private route: ActivatedRoute, 
+              private ref: ApplicationRef, 
+              private ref1:ChangeDetectorRef, 
+              private zone: NgZone ) { }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
-      let id = params['id'];
-      this.challengeService.getChallenge(id).subscribe(chall => {
-        console.log(chall)
+      this.id = params['id'];
+      this.challengeService.getChallenge(this.id).subscribe(chall => {
         this.challenge = chall;
       })
     });      
   }
- 
 
+  refresh() {
+    this.challengeService.getChallenge(this.id).subscribe(chall => {
+        this.challenge = chall;
+    })
+  }
 
-  
+  onNotify(message:string) {
+      this.refresh();
+  }
 
   ngOnDestroy() {
     // Clean sub to avoid memory leak
