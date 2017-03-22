@@ -5,24 +5,28 @@
             <div class="panel panel-default">
                 <div class="panel-heading"><strong class="txt" style="font-size: 40px ;font-weight: bold " >Activities</strong></div>
                 <div class="panel-body">
-                    
+
                     <div class="ibox-content">
-                     <div class="feed-activity-list">
+                       <div class="feed-activity-list">
 
                         <div class="feed-element" *ngFor='let post of posts'>
-                            <a href="#" class="pull-left">
+                            <a class="pull-left" *ngIf="post.owner.image" >
                                 <img alt="image" class="img-circle" src="{{post.owner.image}}">
+                            </a>
+
+                            <a class="pull-left" *ngIf="! post.owner.image">  
+                            <img class="img-circle" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" >
                             </a>
                             
                             <div class="media-body ">
                                 <!-- <small class="pull-right text-navy">5m ago</small> -->
                                 <strong  class="txt" style="font-size: 20px ;font-weight: bold ">{{post.owner.username}}</strong> posted <strong>{{post.text}}</strong>.<br>
                                 <small class="text-muted">{{post.created_at.time}} - {{post.created_at.date}}</small>
+                                <br>
                                 <img *ngIf="post.img" alt="image" class="feed-photo" src="{{post.img}}" />
                                 
                                 <div class="actions">
-                                    <a class="btn btn-xs btn-white"><i class="fa fa-thumbs-up"></i> Like </a>
-                                    <a class="btn btn-xs btn-danger"><i class="fa fa-heart"></i> Love</a>
+                                    <p style="width: 40px; height: 20px" class="btn-xs btn-danger"><i class="fa fa-heart"></i> {{post.likes}}</p>
                                 </div>
                             </div>
                         </div>

@@ -353,7 +353,7 @@ exports = module.exports = __webpack_require__(27)();
 
 
 // module
-exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\r\n\r\n\r\nbody {\r\n\tbackground-color: #f5f6f8;\r\n}\r\n\r\n", ""]);
+exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\r\n\r\n\r\nbody {\r\n\tbackground-color: #f5f6f8;\r\n}\r\n\r\nimg {\r\n  max-width: 100%\r\n}\r\n\r\ninput, textarea {\r\n  max-width:100%\r\n}", ""]);
 
 // exports
 

@@ -1,3 +1,11 @@
+img {
+  max-width: 100%
+}
+
+input, textarea {
+  max-width:100%
+}
+
 .pic {
 	background: #253340 url('../../assets/12.jpg') no-repeat 50% top;
 	-webkit-background-size: cover;

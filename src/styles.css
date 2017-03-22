@@ -5,3 +5,10 @@ body {
 	background-color: #f5f6f8;
 }
 
+img {
+  max-width: 100%
+}
+
+input, textarea {
+  max-width:100%
+}
