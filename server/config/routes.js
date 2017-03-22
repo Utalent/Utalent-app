@@ -18,7 +18,6 @@ module.exports = function(app, express) {
 	app.get('/api/users/:username', userController.getProfile);
 
 	app.post('/api/users/photo/:username', userController.Addphoto);	
-	app.get('/api/users/getphoto', userController.getphoto);
 
 	app.post('/api/posts/add', postController.addPost);
 	app.get('/api/posts', postController.getAllPosts);
