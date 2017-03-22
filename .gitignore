@@ -22,8 +22,6 @@ client/dist/
 coverage/
 uploads/
 
-# Build files
-dist/
 
 # Floobits
 .floo
