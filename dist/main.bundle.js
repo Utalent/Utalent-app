@@ -614,6 +614,7 @@ var ChallengeComponent = (function () {
         this.sub = this.route.params.subscribe(function (params) {
             _this.id = params['id'];
             _this.challengeService.getChallenge(_this.id).subscribe(function (chall) {
+                console.log(chall);
                 _this.challenge = chall;
             });
         });
