@@ -28,7 +28,6 @@ export class PostComponent implements OnInit {
 
 
   fileChange(input,p){
-    console.log("*************",p.text)
     this.readFiles(input.files,p.text);
   }
 
@@ -54,7 +53,6 @@ export class PostComponent implements OnInit {
       this.readFile(files[0], reader, (result) =>{
         // Create an img element and add the image file data to it
         this.image=result; 
-        console.log(this.image)
         this.postphoto(result,text)
       });
     }else{
@@ -65,7 +63,6 @@ export class PostComponent implements OnInit {
   // upload image end 
 
   postphoto(image,text){
-    console.log("8885858",text)
       this.sub = this.route.params.subscribe(params => {
       this.id = params['id'];
       this.user_id = JSON.parse(localStorage.getItem('com.userId'))

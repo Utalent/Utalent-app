@@ -26,6 +26,7 @@ export class AuthService {
   signup(user) {
   	return this.http.post('/api/users/signup', user).map(resp => {
       if(resp.status === 500){
+        console.log("services",resp)
         return false;
       }
       else{
