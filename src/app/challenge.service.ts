@@ -33,9 +33,5 @@ export class ChallengeService {
       res.json()
     })
   }
-
-  Addphoto(image){
-    return this.http.post('/api/posts/add', image).map(res => res.json())
-  }
   
 }

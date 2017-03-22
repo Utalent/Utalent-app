@@ -1,4 +1,3 @@
-<!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" -->
 <!-- <div class="container"> -->
 <div class="content" id="first">
     <div class="row activity">
@@ -6,14 +5,11 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <input  class="form-control" placeholder="Write a post..." [(ngModel)] = "Post.text" (keyup.enter) = "post(Post,pchallenge._id)">
+                    <input  class="form-control" placeholder="Write a post..." [(ngModel)]="Post.text"(keyup.enter)="post(Post,pchallenge._id)">
                 </div>
                 <div class="panel-footer">
                     <div class="btn-group">
-                        
-                        
-                        <label   class="btn btn-link"><input type="file" name="photo" style="display: none;" (change)="fileChange(input,Post)"  #input  required accept="image/*" ><i class="fa fa-camera" ></i></label>
-                       
+                        <label   class="btn btn-link"><input type="file" name="photo" style="display: none;" (change)="fileChange(input,Post)" #input required accept="image/*" ><i class="fa fa-camera" ></i></label>
                     </div>
                     
                     <div class="pull-right">
@@ -86,13 +82,7 @@
                     <input  class="form-control" placeholder="Write a comment..." [(ngModel)] = "post.txt" (keyup.enter)="Comment(post.txt,post._id)" >
                 </div>
             </div>
-            </div>
-
-
-      
-       
-        
-        </div><!--/.col-->
+            </div>        
+        </div>
     </div>
-    </div>
-<!-- </div> -->
+</div>
