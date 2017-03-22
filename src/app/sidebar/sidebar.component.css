@@ -1,8 +1,5 @@
-/*.affix {
-    top: 20px;
-}*/
 :host {
-  background: #f5f6f8;
+  background: transparent;
   color: #fff;
   position: fixed;
   left: auto;
@@ -15,23 +12,14 @@
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 }
 
-ul {
-  font-size: 18px;
-  line-height: 3;
-  font-weight: 400;
-  padding-top: 50px;
-  list-style: none;
-  color: black;
-}
-
 .hamburger {
   display: block;
   position: relative;
   overflow: hidden;
-  margin: 0;
+  margin: -5px;
   padding: 0;
-  width: 88px;
-  height: 88px;
+  width: 85px;
+  height: 85px;
   font-size: 0;
   text-indent: -9999px;
   cursor: pointer;

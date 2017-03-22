@@ -1,8 +1,8 @@
 <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" -->
 <!-- <div class="container"> -->
-
-<div class="content">
+<div class="content" id="first">
     <div class="row activity">
+        <div class="col-md-3"></div>
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-body">
@@ -10,11 +10,10 @@
                 </div>
                 <div class="panel-footer">
                     <div class="btn-group">
-                        <button type="button" class="btn btn-link"><i class="fa fa-map-marker"></i></button>
-                        <button type="button" class="btn btn-link"><i class="fa fa-users"></i></button>
-                        <label   class="btn btn-link"><input type="file" name="photo" style="display: none;" (change)="fileChange(input)"  #input  required accept="image/*" ><i class="fa fa-camera" ></i></label>
-                        <button type="button" class="btn btn-link"><i class="fa fa-video-camera"></i></button>
-                        <button type="button" class="btn btn-link"><i class="fa fa-calendar-o"></i></button>
+                        
+                        
+                        <label   class="btn btn-link"><input type="file" name="photo" style="display: none;" (change)="fileChange(input,Post)"  #input  required accept="image/*" ><i class="fa fa-camera" ></i></label>
+                       
                     </div>
                     
                     <div class="pull-right">
@@ -43,6 +42,12 @@
                 </div>
                 <div class="panel-body">
                     <!-- <img src="http://lorempixel.com/500/333/nature/2" class="img-responsive"> -->
+                    
+                      <div *ngIf=" post.img">
+                          
+                    <img src= "{{post.img}}" class="img-responsive">
+                      </div>  
+                    
                     <p>{{post.text}}</p>
                     <div class="actions">
                         <div class="btn-group">

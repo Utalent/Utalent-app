@@ -13,25 +13,29 @@ export class InterestDetailsComponent implements OnInit {
 	interest = {};
 	private sub;
 	title = "";
+	interestName = ""
 	constructor(private interestsService : InterestsService, 
 				private route: ActivatedRoute, 
 				private router: Router) { }
 
 	ngOnInit() {
 		this.sub = this.route.params.subscribe(params => {
-			let name = params['name'];
-	    	this.interestsService.getInterest(name).subscribe(res => {
-	    		console.log(res)
+			this.interestName = params['name'];
+	    	this.interestsService.getInterest(this.interestName).subscribe(res => {
 	       		this.interest = res;
 	       		this.title = res.name.charAt(0).toUpperCase() + res.name.slice(1);
 	    	})
 		});
 	}
 
-	
-	// ngOnDestroy() {
- //  		// Clean sub to avoid memory leak
- //  		this.sub.unsubscribe();
-	// }	
+	refresh() {
+		this.interestsService.getInterest(this.interestName).subscribe(res => {
+       		this.interest = res;
+	    })
+	}
+
+	ngOnChange() {
+		this.refresh();
+	}	
 
 }

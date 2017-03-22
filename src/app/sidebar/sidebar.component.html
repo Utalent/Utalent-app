@@ -1,15 +1,13 @@
-<button [@bar]="barState" (click)="toggleMenu()" class="hamburger">
+<button [@bar]="barState" (click)="toggleMenu()" style="background: white" class="hamburger">
   <span>toggle menu</span>
 </button>
 
 <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
   <ul class="nav navbar-nav" [@slideInOut]="menuState">
-    <li class="active"><a [routerLink]="['/home']">Home<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>
-    <li class="active"><a [routerLink]="['/users/' + userName]">Profile<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>
-    <li ><a [routerLink]="['/create']">Create Challenge<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-tags"></span></a></li>
-    
+    <li class="active"><a [routerLink]="['/main']">Home<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>
+    <li class="active"><a [routerLink]="['/users/' + userName]">Profile<span style="font-size:16px;" class="glyphicon glyphicon-user"></span></a></li>
     <ul class="nav navbar-nav" *ngFor='let obj of interests'>
-      <li class="active"><a [routerLink]="['/interest/' + obj]">{{obj}}<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>
+      <li class="active"><a [routerLink]="['/interest/' + obj]">{{obj}}<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-th-list"></span></a></li>
     </ul>
 
     <li class="active"><a (click)="logOut()" [routerLink]="['']">SignOut<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>

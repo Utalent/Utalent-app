@@ -8,6 +8,7 @@ export class CheckLoggedIn implements CanActivate {
 
   canActivate() {
   	if(localStorage.getItem('com.utalent')){
+  		console.log( !! localStorage.getItem('com.utalent'))
   		return true
   	}
   	this.router.navigate([''])
