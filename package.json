@@ -2,7 +2,6 @@
   "name": "utalent-app",
   "version": "0.0.0",
   "license": "ISC",
-  "angular-cli": {},
   "scripts": {
     "start": "node server.js",
   },
