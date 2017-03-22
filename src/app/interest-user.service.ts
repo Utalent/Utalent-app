@@ -13,7 +13,6 @@ export class InterestUserService {
 
 	getUserInterests(user){
 		return this.http.get('/api/getUserselected/'+ JSON.parse(user.user_id)).map(res=>{
-	    	console.log(res.json(),"user Interests");
 	        return res.json();;        
 	    })
 	}

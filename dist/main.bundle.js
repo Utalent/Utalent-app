@@ -163,7 +163,6 @@ var InterestUserService = (function () {
     }
     InterestUserService.prototype.getUserInterests = function (user) {
         return this.http.get('/api/getUserselected/' + JSON.parse(user.user_id)).map(function (res) {
-            console.log(res.json(), "user Interests");
             return res.json();
             ;
         });
@@ -297,9 +296,7 @@ var ProfileService = (function () {
         });
     };
     ProfileService.prototype.getProfile = function (user) {
-        console.log("getting profile info", user);
         return this.http.get('/api/users/' + user.username).map(function (res) {
-            console.log("user done", res.json());
             return res.json();
         });
     };
@@ -1135,10 +1132,9 @@ var ProfileComponent = (function () {
     ProfileComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.sub = this.route.params.subscribe(function (params) {
-            var username = params['username'];
-            _this.profileService.getProfile({ username: JSON.parse(username) }).subscribe(function (info) {
+            _this.username = params['username'];
+            _this.profileService.getProfile({ username: JSON.parse(_this.username) }).subscribe(function (info) {
                 _this.user = info;
-                console.log(_this.user, "hhhhhhhhhhhhhhhhhhhhhhh");
             });
         });
     };
@@ -1150,7 +1146,6 @@ var ProfileComponent = (function () {
         // Set a callback funtion to fire after the file is fully loaded
         reader.onload = function () {
             // callback with the results
-            // console.log(reader.result)
             callback(reader.result);
         };
         // Read the file
@@ -1180,6 +1175,13 @@ var ProfileComponent = (function () {
             var username = params['username'];
             _this.profileService.Addphoto({ image: image, username: JSON.parse(username) }).subscribe(function (d) {
             });
+        });
+        this.refresh();
+    };
+    ProfileComponent.prototype.refresh = function () {
+        var _this = this;
+        this.profileService.getProfile({ username: JSON.parse(this.username) }).subscribe(function (info) {
+            _this.user = info;
         });
     };
     ProfileComponent = __decorate([
@@ -1711,7 +1713,7 @@ module.exports = "<!-- <div class=\"container\"> -->\r\n<div class=\"content\" i
 /***/ 763:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n  <div class=\"row\">\r\n  <div  class=\"col-md-1\" ></div>\r\n    <div class=\"col-md-10\">\r\n      <div class=\"panel panel-white profile-widget\">\r\n        <div class=\"row\"> \r\n          <div class=\"col-sm-12\">\r\n            <div class=\"image-container bg2\"> \r\n              <img src=\"{{user.image}}\" class=\"avatar\" alt=\"avatar\">\r\n            </div>\r\n          </div>\r\n          <div class=\"col-sm-12\">\r\n            <div class=\"details\" ><h4 class=\"txt\" style=\"font-size: 40px ;font-weight: bold \">{{user.username}} <i class=\"fa fa-sheild\"></i></h4>\r\n              <div style=\"font-family: 'Comic Sans MS', cursive, sans-serif\" >{{user.email}} </div>\r\n              <div style=\"font-family: 'Comic Sans MS', cursive, sans-serif\" >{{user.status}}</div>\r\n     <br>\r\n              <div class=\"mg-top-10\"> \r\n                <button (click)=\"getPhoto()\" type=\"submit\" class=\"btn btn-purple\"  style=\"font-family: 'Comic Sans MS', cursive, sans-serif\" >Add</button>\r\n                  <label class=\"btn btn-purple\"  style=\"font-family: 'Comic Sans MS', cursive, sans-serif\" > Browse&hellip; <input type=\"file\" style=\"display: none;\" (change)=\"fileChange(input)\"  #input  required accept=\"image/*\" >\r\n                  </label>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <div class=\"row\">\r\n        <div class=\"col-sm-6\">\r\n          <div class=\"panel panel-white border-top-purple\">\r\n            <div class=\"panel-heading\"><h3 class=\"panel-title\" class=\"txt\" style=\"font-size: 20px;font-weight: bold\">My Story</h3>\r\n              <div class=\"controls pull-right\">\r\n                <span class=\"pull-right clickable\"><i class=\"fa fa-chevron-up\"></i> </span>\r\n              </div>\r\n            </div>\r\n            <div class=\"panel-body\">\r\n              <div class=\"body-section\">\r\n                <h5 class=\"section-heading\" style=\"font-family: 'Comic Sans MS', cursive, sans-serif\" >About</h5>\r\n                <p class=\"section-content\" class=\"txt\" >{{user.about_you}} </p>\r\n              </div>\r\n              <div class=\"body-section\">\r\n                <h5 class=\"section-heading\" style=\"font-family: 'Comic Sans MS', cursive, sans-serif\">status</h5>\r\n                <p class=\"section-content\" class=\"txt\" >{{user.status}}</p>\r\n              </div>\r\n              <div class=\"body-section\">\r\n                <h5 class=\"section-heading\" style=\"font-family: 'Comic Sans MS', cursive, sans-serif\">Acheivements</h5>\r\n                <p class=\"section-content\" class=\"txt\" >{{user.Acheivements}}</p>\r\n              </div>\r\n              <div class=\"body-section\">\r\n                <a class=\"btn btn-purple btn-md\" style=\"font-family: 'Comic Sans MS', cursive, sans-serif\" >Edit</a>\r\n              </div>\r\n            </div>\r\n          </div>\r\n          <app-interest-user></app-interest-user>\r\n        </div>\r\n        <div class=\"col-sm-6\">\r\n          <div class=\"panel panel-white border-top-purple\">\r\n            <div class=\"panel-heading\">\r\n              <h3 class=\"panel-title\" class=\"txt\" style=\"font-size: 20px;font-weight: bold\" >Social Statistics</h3>\r\n              <div class=\"controls pull-right\"> \r\n                <span class=\"pull-right clickable\"> \r\n                <i class=\"fa fa-chevron-up\"></i></span>\r\n              </div>\r\n            </div>\r\n            <div class=\"panel-body\">\r\n              <div class=\"body-section\">\r\n                <h5 class=\"section-heading\" style=\"font-family: 'Comic Sans MS', cursive, sans-serif\">Friends</h5>\r\n                <p class=\"section-content\" class=\"txt\">Soon</p>\r\n              </div>\r\n              <div class=\"body-section\">\r\n                <h5 class=\"section-heading\" style=\"font-family: 'Comic Sans MS', cursive, sans-serif\" >Posts</h5>\r\n                <p class=\"section-content\" class=\"txt\" >2240</p>\r\n              </div>\r\n              <div class=\"body-section\">\r\n                <h5 class=\"section-heading\" style=\"font-family: 'Comic Sans MS', cursive, sans-serif\" >Score</h5>\r\n                <p class=\"section-content\" class=\"txt\">18</p>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div> \r\n<app-sidebar></app-sidebar>\r\n"
+module.exports = "<div class=\"container\">\r\n  <div class=\"row\">\r\n  <div  class=\"col-md-1\" ></div>\r\n    <div class=\"col-md-10\">\r\n      <div class=\"panel panel-white profile-widget\">\r\n        <div class=\"row\"> \r\n          <div class=\"col-sm-12\">\r\n            <div class=\"image-container bg2\"> \r\n              <img src=\"{{user.image}}\" class=\"avatar\" alt=\"avatar\">\r\n            </div>\r\n          </div>\r\n          <div class=\"col-sm-12\">\r\n            <div class=\"details\" ><h4 class=\"txt\" style=\"font-size: 40px ;font-weight: bold \">{{user.username}} <i class=\"fa fa-sheild\"></i></h4>\r\n              <div style=\"font-family: 'Comic Sans MS', cursive, sans-serif\" >{{user.email}} </div>\r\n              <div style=\"font-family: 'Comic Sans MS', cursive, sans-serif\" >{{user.status}}</div>\r\n     <br>\r\n              <div class=\"mg-top-10\"> \r\n                <button (click)=\"refresh()\" type=\"submit\" class=\"btn btn-purple\"  style=\"font-family: 'Comic Sans MS', cursive, sans-serif\" >Add</button>\r\n                  <label class=\"btn btn-purple\"  style=\"font-family: 'Comic Sans MS', cursive, sans-serif\" > Browse&hellip; <input type=\"file\" style=\"display: none;\" (change)=\"fileChange(input)\"  #input  required accept=\"image/*\" >\r\n                  </label>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <div class=\"row\">\r\n        <div class=\"col-sm-6\">\r\n          <div class=\"panel panel-white border-top-purple\">\r\n            <div class=\"panel-heading\"><h3 class=\"panel-title\" class=\"txt\" style=\"font-size: 20px;font-weight: bold\">My Story</h3>\r\n              <div class=\"controls pull-right\">\r\n                <span class=\"pull-right clickable\"><i class=\"fa fa-chevron-up\"></i> </span>\r\n              </div>\r\n            </div>\r\n            <div class=\"panel-body\">\r\n              <div class=\"body-section\">\r\n                <h5 class=\"section-heading\" style=\"font-family: 'Comic Sans MS', cursive, sans-serif\" >About</h5>\r\n                <p class=\"section-content\" class=\"txt\" >{{user.about_you}} </p>\r\n              </div>\r\n              <div class=\"body-section\">\r\n                <h5 class=\"section-heading\" style=\"font-family: 'Comic Sans MS', cursive, sans-serif\">status</h5>\r\n                <p class=\"section-content\" class=\"txt\" >{{user.status}}</p>\r\n              </div>\r\n              <div class=\"body-section\">\r\n                <h5 class=\"section-heading\" style=\"font-family: 'Comic Sans MS', cursive, sans-serif\">Acheivements</h5>\r\n                <p class=\"section-content\" class=\"txt\" >{{user.Acheivements}}</p>\r\n              </div>\r\n              <div class=\"body-section\">\r\n                <a class=\"btn btn-purple btn-md\" style=\"font-family: 'Comic Sans MS', cursive, sans-serif\" >Edit</a>\r\n              </div>\r\n            </div>\r\n          </div>\r\n          <app-interest-user></app-interest-user>\r\n        </div>\r\n        <div class=\"col-sm-6\">\r\n          <div class=\"panel panel-white border-top-purple\">\r\n            <div class=\"panel-heading\">\r\n              <h3 class=\"panel-title\" class=\"txt\" style=\"font-size: 20px;font-weight: bold\" >Social Statistics</h3>\r\n              <div class=\"controls pull-right\"> \r\n                <span class=\"pull-right clickable\"> \r\n                <i class=\"fa fa-chevron-up\"></i></span>\r\n              </div>\r\n            </div>\r\n            <div class=\"panel-body\">\r\n              <div class=\"body-section\">\r\n                <h5 class=\"section-heading\" style=\"font-family: 'Comic Sans MS', cursive, sans-serif\">Friends</h5>\r\n                <p class=\"section-content\" class=\"txt\">Soon</p>\r\n              </div>\r\n              <div class=\"body-section\">\r\n                <h5 class=\"section-heading\" style=\"font-family: 'Comic Sans MS', cursive, sans-serif\" >Posts</h5>\r\n                <p class=\"section-content\" class=\"txt\" >2240</p>\r\n              </div>\r\n              <div class=\"body-section\">\r\n                <h5 class=\"section-heading\" style=\"font-family: 'Comic Sans MS', cursive, sans-serif\" >Score</h5>\r\n                <p class=\"section-content\" class=\"txt\">18</p>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div> \r\n<app-sidebar></app-sidebar>\r\n"
 
 /***/ }),
 
