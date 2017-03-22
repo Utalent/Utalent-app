@@ -21,7 +21,9 @@ client/lib/
 client/dist/
 coverage/
 uploads/
-
+src/
+e2e
+.vscode
 
 # Floobits
 .floo

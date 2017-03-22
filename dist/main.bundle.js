@@ -49,10 +49,9 @@ var ChallengeService = (function () {
         return this.http.post('/api/comments/add', comment).map(function (res) { return res.json(); });
     };
     ChallengeService.prototype.createChallenge = function (challenge) {
-        return this.http.post('/api/challenges/add', challenge).map(function (res) { return res.json(); });
-    };
-    ChallengeService.prototype.Addphoto = function (image) {
-        return this.http.post('/api/posts/add', image).map(function (res) { return res.json(); });
+        return this.http.post('/api/challenges/add', challenge).map(function (res) {
+            res.json();
+        });
     };
     ChallengeService = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(), 
@@ -608,16 +607,25 @@ var ChallengeComponent = (function () {
         this.ref1 = ref1;
         this.zone = zone;
         this.challenge = {};
+        this.id = "";
     }
     ChallengeComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.sub = this.route.params.subscribe(function (params) {
-            var id = params['id'];
-            _this.challengeService.getChallenge(id).subscribe(function (chall) {
-                console.log(chall);
+            _this.id = params['id'];
+            _this.challengeService.getChallenge(_this.id).subscribe(function (chall) {
                 _this.challenge = chall;
             });
         });
+    };
+    ChallengeComponent.prototype.refresh = function () {
+        var _this = this;
+        this.challengeService.getChallenge(this.id).subscribe(function (chall) {
+            _this.challenge = chall;
+        });
+    };
+    ChallengeComponent.prototype.onNotify = function (message) {
+        this.refresh();
     };
     ChallengeComponent.prototype.ngOnDestroy = function () {
         // Clean sub to avoid memory leak
@@ -661,7 +669,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var CreateChallengeComponent = (function () {
     function CreateChallengeComponent(challengeService) {
         this.challengeService = challengeService;
-        this.challenge = { interest_id: "" };
+        this.notify = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.challenge = { interest_id: "", title: "", description: "" };
     }
     CreateChallengeComponent.prototype.show = function () {
         this.childModal.show();
@@ -669,13 +678,15 @@ var CreateChallengeComponent = (function () {
     CreateChallengeComponent.prototype.hide = function () {
         this.childModal.hide();
     };
-    CreateChallengeComponent.prototype.ngOnInit = function () {
-    };
+    CreateChallengeComponent.prototype.ngOnInit = function () { };
     CreateChallengeComponent.prototype.addChallenge = function () {
         var _this = this;
         this.challenge.interest_id = this.interest_id;
         this.challengeService.createChallenge(this.challenge).subscribe(function (chall) {
             _this.childModal.hide();
+            _this.notify.emit('Challenge Added');
+            _this.challenge.title = "";
+            _this.challenge.description = "";
         });
     };
     __decorate([
@@ -686,6 +697,10 @@ var CreateChallengeComponent = (function () {
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(), 
         __metadata('design:type', String)
     ], CreateChallengeComponent.prototype, "interest_id", void 0);
+    __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(), 
+        __metadata('design:type', (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]) === 'function' && _b) || Object)
+    ], CreateChallengeComponent.prototype, "notify", void 0);
     CreateChallengeComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-create-challenge',
@@ -693,10 +708,10 @@ var CreateChallengeComponent = (function () {
             template: __webpack_require__(756),
             styles: [__webpack_require__(736)]
         }), 
-        __metadata('design:paramtypes', [(typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__challenge_service__["a" /* ChallengeService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__challenge_service__["a" /* ChallengeService */]) === 'function' && _b) || Object])
+        __metadata('design:paramtypes', [(typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__challenge_service__["a" /* ChallengeService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__challenge_service__["a" /* ChallengeService */]) === 'function' && _c) || Object])
     ], CreateChallengeComponent);
     return CreateChallengeComponent;
-    var _a, _b;
+    var _a, _b, _c;
 }());
 //# sourceMappingURL=F:/RBK/Utalent-app/src/create-challenge.component.js.map
 
@@ -765,17 +780,26 @@ var InterestDetailsComponent = (function () {
         this.router = router;
         this.interest = {};
         this.title = "";
+        this.interestName = "";
     }
     InterestDetailsComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.sub = this.route.params.subscribe(function (params) {
-            var name = params['name'];
-            _this.interestsService.getInterest(name).subscribe(function (res) {
-                console.log(res);
+            _this.interestName = params['name'];
+            _this.interestsService.getInterest(_this.interestName).subscribe(function (res) {
                 _this.interest = res;
                 _this.title = res.name.charAt(0).toUpperCase() + res.name.slice(1);
             });
         });
+    };
+    InterestDetailsComponent.prototype.refresh = function () {
+        var _this = this;
+        this.interestsService.getInterest(this.interestName).subscribe(function (res) {
+            _this.interest = res;
+        });
+    };
+    InterestDetailsComponent.prototype.onNotify = function (message) {
+        this.refresh();
     };
     InterestDetailsComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -984,11 +1008,11 @@ var PostComponent = (function () {
         this.challengeService = challengeService;
         this.changeDetectorRef = changeDetectorRef;
         this.route = route;
+        this.notify = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.Post = { user_id: 0, challenge_id: 0, img: '', text: '' };
         this.comment = { user_id: 0, post_id: 0, text: '' };
-        this.Post = { user_id: 0, challenge_id: 0 };
     }
-    PostComponent.prototype.ngOnInit = function () {
-    };
+    PostComponent.prototype.ngOnInit = function () { };
     PostComponent.prototype.fileChange = function (input, p) {
         this.readFiles(input.files, p.text);
     };
@@ -996,7 +1020,6 @@ var PostComponent = (function () {
         // Set a callback funtion to fire after the file is fully loaded
         reader.onload = function () {
             // callback with the results
-            // console.log(reader.result)
             callback(reader.result);
         };
         // Read the file
@@ -1011,8 +1034,8 @@ var PostComponent = (function () {
             // Start reading this file
             this.readFile(files[0], reader, function (result) {
                 // Create an img element and add the image file data to it
-                _this.image = result;
-                _this.postphoto(result, text);
+                _this.Post.img = result;
+                // this.postphoto(result,text)
             });
         }
         else {
@@ -1020,53 +1043,49 @@ var PostComponent = (function () {
             this.changeDetectorRef.detectChanges();
         }
     };
-    // upload image end 
-    PostComponent.prototype.postphoto = function (image, text) {
-        var _this = this;
-        this.sub = this.route.params.subscribe(function (params) {
-            _this.id = params['id'];
-            _this.user_id = JSON.parse(localStorage.getItem('com.userId'));
-            _this.challengeService.Addphoto({ img: image, challenge_id: _this.id, user_id: _this.user_id, text: text }).subscribe(function (d) {
-                location.reload();
-            });
-        });
-    };
+    //add post
     PostComponent.prototype.post = function (Post, challengeId) {
-        console.log("7777", challengeId);
+        var _this = this;
         this.Post.challenge_id = challengeId;
         this.Post.user_id = JSON.parse(localStorage.getItem('com.userId'));
-        console.log(this.Post);
-        this.challengeService.addPost(Post).subscribe(function (x) {
-            location.reload();
+        this.challengeService.addPost(Post).subscribe(function () {
+            _this.notify.emit('Post Added');
+            _this.Post.text = "";
+            _this.Post.img = "";
         });
     };
     //add like
     PostComponent.prototype.like = function (post, postId) {
-        this.challengeService
-            .addLike({ post_id: postId, user_id: JSON.parse(localStorage.getItem('com.userId')) })
+        var _this = this;
+        this.challengeService.addLike({ post_id: postId, user_id: JSON.parse(localStorage.getItem('com.userId')) })
             .subscribe(function (recent) {
-            post.likes++;
+            _this.notify.emit('Like');
         });
     };
     //dislike
     PostComponent.prototype.dLike = function (post, postId) {
+        var _this = this;
         this.challengeService
             .disLike({ post_id: postId, user_id: JSON.parse(localStorage.getItem('com.userId')) })
             .subscribe(function (recent) {
-            post.likes--;
+            _this.notify.emit('dis like');
         });
     };
     //add comment
     PostComponent.prototype.Comment = function (text, postId) {
+        var _this = this;
         this.comment.text = text;
         this.comment.post_id = postId;
         this.comment.user_id = JSON.parse(localStorage.getItem('com.userId'));
-        console.log("add comment", this.comment);
-        this.challengeService.addComment(this.comment)
-            .subscribe(function (recent) {
-            location.reload();
+        this.challengeService.addComment(this.comment).subscribe(function (recent) {
+            _this.notify.emit('Comment Added');
+            _this.comment.text = "";
         });
     };
+    __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(), 
+        __metadata('design:type', (typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]) === 'function' && _a) || Object)
+    ], PostComponent.prototype, "notify", void 0);
     __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(), 
         __metadata('design:type', Object)
@@ -1077,10 +1096,10 @@ var PostComponent = (function () {
             template: __webpack_require__(762),
             styles: [__webpack_require__(742)]
         }), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__challenge_service__["a" /* ChallengeService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__challenge_service__["a" /* ChallengeService */]) === 'function' && _a) || Object, (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["ChangeDetectorRef"] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_0__angular_core__["ChangeDetectorRef"]) === 'function' && _b) || Object, (typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* ActivatedRoute */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* ActivatedRoute */]) === 'function' && _c) || Object])
+        __metadata('design:paramtypes', [(typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__challenge_service__["a" /* ChallengeService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__challenge_service__["a" /* ChallengeService */]) === 'function' && _b) || Object, (typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["ChangeDetectorRef"] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_0__angular_core__["ChangeDetectorRef"]) === 'function' && _c) || Object, (typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* ActivatedRoute */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* ActivatedRoute */]) === 'function' && _d) || Object])
     ], PostComponent);
     return PostComponent;
-    var _a, _b, _c;
+    var _a, _b, _c, _d;
 }());
 //# sourceMappingURL=F:/RBK/Utalent-app/src/post.component.js.map
 
@@ -1635,7 +1654,7 @@ module.exports = "\r\n\r\n<router-outlet></router-outlet>\r\n\r\n"
 /***/ 755:
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<div class=\"col-md-2\"></div>\r\n<div class=\"col-md-8 bootstrap snippets\">\r\n<div class=\"mar-btm\" >\r\n<div>\r\n<hr>\r\n<a href=\"#\" class= \"btn-link text-semibold media-heading box-inline\"></a>\r\n</div>\r\n<h2>{{challenge.title}}</h2>\r\n<p> {{challenge.description}}</p>\r\n\r\n<div class=\"panel\">\r\n<div class=\"panel-body\">\r\n<!-- <textarea class=\"form-control\" rows=\"2\" placeholder=\"add post \" [(ngModel)] = \"Post.text\"></textarea> -->\r\n<!-- <div class=\"mar-top clearfix\"> -->\r\n<!-- <button class=\"btn btn-sm btn-primary pull-right\" (click) = \"post(Post,challenge._id)\">\r\n post</button> -->\r\n<!-- <a class=\"btn btn-trans btn-icon fa fa-video-camera add-tooltip\" href=\"#\"></a>\r\n<a class=\"btn btn-trans btn-icon fa fa-camera add-tooltip\" href=\"#\"></a>\r\n<a class=\"btn btn-trans btn-icon fa fa-file add-tooltip\" href=\"#\"></a> -->\r\n<!-- </div> -->\r\n</div>\r\n</div>\r\n<div class=\"panel\">\r\n<div class=\"panel-body\">\r\n<div class=\"media-block\"> \r\n<a class=\"media-left\" href=\"#\">\r\n<img ></a>\r\n<div class=\"media-body\">\r\n\r\n <app-post [pchallenge]='challenge'></app-post>\r\n</div>\r\n</div>\r\n</div>\r\n</div>\r\n</div>\r\n</div>\r\n<hr>\r\n<br>\r\n\r\n\r\n"
+module.exports = "\r\n<div class=\"col-md-2\"></div>\r\n<div class=\"col-md-8 bootstrap snippets\">\r\n\t<div class=\"mar-btm\" >\r\n\t\t<div>\r\n\t\t\t<hr>\r\n\t\t\t<a href=\"#\" class= \"btn-link text-semibold media-heading box-inline\"></a>\r\n\t\t</div>\r\n\t\t<h2>{{challenge.title}}</h2>\r\n\t\t<p> {{challenge.description}}</p>\r\n\t\t<div class=\"panel\">\r\n\t\t\t<div class=\"panel-body\">\r\n<!-- <textarea class=\"form-control\" rows=\"2\" placeholder=\"add post \" [(ngModel)] = \"Post.text\"></textarea> -->\r\n<!-- <div class=\"mar-top clearfix\"> -->\r\n<!-- <button class=\"btn btn-sm btn-primary pull-right\" (click) = \"post(Post,challenge._id)\">\r\n post</button> -->\r\n<!-- <a class=\"btn btn-trans btn-icon fa fa-video-camera add-tooltip\" href=\"#\"></a>\r\n<a class=\"btn btn-trans btn-icon fa fa-camera add-tooltip\" href=\"#\"></a>\r\n<a class=\"btn btn-trans btn-icon fa fa-file add-tooltip\" href=\"#\"></a> -->\r\n<!-- </div> -->\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"panel\">\r\n\t\t\t<div class=\"panel-body\">\r\n\t\t\t\t<div class=\"media-block\"> \r\n\t\t\t\t\t<a class=\"media-left\" href=\"#\">\r\n\t\t\t\t\t<img ></a>\r\n\t\t\t\t\t<div class=\"media-body\">\r\n\t\t\t\t\t\t<app-post [pchallenge]='challenge' (notify)='onNotify($event)'></app-post>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n</div>\r\n<hr>\r\n<br>\r\n\r\n\r\n"
 
 /***/ }),
 
@@ -1656,7 +1675,7 @@ module.exports = "<div  class=\"pic\">\r\n<div class=\"text1\">\r\n\t\r\n<p>if y
 /***/ 758:
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<div class=\"row\">\r\n  <div class=\"box box-widget widget-user-2\">\r\n    <div class=\"widget-user-header bg-purple\">\r\n      <div class=\"widget-user-image\">\r\n        <img class=\"img-circle\" src=\"{{interest.icon}}\" alt=\"Avatar\">\r\n      </div>\r\n      <h3 class=\"widget-user-username\"> {{title}} </h3>\r\n      <app-create-challenge [interest_id]=\"interest._id\" style=\"position: absolute;\"></app-create-challenge>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<div  class=\"content\" *ngFor='let challenge of interest.challenges'>\r\n  <div class=\"col-md-3\">\r\n    <div class=\"well well-white mini-profile-widget\">\r\n      <div class=\"image-container\"> \r\n        <img src=\"{{interest.icon}}\" class=\"avatar img-responsive\" alt=\"avatar\">\r\n      </div>\r\n        <div class=\"details\">\r\n        <div><h4 [routerLink]=\"['/challenges/' + challenge._id]\">{{challenge.title}}</h4></div>\r\n          <hr>\r\n          <div class=\"mg-top-10\">{{challenge.posts.length}} Posts</div>\r\n        </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n \r\n<app-sidebar></app-sidebar>"
+module.exports = "\r\n<div class=\"row\">\r\n  <div class=\"box box-widget widget-user-2\">\r\n    <div class=\"widget-user-header bg-purple\">\r\n      <div class=\"widget-user-image\">\r\n        <img class=\"img-circle\" src=\"{{interest.icon}}\" alt=\"Avatar\">\r\n      </div>\r\n      <h3 class=\"widget-user-username\"> {{title}} </h3>\r\n      <app-create-challenge (notify)='onNotify($event)' [interest_id]=\"interest._id\" style=\"position: absolute;\"></app-create-challenge>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<div  class=\"content\" *ngFor='let challenge of interest.challenges'>\r\n  <div class=\"col-md-3\">\r\n    <div class=\"well well-white mini-profile-widget\">\r\n      <div class=\"image-container\"> \r\n        <img src=\"{{interest.icon}}\" class=\"avatar img-responsive\" alt=\"avatar\">\r\n      </div>\r\n        <div class=\"details\">\r\n        <div><h4 [routerLink]=\"['/challenges/' + challenge._id]\">{{challenge.title}}</h4></div>\r\n          <hr>\r\n          <div class=\"mg-top-10\">{{challenge.posts.length}} Posts</div>\r\n        </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n \r\n<app-sidebar></app-sidebar>"
 
 /***/ }),
 
@@ -1684,7 +1703,7 @@ module.exports = "<div class=\"content\">\r\n    <div id=\"pad-wrapper\">\r\n   
 /***/ 762:
 /***/ (function(module, exports) {
 
-module.exports = "<!-- <link href=\"https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css\" rel=\"stylesheet\" -->\r\n<!-- <div class=\"container\"> -->\r\n<div class=\"content\" id=\"first\">\r\n    <div class=\"row activity\">\r\n        <div class=\"col-md-3\"></div>\r\n        <div class=\"col-md-12\">\r\n            <div class=\"panel panel-default\">\r\n                <div class=\"panel-body\">\r\n                    <input  class=\"form-control\" placeholder=\"Write a post...\" [(ngModel)] = \"Post.text\" (keyup.enter) = \"post(Post,pchallenge._id)\">\r\n                </div>\r\n                <div class=\"panel-footer\">\r\n                    <div class=\"btn-group\">\r\n                        \r\n                        \r\n                        <label   class=\"btn btn-link\"><input type=\"file\" name=\"photo\" style=\"display: none;\" (change)=\"fileChange(input,Post)\"  #input  required accept=\"image/*\" ><i class=\"fa fa-camera\" ></i></label>\r\n                       \r\n                    </div>\r\n                    \r\n                    <div class=\"pull-right\">\r\n                        <button type=\"button\" class=\"btn btn-success\" (click) = \"post(Post,pchallenge._id)\" >post</button>\r\n                    </div>  \r\n                </div>\r\n            </div>\r\n            \r\n            <div *ngFor='let post of pchallenge.posts'>\r\n            \r\n            <div class=\"panel panel-default\" >\r\n                <div class=\"panel-heading\">\r\n                  <a class=\"pull-left\" *ngIf=\"post.owner.image\">  \r\n                    <img src=\"{{post.owner.image}}\" class=\"img-rounded\">\r\n                    </a>\r\n\r\n                    <a class=\"pull-left\" *ngIf=\"! post.owner.image\">  \r\n                    <img src=\"https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg\" class=\"img-rounded\">\r\n                    </a>\r\n\r\n                    <div class=\"pull-right text-right\" >\r\n                        <i class=\"fa fa-clock-o\"></i>  {{post.created_at.date}} {{post.created_at.time}}\r\n                    </div>\r\n                    <div><strong>{{post.owner.username}}</strong></div>\r\n                 \r\n                </div>\r\n                <div class=\"panel-body\">\r\n                    <!-- <img src=\"http://lorempixel.com/500/333/nature/2\" class=\"img-responsive\"> -->\r\n                    \r\n                      <div *ngIf=\" post.img\">\r\n                          \r\n                    <img src= \"{{post.img}}\" class=\"img-responsive\">\r\n                      </div>  \r\n                    \r\n                    <p>{{post.text}}</p>\r\n                    <div class=\"actions\">\r\n                        <div class=\"btn-group\">\r\n                            <a class=\"tag tag-sm\" (click)=\"like(post,post._id)\">\r\n                            <i class= \"fa fa-thumbs-up\"></i></a> \r\n                            <!-- dislike -->\r\n                            <a class=\"tag tag-sm\" (click)=\"dLike(post,post._id)\">\r\n                            <i class=\"fa fa-thumbs-down\"></i>\r\n                            </a>\r\n\r\n                            <span class=\"tag tag-sm\" ><i class=\"fa fa-heart text-danger\"></i> {{post.likes}}</span>\r\n                        </div>\r\n                             \r\n                    </div>  \r\n                    comments:\r\n                    <div class=\"media\"  *ngFor='let comment of post.comments'>\r\n                        <a class=\"pull-left\" *ngIf=\"comment.owner.image\">\r\n                            <img class=\"media-object img-rounded\" src=\"{{comment.owner.image}}\">\r\n                        </a>\r\n\r\n                        <a class=\"pull-left\" *ngIf=\" ! comment.owner.image\">\r\n                            <img class=\"media-object img-rounded\" src=\"https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg\">\r\n                        </a>\r\n\r\n\r\n                        <div class=\"media-body\">\r\n                            <div class=\"pull-right small\">{{comment.created_at.date}} {{comment.created_at.time}}</div>\r\n                            <h4 class=\"media-heading\">{{comment.owner.username}}</h4>\r\n                            <p>{{comment.text}}</p>\r\n                        </div>\r\n                    </div>\r\n                    \r\n                    \r\n                </div>\r\n                <div class=\"panel-footer\">\r\n                    <input  class=\"form-control\" placeholder=\"Write a comment...\" [(ngModel)] = \"post.txt\" (keyup.enter)=\"Comment(post.txt,post._id)\" >\r\n                </div>\r\n            </div>\r\n            </div>\r\n\r\n\r\n      \r\n       \r\n        \r\n        </div><!--/.col-->\r\n    </div>\r\n    </div>\r\n<!-- </div> -->"
+module.exports = "<!-- <div class=\"container\"> -->\r\n<div class=\"content\" id=\"first\">\r\n    <div class=\"row activity\">\r\n        <div class=\"col-md-3\"></div>\r\n        <div class=\"col-md-12\">\r\n            <div class=\"panel panel-default\">\r\n                <div class=\"panel-body\">\r\n                    <input  class=\"form-control\" placeholder=\"Write a post...\" [(ngModel)]=\"Post.text\"(keyup.enter)=\"post(Post,pchallenge._id)\">\r\n                </div>\r\n                <div class=\"panel-footer\">\r\n                    <div class=\"btn-group\">\r\n                        <label   class=\"btn btn-link\"><input type=\"file\" name=\"photo\" style=\"display: none;\" (change)=\"fileChange(input,Post)\" #input required accept=\"image/*\" ><i class=\"fa fa-camera\" ></i></label>\r\n                    </div>\r\n                    \r\n                    <div class=\"pull-right\">\r\n                        <button type=\"button\" class=\"btn btn-success\" (click) = \"post(Post,pchallenge._id)\" >post</button>\r\n                    </div>  \r\n                </div>\r\n            </div>\r\n            \r\n            <div *ngFor='let post of pchallenge.posts'>\r\n            \r\n            <div class=\"panel panel-default\" >\r\n                <div class=\"panel-heading\">\r\n                  <a class=\"pull-left\" *ngIf=\"post.owner.image\">  \r\n                    <img src=\"{{post.owner.image}}\" class=\"img-rounded\">\r\n                    </a>\r\n\r\n                    <a class=\"pull-left\" *ngIf=\"! post.owner.image\">  \r\n                    <img src=\"https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg\" class=\"img-rounded\">\r\n                    </a>\r\n\r\n                    <div class=\"pull-right text-right\" >\r\n                        <i class=\"fa fa-clock-o\"></i>  {{post.created_at.date}} {{post.created_at.time}}\r\n                    </div>\r\n                    <div><strong>{{post.owner.username}}</strong></div>\r\n                 \r\n                </div>\r\n                <div class=\"panel-body\">\r\n                    <!-- <img src=\"http://lorempixel.com/500/333/nature/2\" class=\"img-responsive\"> -->\r\n                    \r\n                      <div *ngIf=\" post.img\">\r\n                          \r\n                    <img src= \"{{post.img}}\" class=\"img-responsive\">\r\n                      </div>  \r\n                    \r\n                    <p>{{post.text}}</p>\r\n                    <div class=\"actions\">\r\n                        <div class=\"btn-group\">\r\n                            <a class=\"tag tag-sm\" (click)=\"like(post,post._id)\">\r\n                            <i class= \"fa fa-thumbs-up\"></i></a> \r\n                            <!-- dislike -->\r\n                            <a class=\"tag tag-sm\" (click)=\"dLike(post,post._id)\">\r\n                            <i class=\"fa fa-thumbs-down\"></i>\r\n                            </a>\r\n\r\n                            <span class=\"tag tag-sm\" ><i class=\"fa fa-heart text-danger\"></i> {{post.likes}}</span>\r\n                        </div>\r\n                             \r\n                    </div>  \r\n                    comments:\r\n                    <div class=\"media\"  *ngFor='let comment of post.comments'>\r\n                        <a class=\"pull-left\" *ngIf=\"comment.owner.image\">\r\n                            <img class=\"media-object img-rounded\" src=\"{{comment.owner.image}}\">\r\n                        </a>\r\n\r\n                        <a class=\"pull-left\" *ngIf=\" ! comment.owner.image\">\r\n                            <img class=\"media-object img-rounded\" src=\"https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg\">\r\n                        </a>\r\n\r\n\r\n                        <div class=\"media-body\">\r\n                            <div class=\"pull-right small\">{{comment.created_at.date}} {{comment.created_at.time}}</div>\r\n                            <h4 class=\"media-heading\">{{comment.owner.username}}</h4>\r\n                            <p>{{comment.text}}</p>\r\n                        </div>\r\n                    </div>\r\n                    \r\n                    \r\n                </div>\r\n                <div class=\"panel-footer\">\r\n                    <input  class=\"form-control\" placeholder=\"Write a comment...\" [(ngModel)] = \"post.txt\" (keyup.enter)=\"Comment(post.txt,post._id)\" >\r\n                </div>\r\n            </div>\r\n            </div>        \r\n        </div>\r\n    </div>\r\n</div>\r\n"
 
 /***/ }),
 

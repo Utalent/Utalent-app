@@ -14,6 +14,7 @@ let port = process.env.PORT || 3000;
 // app.use(passport.initialize());
 // app.use(passport.session());
 
+// let mongoURI = process.env.MONGODB_URI ||"mongodb://localhost/utalent";
 let mongoURI = 'mongodb://utalent.heroku:YourTalent123@ds139470.mlab.com:39470/utalent' || process.env.MONGODB_URI ;
 mongoose.connect(mongoURI);
 db = mongoose.connection;
