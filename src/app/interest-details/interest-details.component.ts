@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { InterestsService } from '../interests.service';
 
 import {  ActivatedRoute } from '@angular/router';
@@ -34,8 +34,7 @@ export class InterestDetailsComponent implements OnInit {
 	    })
 	}
 
-	ngOnChange() {
-		this.refresh();
-	}	
-
+	onNotify(message:string) {
+    	this.refresh();
+  	}
 }

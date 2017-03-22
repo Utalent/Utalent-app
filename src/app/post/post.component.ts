@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, NgModule, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Input, NgModule, ChangeDetectorRef, Output, EventEmitter } from '@angular/core';
 import { ChallengeService } from '../challenge.service';
 import { ChallengeComponent } from '.././challenge/challenge.component';
 import {  ActivatedRoute } from '@angular/router';
@@ -10,12 +10,14 @@ import {  ActivatedRoute } from '@angular/router';
   styleUrls: ['./post.component.css']
 })
 export class PostComponent implements OnInit {
+
 	comment = { user_id:0 , post_id:0, text:'' };
-  	@Input() pchallenge:Object;
-    Post = {user_id:0 , challenge_id:0 };
-    image:any;
-    photo:any;
-    id:any;
+  @Input() pchallenge:Object;
+  @Output() notify: EventEmitter<string> = new EventEmitter<string>();
+  Post = {user_id:0 , challenge_id:0 };
+  image:any;
+  photo:any;
+  id:any;
 
 
   constructor( private challengeService : ChallengeService, private changeDetectorRef: ChangeDetectorRef, private route: ActivatedRoute ) { }
@@ -71,15 +73,6 @@ export class PostComponent implements OnInit {
       });          
     })         
     }
-  
-
-
-
-
-
-
-
-
 
   post(Post,challengeId){
       console.log("7777",challengeId)
@@ -87,7 +80,8 @@ export class PostComponent implements OnInit {
     this.Post.user_id = JSON.parse(localStorage.getItem('com.userId'))
     console.log(this.Post);
     this.challengeService.addPost (Post).subscribe((x) => {
-    location.reload()
+      // location.reload()
+      this.notify.emit('Post Added');
     });
   }
 
@@ -108,8 +102,6 @@ export class PostComponent implements OnInit {
      post.likes --;
     });
   }
-
-   
 
   //add comment
    Comment(text ,postId){
