@@ -961,8 +961,8 @@ var MainComponent = (function () {
     MainComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.mainService.getAllPosts().subscribe(function (res) {
-            console.log(res);
             _this.posts = res;
+            _this.posts = _this.posts.reverse();
         });
     };
     MainComponent = __decorate([
@@ -1657,21 +1657,21 @@ module.exports = "\r\n\r\n<router-outlet></router-outlet>\r\n\r\n"
 /***/ 755:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"col-md-2\"></div>\r\n<div class=\"col-md-8 bootstrap snippets\">\r\n<h2 class=\"txt\" style=\"font-size: 60px ;font-weight: bold \" >{{challenge.title}}</h2>\r\n<p class=\"txt\" style=\"font-size: 30px ;font-weight: bold \" > {{challenge.description}}</p>\r\n<app-post [pchallenge]='challenge' (notify)='onNotify($event)'></app-post>\r\n</div>\r\n<app-sidebar></app-sidebar>\r\n"
+module.exports = "    <div class=\"col-md-2\"></div>\r\n    <div class=\"col-md-8 bootstrap snippets\">\r\n      <h2 class=\"txt\" style=\"font-size: 60px ;font-weight: bold \" >{{challenge.title}}</h2>\r\n      <p class=\"txt\" style=\"font-size: 30px ;font-weight: bold \" > {{challenge.description}}</p>\r\n      <app-post [pchallenge]='challenge' (notify)='onNotify($event)'></app-post>\r\n    </div>\r\n    <app-sidebar></app-sidebar>\r\n"
 
 /***/ }),
 
 /***/ 756:
 /***/ (function(module, exports) {
 
-module.exports = "<button  type=\"button\" class=\"btn btn-green  pull-left\"  style=\"color: #000000; margin-left: 615px; margin-top: -35px\" (click)=\"show()\">Create New Challenge</button>\r\n\r\n\r\n<div bsModal #childModal=\"bs-modal\" class=\"modal fade\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"mySmallModalLabel\" aria-hidden=\"true\">\r\n  <div class=\"modal-dialog modal-sm\">\r\n    <div class=\"modal-content\">\r\n\r\n    \r\n      <div class=\"modal-header\">\r\n        <h4 class=\"modal-title pull-left\">Create New Challenge</h4>\r\n        <button type=\"button\" class=\"close pull-right\" aria-label=\"Close\" (click)=\"hide()\">\r\n          <span aria-hidden=\"true\">&times;</span>\r\n        </button>\r\n      </div>\r\n      <div class=\"modal-body\">\r\n        <form role=\"form\" method=\"post\" id=\"login-form\" autocomplete=\"off\">\r\n            <div class=\"form-group\">\r\n                <label >Title</label>\r\n                <input name=\"title\" class=\"form-control\" placeholder=\"Puzzle\" [(ngModel)]=\"challenge.title\">\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label >Description</label>\r\n                <input name=\"description\" class=\"form-control\" placeholder=\"Is 0.999.. = 1?\" [(ngModel)]=\"challenge.description\">\r\n            </div>\r\n        </form>\r\n      </div>\r\n      <div class=\"modal-footer\">\r\n      \t<input type=\"submit\" id=\"btn-login\" class=\"btn btn-green btn-lg btn-block\"  value=\"Create\" (click)=\"addChallenge()\">\r\n        <input type=\"submit\" id=\"btn-login\" class=\"btn btn-green btn-lg btn-block btn-danger\" value=\"Cancel\" (click)=\"hide()\">\r\n      </div>\r\n      \r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n"
+module.exports = "    <button  type=\"button\" class=\"btn btn-green  pull-left\"  style=\"color: #000000; margin-left: 615px; margin-top: -35px\" (click)=\"show()\">Create New Challenge</button>\r\n\r\n\r\n    <div bsModal #childModal=\"bs-modal\" class=\"modal fade\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"mySmallModalLabel\" aria-hidden=\"true\">\r\n      <div class=\"modal-dialog modal-sm\">\r\n        <div class=\"modal-content\">\r\n\r\n          \r\n          <div class=\"modal-header\">\r\n            <h4 class=\"modal-title pull-left\">Create New Challenge</h4>\r\n            <button type=\"button\" class=\"close pull-right\" aria-label=\"Close\" (click)=\"hide()\">\r\n              <span aria-hidden=\"true\">&times;</span>\r\n            </button>\r\n          </div>\r\n          <div class=\"modal-body\">\r\n            <form role=\"form\" method=\"post\" id=\"login-form\" autocomplete=\"off\">\r\n              <div class=\"form-group\">\r\n                <label >Title</label>\r\n                <input name=\"title\" class=\"form-control\" placeholder=\"Puzzle\" [(ngModel)]=\"challenge.title\">\r\n              </div>\r\n              <div class=\"form-group\">\r\n                <label >Description</label>\r\n                <input name=\"description\" class=\"form-control\" placeholder=\"Is 0.999.. = 1?\" [(ngModel)]=\"challenge.description\">\r\n              </div>\r\n            </form>\r\n          </div>\r\n          <div class=\"modal-footer\">\r\n            <input type=\"submit\" id=\"btn-login\" class=\"btn btn-green btn-lg btn-block\"  value=\"Create\" (click)=\"addChallenge()\">\r\n            <input type=\"submit\" id=\"btn-login\" class=\"btn btn-green btn-lg btn-block btn-danger\" value=\"Cancel\" (click)=\"hide()\">\r\n          </div>\r\n          \r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n"
 
 /***/ }),
 
 /***/ 757:
 /***/ (function(module, exports) {
 
-module.exports = "<div  class=\"pic\" >\r\n  <div class=\"text1\">\r\n    <p>Share Your Talent On UTalent Website<br> To The World</p>\r\n  </div>\r\n  <div class=\"d\">\r\n    <button class=\"button\" [routerLink]=\"['/signin']\" >Signin</button>\r\n    <br>\r\n    <br>\r\n    <button class=\"button\" [routerLink]=\"['/signup']\" >Signup</button>\r\n  </div>"
+module.exports = "<div  class=\"pic\" >\r\n  <div class=\"text1\">\r\n    <p>Share Your Talent On UTalent Website<br> To The World</p>\r\n  </div>\r\n  <div class=\"d\">\r\n    <button class=\"button\" [routerLink]=\"['/signin']\" >Signin</button>\r\n    <br>\r\n    <br>\r\n    <button class=\"button\" [routerLink]=\"['/signup']\" >Signup</button>\r\n  </div>\r\n</div>"
 
 /***/ }),
 

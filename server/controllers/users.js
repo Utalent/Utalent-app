@@ -42,10 +42,8 @@ module.exports = {
           return User.create(user, (err, newUser) => {
               // create token to send back for auth
               if(err){
-                console.log(___________________________)
                 res.status(500)
               } else {
-                console.log("**************************")
                 let token = jwt.encode(newUser, 'secret');
                 res.json({token: token,id :newUser._id, username: newUser.username}); 
               }     
@@ -60,7 +58,6 @@ module.exports = {
     .exec((err, found)=>{
       if (found){
         res.json(found)
-        console.log(found, "ffffffffffffffffffffff")
       }else {
         res.status(500).send("user does not exist")
       }
