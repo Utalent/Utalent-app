@@ -14,7 +14,7 @@ This project is licensed under the RBK License.
 ## Authors
 
 * **Dua'a Maloalain** - *Initial work* - [duaa](https://github.com/duaamaloalain)
-* **Hadeel Baloush ** - *Initial work* - [hadeel](https://github.com/HadeelBaloush)
+* **Hadeel Baloush** - *Initial work* - [hadeel](https://github.com/HadeelBaloush)
 * **Abobakr Alduais** - *Initial work* - [Abobakr](https://github.com/AbobakrAlduais)
 * **Ahmad Khasawneh** - *Initial work* - [Ahmad](https://github.com/AhmadKhasanweh)
 
