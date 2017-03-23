@@ -1,6 +1,23 @@
 # UtalentApp
-
+utalent is a platform that brings together talents from all around the world to one place where they can share and grow in the utalent space in the way of creating or participating  in challenges and receving feedback through comments.
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.28.3.
+
+
+## Built With
+* Angular2 - Front-side
+* [Express](http://expressjs.com/) - Backend-side
+* [mongoose](http://mongoosejs.com/) - Database
+
+## License
+This project is licensed under the RBK License.
+
+## Authors
+
+* **Dua'a Maloalain** - *Initial work* - [duaa](https://github.com/duaamaloalain)
+* **Hadeel Baloush ** - *Initial work* - [hadeel](https://github.com/HadeelBaloush)
+* **Abobakr Alduais** - *Initial work* - [Abobakr](https://github.com/AbobakrAlduais)
+* **Ahmad Khasawneh** - *Initial work* - [Ahmad](https://github.com/AhmadKhasanweh)
+
 
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
