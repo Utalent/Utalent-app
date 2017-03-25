@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, OnChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { InterestUserComponent } from '../interest-user/interest-user.component';
 import { ProfileService } from '../profile.service';
@@ -14,20 +14,17 @@ export class ProfileComponent implements OnInit {
   image : any;
   photo : any;
   user : Object = {};
-
+  username : string;
   constructor(private profileService: ProfileService,
               private changeDetectorRef: ChangeDetectorRef,
               private route: ActivatedRoute ) { }
   
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
-      let username= params['username'];
-      this.profileService.getProfile({username: JSON.parse(username)}).subscribe(info=>{
+      this.username= params['username'];
+      this.profileService.getProfile({username: JSON.parse(this.username)}).subscribe(info=>{
         this.user = info
-        console.log(this.user, "hhhhhhhhhhhhhhhhhhhhhhh")
-
-      }
-        );
+      });
     })
   }
   
@@ -40,7 +37,6 @@ export class ProfileComponent implements OnInit {
     // Set a callback funtion to fire after the file is fully loaded
     reader.onload = () => {
       // callback with the results
-      // console.log(reader.result)
       callback(reader.result);
     }
   // Read the file
@@ -70,6 +66,13 @@ export class ProfileComponent implements OnInit {
       this.profileService.Addphoto({image:image, username:JSON.parse(username)}).subscribe(d=>{
       });          
     })
+    this.refresh()
+  }
+
+  refresh() {
+    this.profileService.getProfile({username: JSON.parse(this.username)}).subscribe(info=>{
+        this.user = info
+      });
   }
 
 }

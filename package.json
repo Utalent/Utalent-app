@@ -2,7 +2,10 @@
   "name": "utalent-app",
   "version": "0.0.0",
   "license": "ISC",
-  "angular-cli": {},
+  "engines": {
+    "node": "6.9.1",
+    "npm": "3.10.8"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng build -op dist -w",
@@ -13,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/duaamaloalain/Utalent-app.git"
+    "url": "git+https://github.com/Utalent/Utalent-app.git"
   },
   "private": true,
   "author": "",
@@ -40,6 +43,7 @@
     "jwt-simple": "^0.5.1",
     "mocha": "^3.2.0",
     "mongoose": "*",
+    "morgan": "^1.8.1",
     "ng2-bootstrap": "^1.4.2",
     "passport": "0.2.1",
     "passport-facebook": "latest",
@@ -63,7 +67,7 @@
     "karma-cli": "^1.0.1",
     "karma-jasmine": "^1.0.2",
     "karma-remap-istanbul": "^0.2.1",
-     "karma-jasmine-html-reporter": "^0.2.2",
+    "karma-jasmine-html-reporter": "^0.2.2",
     "karma-coverage-istanbul-reporter": "^0.2.0",
     "morgan": "^1.7.0",
     "protractor": "~4.0.13",

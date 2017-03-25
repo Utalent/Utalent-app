@@ -15,8 +15,8 @@ export class MainComponent implements OnInit {
 
   ngOnInit() {
   	this.mainService.getAllPosts().subscribe(res => {
-        console.log(res)
         this.posts = res;
+        this.posts = this.posts.reverse();
       })
   }
 
